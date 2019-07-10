@@ -14,11 +14,11 @@
             </a>
             <ul class="menu-content">
               <li>
-                <a href="<?php echo base_url(); ?>admin/" data-i18n="nav.dash.main" class="menu-item"><i class="icon-plus"></i> Add Admin</a>
+                <a href="<?php echo base_url(); ?>Adminuser/Adminadd" data-i18n="nav.dash.main" class="menu-item"><i class="icon-plus"></i> Add Admin</a>
               </li>
               <li>
               <li>
-                <a href="<?php echo base_url(); ?>Assesment/Assesmentlist" data-i18n="nav.dash.main" class="menu-item"><i class="icon-file-text2"></i>List of admin</a>
+                <a href="<?php echo base_url(); ?>Adminuser/Adminlist" data-i18n="nav.dash.main" class="menu-item"><i class="icon-file-text2"></i>List of admin</a>
               </li>
             </ul>
           </li>        
@@ -40,14 +40,14 @@
         
           <li class="nav-item">
             <a>
-              <i class="icon-blogger"></i><span data-i18n="nav.dash.main" class="menu-title">Users</span>
+              <i class="icon-blogger"></i><span data-i18n="nav.dash.main" class="menu-title">User</span>
             </a>
             <ul class="menu-content">
               <li>
-                <a href="<?php echo base_url(); ?>Userrole/Userroleadd" data-i18n="nav.dash.main" class="menu-item"><i class="icon-plus"></i> Add User </a>
+                <a href="<?php echo base_url(); ?>User/Useradd" data-i18n="nav.dash.main" class="menu-item"><i class="icon-plus"></i> Add User </a>
               </li>
               <li>
-                <a href="<?php echo base_url(); ?>Userrole/Userrolelist" data-i18n="nav.dash.main" class="menu-item"><i class="icon-file-text2"></i> List of Users </a>
+                <a href="<?php echo base_url(); ?>User/Userlist" data-i18n="nav.dash.main" class="menu-item"><i class="icon-file-text2"></i> List of Users </a>
               </li>
             </ul>
           </li>
