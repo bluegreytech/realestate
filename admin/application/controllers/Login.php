@@ -19,8 +19,8 @@ class Login extends CI_Controller {
 					$Password = md5($this->input->post('Password'));
 					
 					$where = array(
-					"email"=>$EmailAddress,
-					"password"=>$Password,
+					"EmailAddress"=>$EmailAddress,
+					"Password"=>$Password,
 				
 					);
 					$log = $this->Login_model->login_where('tbladmin',$where); 
@@ -29,10 +29,10 @@ class Login extends CI_Controller {
 					if($cnt>0)
 					{
 						$datasession= array(
-								'email'=> $log->email,
-								'admin_id'=> $log->admin_id,
-								'fullname'=> $log->fullname,
-								'status'=>$log->status,
+								'EmailAddress'=> $log->EmailAddress,
+								'AdminId'=> $log->AdminId,
+								'FullName'=> $log->FullName,
+								'IsActive'=>$log->IsActive,
 							    
 							);
 						//echo "<pre>";print_r($datasession);die;
