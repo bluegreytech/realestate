@@ -11,7 +11,10 @@ $this->load->view('common/sidebar');
 <!-- Table head options start -->
 <div class="row">
     <div class="col-xs-12">
-       
+       <div col-md-4></div>
+       <div col-md-4></div>
+       <div col-md-4></div>
+
     </div>
 </div>
 <!-- Table head options end -->

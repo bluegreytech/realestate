@@ -307,3 +307,26 @@ ERROR - 2019-07-10 08:19:53 --> 404 Page Not Found: App-assets/images
 ERROR - 2019-07-10 08:19:53 --> 404 Page Not Found: Home/app-assets
 ERROR - 2019-07-10 08:19:53 --> 404 Page Not Found: Favicon/favicon-32.png
 ERROR - 2019-07-10 08:19:53 --> 404 Page Not Found: Favicon/favicon.ico
+ERROR - 2019-07-10 08:26:30 --> 404 Page Not Found: App-assets/images
+ERROR - 2019-07-10 08:26:30 --> 404 Page Not Found: Home/app-assets
+ERROR - 2019-07-10 08:32:02 --> 404 Page Not Found: App-assets/images
+ERROR - 2019-07-10 08:32:02 --> 404 Page Not Found: Home/app-assets
+ERROR - 2019-07-10 08:33:23 --> 404 Page Not Found: App-assets/images
+ERROR - 2019-07-10 08:33:23 --> 404 Page Not Found: Home/app-assets
+ERROR - 2019-07-10 08:33:23 --> 404 Page Not Found: Favicon/favicon-32.png
+ERROR - 2019-07-10 08:33:23 --> 404 Page Not Found: Favicon/favicon.ico
+ERROR - 2019-07-10 08:33:47 --> 404 Page Not Found: Favicon/favicon-32.png
+ERROR - 2019-07-10 08:33:47 --> 404 Page Not Found: Favicon/favicon.ico
+ERROR - 2019-07-10 08:34:45 --> 404 Page Not Found: App-assets/images
+ERROR - 2019-07-10 08:34:46 --> 404 Page Not Found: Home/app-assets
+ERROR - 2019-07-10 08:39:51 --> 404 Page Not Found: App-assets/images
+ERROR - 2019-07-10 08:39:51 --> 404 Page Not Found: Home/app-assets
+ERROR - 2019-07-10 08:40:34 --> 404 Page Not Found: App-assets/images
+ERROR - 2019-07-10 08:40:35 --> 404 Page Not Found: Home/app-assets
+ERROR - 2019-07-10 08:40:38 --> 404 Page Not Found: Favicon/favicon-32.png
+ERROR - 2019-07-10 08:40:38 --> 404 Page Not Found: Favicon/favicon.ico
+ERROR - 2019-07-10 08:40:46 --> 404 Page Not Found: App-assets/images
+ERROR - 2019-07-10 08:40:46 --> 404 Page Not Found: Home/app-assets
+ERROR - 2019-07-10 08:41:27 --> Query error: Unknown column 'admin_id' in 'where clause' - Invalid query: SELECT *
+FROM `tbladmin`
+WHERE `admin_id` = '1'
