@@ -15,28 +15,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<div class="card">
 				<div class="card-header">
 					<h4 class="card-title" id="basic-layout-form">
-					<?php if($AdminId==1)
+					<?php if($UserId==1)
 					{
-						echo	"Edit Admin";
+						echo	"Edit User";
 					}
 					else{
-					echo	"Add Admin";
+					echo	"Add User";
 					}
 					?>
 					<a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
-					<a href="<?php echo base_url();?>Adminuser/Adminlist/" class="btn btn-primary" style="float:right">Back to Admin List</a>
+					<a href="<?php echo base_url();?>User/Userlist/" class="btn btn-primary" style="float:right">Back to User List</a>
 				</div>
 				</h4>
 				<div class="card-body collapse in">
 					<div class="card-block">
 				
-						<form class="form" method="post" enctype="multipart/form-data" id="form_assesment" action="<?php echo base_url();?>Adminuser/Adminadd">
+						<form class="form" method="post" enctype="multipart/form-data" id="form_assesment" action="<?php echo base_url();?>User/Useradd">
 					
 							<div class="form-body">
 								<h4 class="form-section"><i class="icon-clipboard4"></i> Requirements</h4>
 							
 								<div class="form-group">
-								<input type="hidden"   value="<?php echo $AdminId; ?>" name="AdminId">
+								<input type="hidden"   value="<?php echo $UserId; ?>" name="UserId">
 									<label>Full Name</label>
 									<input type="text" class="form-control" placeholder="Full Name" name="FullName" value="<?php echo $FullName;?>" minlength="5" maxlength="200">
 								</div>
@@ -58,7 +58,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 								<div class="form-group">
 									<label>Contact</label>
-									<input type="text" class="form-control" placeholder="Contact" name="AdminContact" value="<?php echo $AdminContact;?>" minlength="5" maxlength="200">
+									<input type="text" class="form-control" placeholder="Contact" name="UserContact" value="<?php echo $UserContact;?>" minlength="5" maxlength="200">
 								</div>
 
 								<?php  if($IsActive!=''){ ?>
@@ -107,7 +107,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 							<div class="form-actions">
 					
-								<?php if($AdminId!=''){?>
+								<?php if($UserId!=''){?>
 									<button type="submit" name="updateAdmin" class="btn btn-primary">
 										<i class="icon-check2"></i> Update
 									</button>
@@ -118,7 +118,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<?php } ?>
 								
 							
-								<a href="<?php echo base_url(); ?>Adminuser/Adminlist" name="CancelAdmin" class="btn btn-danger">
+								<a href="<?php echo base_url(); ?>User/Userlist" name="CancelUser" class="btn btn-danger">
 								Cancel
 								</a>
 							</div>
