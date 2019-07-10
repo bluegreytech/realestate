@@ -24,15 +24,15 @@
           </li>        
           <li class="nav-item">
             <a>
-              <i class="icon-blogger"></i><span data-i18n="nav.dash.main" class="menu-title">Projects</span>
+              <i class="icon-blogger"></i><span data-i18n="nav.dash.main" class="menu-title">Project</span>
             </a>
             <ul class="menu-content">
               <li>
-                <a href="<?php echo base_url(); ?>Program/Programadd" data-i18n="nav.dash.main" class="menu-item"><i class="icon-plus"></i> Add projects</a>
+                <a href="<?php echo base_url(); ?>Project/Projectadd" data-i18n="nav.dash.main" class="menu-item"><i class="icon-plus"></i> Add projects</a>
               </li>
               <li>
               <li>
-                <a href="<?php echo base_url(); ?>Program/Programlist" data-i18n="nav.dash.main" class="menu-item"><i class="icon-file-text2"></i>List of Projects </a>
+                <a href="<?php echo base_url(); ?>Project/Projectlist" data-i18n="nav.dash.main" class="menu-item"><i class="icon-file-text2"></i>List of Projects </a>
               </li>
             </ul>
           </li>
