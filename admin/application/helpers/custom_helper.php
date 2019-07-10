@@ -115,11 +115,12 @@
 		$CI =& get_instance();
 		
                 
-                if($CI->session->userdata('admin_id')!='')
+                if($CI->session->userdata('AdminId')!='')
                 {
                     //check user active
-                    $a_data = get_one_admin($CI->session->userdata('admin_id'));
-                    if($a_data->status == 'Active'){
+                    $a_data = get_one_admin($CI->session->userdata('AdminId'));
+                    
+                    if($a_data->IsActive == 'Active'){
                      return true;
                     }
                     else{
@@ -136,7 +137,7 @@
 	function get_one_admin($id)
 	{
 		$CI =& get_instance();
-		$query = $CI->db->get_where('tbladmin',array('admin_id'=>$id));
+		$query = $CI->db->get_where('tbladmin',array('AdminId'=>$id));
 		return $query->row();
 	}	
 	// --------------------------------------------------------------------

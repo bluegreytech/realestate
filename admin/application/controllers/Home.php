@@ -11,7 +11,8 @@ class Home extends CI_Controller {
     }
 
 	public function dashboard()
-	{
+	{//echo "hghgfh";die;
+		//print_r(check_admin_authentication()); die;
 		if(!check_admin_authentication()){ 
 			redirect(base_url());
 		}
