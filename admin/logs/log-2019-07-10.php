@@ -307,3 +307,17 @@ ERROR - 2019-07-10 08:19:53 --> 404 Page Not Found: App-assets/images
 ERROR - 2019-07-10 08:19:53 --> 404 Page Not Found: Home/app-assets
 ERROR - 2019-07-10 08:19:53 --> 404 Page Not Found: Favicon/favicon-32.png
 ERROR - 2019-07-10 08:19:53 --> 404 Page Not Found: Favicon/favicon.ico
+ERROR - 2019-07-10 08:40:46 --> Query error: Unknown column 'email' in 'where clause' - Invalid query: SELECT *
+FROM `tbladmin`
+WHERE `email` = 'binny@bluegreytech.co.in'
+AND `password` = 'a5fc025ffec7fc218ae8475c7d0669e0'
+ERROR - 2019-07-10 08:42:20 --> Query error: Unknown column 'email' in 'where clause' - Invalid query: SELECT *
+FROM `tbladmin`
+WHERE `email` = 'binny@bluegreytech.co.in'
+AND `password` = 'e6e061838856bf47e1de730719fb2609'
+ERROR - 2019-07-10 08:42:51 --> Severity: Notice --> Undefined property: stdClass::$email C:\xampps\htdocs\realestate\admin\application\controllers\Login.php 32
+ERROR - 2019-07-10 08:42:51 --> Severity: Notice --> Undefined property: stdClass::$admin_id C:\xampps\htdocs\realestate\admin\application\controllers\Login.php 33
+ERROR - 2019-07-10 08:42:51 --> Severity: Notice --> Undefined property: stdClass::$fullname C:\xampps\htdocs\realestate\admin\application\controllers\Login.php 34
+ERROR - 2019-07-10 08:42:51 --> Severity: Notice --> Undefined property: stdClass::$status C:\xampps\htdocs\realestate\admin\application\controllers\Login.php 35
+ERROR - 2019-07-10 08:45:51 --> 404 Page Not Found: Favicon/favicon-32.png
+ERROR - 2019-07-10 08:45:51 --> 404 Page Not Found: Favicon/favicon.ico
