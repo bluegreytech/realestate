@@ -19,7 +19,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <?php } ?>
 			<div class="card">
 				<div class="card-header">
-					<h4 class="card-title" id="basic-layout-form"><?php if($this->session->userdata('UserId')==1)
+					<h4 class="card-title" id="basic-layout-form"><?php if($this->session->userdata('AdminId')==1)
 					{
 						echo "Edit  Proflie";
 					}
@@ -30,41 +30,44 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				</div></h4>
 				<div class="card-body collapse in">
 					<div class="card-block">
-						<form class="form" method="post" id="form_profile" action="<?php echo base_url();?>Login/profile/">                      
+						<form class="form" method="post" id="form_profile" action="<?php echo base_url();?>home/profile/" enctype="multipart/form-data">                      
                         
 							<div class="form-body">
-								<h4 class="form-section"><i class="icon-clipboard4"></i> Requirements</h4>                             
-                               
+								<h4 class="form-section"><i class="icon-clipboard4"></i>Requirements</h4>
 								<div class="form-group">
-									<label>First Name</label>								
-									<input type="text" class="form-control" value="<?php echo $first_name; ?>" placeholder="First Name" name="first_name" >
+									<label>Full Name</label>								
+									<input type="text" class="form-control" value="<?php echo $full_name; ?>" placeholder="Full Name" name="full_name" >
 								</div>
-									<div class="form-group">
-									<label>Last Name</label>								
-									<input type="text" class="form-control" value="<?php echo $last_name; ?>" placeholder="Last Name" name="last_name">
-								</div>
+									
 								<div class="form-group">
-									<label> Email</label>								
+									<label>Email ID</label>								
 									<input type="text" class="form-control" value="<?php echo $EmailAddress; ?>" placeholder="Email" name="EmailAddress"  readonly>
 								</div>
 								<div class="form-group">
-									<label>Phone</label>								
-									<input type="text" class="form-control" value="<?php echo $phone; ?>" placeholder="Phone" name="phone" >
+									<label>Mobile No.</label>								
+									<input type="text" class="form-control" value="<?php echo $contact; ?>" placeholder="Mobile No." name="AdminContact" >
 								</div>
 								<div class="form-group">
-									<label>Gender</label>
+									<label>Profile Image</label>
+									<input type='hidden' value="<?php echo $ProfileImage; ?>" name="pre_profile_image">								
+									<input type="file" class="form-control"  placeholder="Mobile No." name="profile_image" >
+								</div>
+								<div class="form-group">
+									<label>Status</label>
 									 <label class="radio-inline">							
-										<input type="radio"  value="male" name="gender" <?php if($gender=='male') {echo "checked";  }?>> Male
+										<input type="radio"  name="IsActive" value="Active" <?php if($IsActive=='Active') {echo "checked";  }?>> Active
 									</label>
 
 									<label class="radio-inline">	
-										<input type="radio" value="female" name="gender" <?php if($gender=='female') {echo "checked";  }?>> Female
+										<input type="radio" name="IsActive" value="Inactive" <?php if($IsActive=='Inactive') {echo "checked";  }?>> Inactive
 									</label>
 								</div>
-                              	<div class="form-group">								
+								<hr>
+                              <div class="form-group">								
 									<input type="submit" class="btn btn-primary" value="Update" name="btnupdate" minlength="2" maxlength="50">
 								</div>
 							</div>
+								
 						</form>
 					</div>
 				</div>

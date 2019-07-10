@@ -119,7 +119,7 @@
                 {
                     //check user active
                     $a_data = get_one_admin($CI->session->userdata('AdminId'));
-                    
+
                     if($a_data->IsActive == 'Active'){
                      return true;
                     }
@@ -150,7 +150,7 @@
 	function get_authenticateadminID()
 	{		
 		$CI =& get_instance();
-		return $CI->session->userdata('UserId');
+		return $CI->session->userdata('AdminId');
 	}
 	
 	

@@ -20,7 +20,7 @@ class Home extends CI_Controller {
 	}
 
 	public function profile($msg='')
-    {
+    {  //echo "fdsf";die;
             
 		if(!check_admin_authentication())
 		{
@@ -31,8 +31,9 @@ class Home extends CI_Controller {
 		//echo "<pre>";print_r($_POST);die;
         $this->load->library('form_validation');
 		$this->form_validation->set_rules('EmailAddress', 'Email', 'required|valid_email|callback_adminmail_check');
-		$this->form_validation->set_rules('first_name', 'First Name', 'required');
-		$this->form_validation->set_rules('last_name', 'Last Name', 'required');		
+		$this->form_validation->set_rules('full_name', 'Full Name', 'required');
+		$this->form_validation->set_rules('AdminContact', 'Contact', 'required');
+		$this->form_validation->set_rules('EmailAddress', 'Email', 'required');		
 		
 		if($this->form_validation->run() == FALSE){	
 		
@@ -54,19 +55,18 @@ class Home extends CI_Controller {
 			}else{
 			$oneAdmin=get_one_admin(get_authenticateadminID());
 			//print_r($oneAdmin);die;
-			$data["EmailAddress"] 		= $oneAdmin->Email;
-			$data["first_name"] = $oneAdmin->FirstName;
-			$data["last_name"]  = $oneAdmin->LastName;	
-			$data["gender"]     = $oneAdmin->Gender;		
-			$data["phone"]      = $oneAdmin->Phone;			
-            //$data['pre_profile_image']=$oneAdmin->profile_image;
+			$data["EmailAddress"] 	= $oneAdmin->EmailAddress;
+			$data["full_name"] = $oneAdmin->FullName;				
+			$data["contact"]      = $oneAdmin->AdminContact;			
+           	$data['ProfileImage']=$oneAdmin->ProfileImage;
+           	$data['IsActive']=$oneAdmin->IsActive;
 			
 			}
 		}else{
 			//echo "else fdf";die;
             $this->session->set_flashdata('successmsg', 'Profile has been updated successfully');				
 			$res=$this->Login_model->updateProfile();
-			redirect('Login/profile/');
+			redirect('home/profile/');
 		}
 		$data['msg'] = $msg; //login success message
 		$offset = 0;

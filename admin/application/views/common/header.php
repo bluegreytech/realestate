@@ -53,7 +53,7 @@
  
   <?php
  // echo $this->session->userdata('EmailAddress');
-          // if($this->session->userdata('EmailAddress'))
+        if(check_admin_authentication()){ 
           // {
           //  echo "gfgf";die;
   ?>
@@ -70,15 +70,28 @@
                                       </div>
                                       <div class="navbar-container content container-fluid">
                                         <div id="navbar-mobile" class="collapse navbar-toggleable-sm">
-                                          
+                                            <?php $admin_profile=  get_one_admin($this->session->userdata('AdminId')); 
+                                           // echo "<pre>";print_r($admin_profile);die;
+                                            ?>
+
                                           <ul class="nav navbar-nav float-xs-right">
                                             <li class="dropdown dropdown-user nav-item">
+
                                               <a href="#" data-toggle="dropdown" class="dropdown-toggle nav-link dropdown-user-link">
-                                                <span class="avatar avatar-online"><i class="icon-user"></i><i></i></span><span class="user-name"><?php echo ucfirst($this->session->userdata('FirstName')).' '. $this->session->userdata('LastName'); ?></span>
+                                              <!--   <span class="avatar avatar-online"><i> -->
+                                                 <?php  if(($admin_profile->ProfileImage!='' && file_exists(base_path().'/upload/admin/'.$admin_profile->ProfileImage))){ ?>
+                                     
+                                                <img src="<?php echo base_url().'upload/admin/'.$admin_profile->ProfileImage; ?>" class="avatar" alt="">
+                                                <?php }else{ ?>
+                                             <img src="<?php echo base_url().'upload/no_image/user_no_image.jpg'; ?>" class="avatar" alt=""> 
+                                                <?php } ?>
+                                          
+                                           <!--   </i></span> -->
+                                              <span class="user-name"><?php echo ucfirst($this->session->userdata('FullName')); ?></span>
                                               </a>
                                                <div class="dropdown-menu dropdown-menu-right">
-                                                <a href="<?php echo base_url();?>Login/profile" class="dropdown-item"><i class="icon-user"></i> Profile</a> 
-                                                 <a href="<?php echo base_url();?>Login/logout" class="dropdown-item"><i class="icon-power3"></i> Logout</a> 
+                                                <a href="<?php echo base_url();?>home/profile" class="dropdown-item"><i class="icon-user"></i> Profile</a> 
+                                                 <a href="<?php echo base_url();?>home/logout" class="dropdown-item"><i class="icon-power3"></i> Logout</a> 
                                               </div>
                                              
                                                                           
@@ -91,7 +104,7 @@
                                     </div>
                                   </nav>
                 <?php 
-                //  }
+                  }
        ?>         
  
                  
