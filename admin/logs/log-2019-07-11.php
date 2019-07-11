@@ -25,3 +25,5 @@ ERROR - 2019-07-11 07:25:31 --> 404 Page Not Found: App-assets/images
 ERROR - 2019-07-11 07:25:31 --> 404 Page Not Found: Upload/no_image
 ERROR - 2019-07-11 07:26:04 --> 404 Page Not Found: Upload/no_image
 ERROR - 2019-07-11 07:26:04 --> 404 Page Not Found: App-assets/images
+ERROR - 2019-07-11 07:30:01 --> 404 Page Not Found: App-assets/images
+ERROR - 2019-07-11 07:30:01 --> 404 Page Not Found: Upload/no_image
