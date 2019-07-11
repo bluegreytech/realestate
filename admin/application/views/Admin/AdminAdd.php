@@ -63,6 +63,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<textarea type="text" class="form-control" placeholder="Address"  name="Address" id="Address" ></textarea>
 								</div>
 
+
 								<!-- <div class="form-group ">
 									<label>Profile Image</label>
 									<input type="hidden" value="<?php //echo  $ProfileImage ?>" name="pre_profile_image" >
@@ -76,20 +77,47 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<img id="blah" src="" class="img-thumbnail border-0" style="display: none;  width: 100px; height: 100px;">
 								</div>
 
+								
+
+					<?php  if($IsActive!=''){ ?>
+                                
 								<div class="form-group">
-											<label>Status</label>
-											<div class="input-group">
-												<label class="display-inline-block custom-control custom-radio ml-1">
-													<input type="radio" name="IsActive" value="1" checked="" class="custom-control-input">
-													<span class="custom-control-indicator"></span>
-													<span class="custom-control-description ml-0">Active</span>
-												</label>
-												<label class="display-inline-block custom-control custom-radio">
-													<input type="radio" name="IsActive" value="0" class="custom-control-input">
-													<span class="custom-control-indicator"></span>
-													<span class="custom-control-description ml-0">Inactive</span>
-												</label>
-											</div>
+									<label>Status</label>
+									<div class="input-group">
+										<label class="display-inline-block custom-control custom-radio ml-1">
+										<input type="radio" name="IsActive" value="Active"
+										<?php if($IsActive=="Active") { echo "checked"; } ?>
+										class="custom-control-input">
+											<span class="custom-control-indicator"></span>
+											<span class="custom-control-description ml-0">Active</span>
+										</label>
+
+										<label class="display-inline-block custom-control custom-radio">
+											<input type="radio" name="IsActive" value="Inactive"  <?php if($IsActive=="Inactive") { echo "checked"; } ?>  class="custom-control-input">
+											<span class="custom-control-indicator"></span>
+											<span class="custom-control-description ml-0">Inactive</span>
+										</label>
+									</div>
+								</div>
+				<?php } else { ?>
+
+								<div class="form-group">
+									<label>Status</label>
+									<div class="input-group">
+										<label class="display-inline-block custom-control custom-radio ml-1">                           
+										<input type="radio" name="IsActive" value="Active" checked="" 
+											class="custom-control-input">
+											<span class="custom-control-indicator"></span>
+											<span class="custom-control-description ml-0">Active</span>
+										</label>
+										<label class="display-inline-block custom-control custom-radio">
+											<input type="radio" name="IsActive" value="Inactive"
+												class="custom-control-input">
+												<span class="custom-control-indicator"></span>
+												<span class="custom-control-description ml-0">Inactive</span>
+										</label>
+									</div>
+
 								</div>
 								<div class="form-actions">
 								<input  type="submit" name="save" class="btn btn-primary" value="Add">
