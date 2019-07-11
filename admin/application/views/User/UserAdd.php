@@ -51,9 +51,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<input type="text" class="form-control" placeholder="Address" name="Addresses" value="<?php echo $Addresses;?>" minlength="5" maxlength="200">
 								</div>
 
-								<div class="form-group">
+								<!-- <div class="form-group">
 									<label>Profile Image</label>
-									<input type="text" class="form-control" placeholder="Profile Image" name="ProfileImage" value="<?php echo $ProfileImage;?>" minlength="5" maxlength="200">
+									<input type="text" class="form-control" placeholder="Profile Image" name="ProfileImage" value="<?php //echo $ProfileImage;?>" minlength="5" maxlength="200">
+								</div> -->
+
+								<div class="form-group  uploadfrm">
+									<label>Profile Image</label>
+									<p><span class="btn btn-primary btn-file">
+									Upload profile image <input type="file" name="ProfileImage" id="profileimage" onchange="readURL(this);">
+									</span></p>									
+									<span id="profileerror"></span>
+								</div>
+								
+								<div class="preview">
+									<img id="blah" src="" class="img-thumbnail border-0" style="display: none;  width: 100px; height: 100px;">
 								</div>
 
 								<div class="form-group">
@@ -184,8 +196,17 @@ $(document).ready(function()
 		});
 });
 
- 
-					                    CKEDITOR.replace('editor1');
-					                
+ //CKEDITOR.replace('editor1');
+
+ function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#blah').css('display', 'block');
+                    $('#blah').attr('src', e.target.result);
+                };
+             reader.readAsDataURL(input.files[0]);
+            }
+        }		                
 
 </script>
