@@ -55,7 +55,7 @@ class Admin extends CI_Controller {
 			// 		}
 			// }
 
-			$data['page_name']="list_admin";
+		
 			$this->load->library("form_validation");
 			$this->form_validation->set_rules('FullName', 'Full Name', 'required');			
 			$this->form_validation->set_rules('EmailAddress', 'EmailAddress', 'required|valid_email|callback_adminmail_check');
@@ -66,7 +66,7 @@ class Admin extends CI_Controller {
 				$this->form_validation->set_rules('cpassword', 'Password Confirm', 'required|min_length[8]');
 			}
 			$this->form_validation->set_rules('status', 'Status', '');
-			$this->template->set_master_template($theme ."/template.php");
+			
 		
 		
 		if($this->form_validation->run() == FALSE){			
@@ -76,57 +76,22 @@ class Admin extends CI_Controller {
 			}else{
 				$data["error"] = "";
 			}
-            $data["admin_role"] = $this->input->post('admin_role');
-            $data["site_id"] = $this->input->post('site_id');
-            $data["first_name"] = $this->input->post('first_name');
-			$data["last_name"] = $this->input->post('last_name');
-			$data["email"] = $this->input->post('email');
-			$data["password"] = $this->input->post('password');
-			$data["cpassword"]=$this->input->post('cpassword');
-            $data["status"] = $this->input->post('status');
-            $data["pre_profile_image"] = $this->input->post('profile_image');
+           
+			$data['AdminId']=$this->input->post('AdminId');
+			$data['FullName']=$this->input->post('FullName');
+			$data['Password']=$this->input->post('password');
+			$data['EmailAddress']=$this->input->post('EmailAddress');
+			$data['Addresses']=$this->input->post('Addresses');
+			$data['ProfileImage']=$this->input->post('ProfileImage');
+			$data['AdminContact']=$this->input->post('AdminContact');
+			$data['IsActive']=$this->input->post('IsActive');
+            $data["pre_profile_image"] = $this->input->post('ProfileImage');
 			//$data["site_setting"] = site_setting();
-			             
-			$data["admin_id"]=$this->input->post("admin_id");
-			$data["search_option"]='';
-			$data["search_keyword"]='';
-			$data["option"]='1V1';
-			$data["keyword"]='1V1';
-			//$data["admin_type"]='1';
 			
-			$data["redirect_page"]=$redirect_page;
-			
-			$data["search_option"]='';
-			$data["search_keyword"]='';
-			$data["option"]='1V1';
-			$data["keyword"]='1V1';
-			$data["redirect_page"]=$redirect_page;
-			$data["offset"] = $offset;
-            $data["limit"]=$limit;
-           // $data["sites"]=$this->site_model->get_total_site('result', $limit, $offset);
-            $data["adminRights"] = $this->adminRights;		
-
-            
-            
-            $this->template->write('pageTitle',$pageTitle,TRUE);
-            $this->template->write('metaDescription',$metaDescription,TRUE);
-            $this->template->write('metaKeyword',$metaKeyword,TRUE);
-    
-    
-            $this->template->write_view('header',$theme .'/layout/common/header',$data,TRUE);
-            $this->template->write_view('left',$theme .'/layout/common/sidebar',$data,TRUE);
-            if((isset($this->adminRights->admin) && $this->adminRights->admin->add==1) || checkSuperAdmin()){
-			$this->template->write_view('center',$theme .'/layout/admin/add_admin',$data,TRUE);
-			}else{
-				$this->template->write_view('center',$theme .'/layout/noRights/noRights',$data,TRUE);
-			}
-             $this->template->write_view('footer',$theme .'/layout/common/footer',$data,TRUE);
-			
-			$this->template->render();
 			}
 			else
 			{
-				if($this->input->post("admin_id")!="")
+				if($this->input->post("AdminId")!="")
 			{	
 				$this->admin_model->admin_update();
 				$this->session->set_flashdata('msg', 'update');
@@ -137,32 +102,6 @@ class Admin extends CI_Controller {
 				$this->admin_model->admin_insert();
 				$this->session->set_flashdata('msg', 'insert');
 				$msg = "insert";
-			}
-			 $limit=$this->input->post("limit");
-		     $offset=$this->input->post("offset");
-			 if($limit == 0)
-			{
-				$limit = 20;
-			}
-			else
-			{
-				$limit = $limit;
-			}
-			$redirect_page = $this->input->post('redirect_page');
-			$option = $this->input->post('option');
-			$keyword = $this->input->post('keyword');
-			//$admin_type=$this->session->userdata('admin_type');
-			//$admin_type=$admin_type['admin_type'];
-			//echo $admin_type;
-			//print_r($admin_type);
-			
-			if($redirect_page == 'list_admin')
-			{
-				redirect('admin/'.$redirect_page.'/'.$limit.'/'.$offset.'/'.$msg);
-                        }
-			else
-			{
-				redirect('admin/'.$redirect_page.'/'.$limit.'/'.$option.'/'.$keyword.'/'.$offset.'/'.$msg);
 			}
 				
 			}
