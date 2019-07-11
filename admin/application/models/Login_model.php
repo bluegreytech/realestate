@@ -2,6 +2,95 @@
 
 class Login_model extends CI_Model
  {
+    function checkResetCode($code='')
+    {
+      $query=$this->db->get_where('tbladmin',array('PasswordResetCode'=>$code));
+     
+      if($query->num_rows()>0)
+      {
+        return $query->row()->AdminId; 
+      
+      }else{
+        return '';
+      }
+    }
+
+    function updatePassword()
+    {
+        $code=$this->input->post('code');
+        $query=$this->db->get_where('tbladmin',array('PasswordResetCode'=>$code));
+        if($query->num_rows()>0)
+        {
+          $data=array('Password'=>md5(trim($this->input->post('Password'))),'PasswordResetCode'=>'');
+            $this->db->where(array('AdminId'=>$this->input->post('AdminId'),'PasswordResetCode'=>trim($this->input->post('code'))));
+           // print_r($data);die;
+            $d=$this->db->update('tbladmin',$data);
+            return $d;
+          
+        }else
+        {
+          return '';
+        }
+      }
+
+    function forgotpass_check()
+    {
+         $EmailAddress=$this->input->post('EmailAddress'); 
+         $query = $this->db->get_where('tbladmin',array('EmailAddress'=>$EmailAddress));
+         if($query->num_rows()>0)
+         {
+            $row = $query->row();
+            $admin_status=$row->IsActive;
+            if($admin_status =='Inactive')
+            {
+              return "3"; 
+            }
+            else if($admin_status =='Active')
+            {
+                if(!empty($row) && $row->EmailAddress!="")
+                {
+                    $rpass= randomCode();
+                    $passdata=array(
+                      'PasswordResetCode'=>$rpass
+                    );
+                    $this->db->where('AdminId',$row->AdminId);
+                    $this->db->update('tbladmin',$passdata);            
+                  
+                    $config['protocol']  = 'smtp';
+                    $config['smtp_host'] = 'ssl://smtp.googlemail.com';
+                    $config['smtp_port'] = '465';
+                    $config['smtp_user']='bluegreyindia@gmail.com';
+                    $config['smtp_pass']='Test@123'; 
+                    $config['charset']='utf-8';
+                    $config['newline']="\r\n";
+                    $config['mailtype'] = 'html';	
+                    $body = base_url().'Home/Resetpassword/'.$rpass;
+                    //$body = str_replace(BASE_URL.'/user/edit/'.$rpass);						
+                    $this->email->initialize($config);
+                    $this->email->from('bluegreyindia@gmail.com', 'Admin');
+                    $this->email->to($EmailAddress);		
+                    $this->email->subject('FG Password');
+                    $this->email->message($body);
+                    if($this->email->send())
+                    {
+                      return '1';
+                    
+                    }
+                             
+                }
+                else
+                {
+                  return '0';
+                }
+            }
+        }
+        else
+        {
+          return 2;
+        }
+
+    }
+
 		function login_where($table,$where)
 		{
 			$r = $this->db->get_where($table,$where);
@@ -9,18 +98,6 @@ class Login_model extends CI_Model
 			return $res;
 		}
 		function updateProfile(){
-
-		// 	echo "<pre>";print_r($_POST);
-		// 	$data = array(
-		// 	//'Email' => $this->input->post('EmailAddress'),
-		// 	'FullName' => $this->input->post('FullName'),			
-		// 	'AdminContact' => $this->input->post('AdminContact'),
-		// 	'Isactive' => $this->input->post('Isactive'),			
-		// 	);	
-		// //print_r($data); die;	
-		// $this->db->where('AdminId',get_authenticateadminID());
-		// $this->db->update('tbladmin',$data);
-
 
 	    $user_image='';
       //$image_settings=image_setting();
@@ -51,13 +128,13 @@ class Login_model extends CI_Model
 
         $gd_var='gd2';
         $this->image_lib->initialize(array(
-        'image_library' => $gd_var,
-        'source_image' => base_path().'upload/admin_orig/'.$picture['file_name'],
-        'new_image' => base_path().'upload/admin/'.$picture['file_name'],
-        'maintain_ratio' => FALSE,
-        'quality' => '100%',
-        'width' => 300,
-        'height' => 300
+          'image_library' => $gd_var,
+          'source_image' => base_path().'upload/admin_orig/'.$picture['file_name'],
+          'new_image' => base_path().'upload/admin/'.$picture['file_name'],
+          'maintain_ratio' => FALSE,
+          'quality' => '100%',
+          'width' => 300,
+          'height' => 300
         ));
 
 
@@ -90,15 +167,18 @@ class Login_model extends CI_Model
       }
         //$full_name=trim($this->input->post('full_name'));
         $data = array(
-		'EmailAddress' =>trim($this->input->post('EmailAddress')),
-		'FullName' =>trim($this->input->post('full_name')),			
-		'AdminContact' => trim($this->input->post('AdminContact')),
-		'Isactive' => trim($this->input->post('IsActive')),	      
+        'EmailAddress' =>trim($this->input->post('EmailAddress')),
+        'FullName' =>trim($this->input->post('full_name')),			
+        'AdminContact' => trim($this->input->post('AdminContact')),
+        'Isactive' => trim($this->input->post('IsActive')),	      
         'ProfileImage'=>$user_image,
         );  
           $this->db->where('AdminId',$this->session->userdata('AdminId'));
           $this->db->update('tbladmin',$data);
        
-		}
+    }
+    
+
+
 
 }

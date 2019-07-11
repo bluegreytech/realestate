@@ -11,8 +11,7 @@ class Home extends CI_Controller {
     }
 
 	public function dashboard()
-	{//echo "hghgfh";die;
-		//print_r(check_admin_authentication()); die;
+	{
 		if(!check_admin_authentication()){ 
 			redirect(base_url());
 		}
@@ -99,5 +98,78 @@ class Home extends CI_Controller {
 			redirect('Login');
 	
 
-	}    
+	}   
+	
+	public function Forgotpassword()
+	{
+		if($_POST){
+				if($this->input->post('UserId')==''){
+							
+					$result=$this->Login_model->forgotpass_check();	
+					if($result)
+					{
+						$this->session->set_flashdata('success', 'Record has been Inserted Succesfully!');
+						redirect('User/Userlist');
+					}
+				}
+				else
+				{
+					$chk_mail=$this->Login_model->forgotpass_check();
+					if($chk_mail==0)
+					{
+						$this->session->set_flashdata('success', 'Record has been Updated Succesfully1!');
+						
+					}
+					elseif($chk_mail==2)
+					{	$redirect=site_url('Login');
+						$this->session->set_flashdata('success', 'Record has been Updated Succesfully2!');
+					}elseif($chk_mail==3)
+					{   
+						$redirect=site_url('Login');
+						$this->session->set_flashdata('success','User Login successfullyuuuuuuu3');		  
+					}
+					else
+					{			echo "111114444";die;		
+						$forget=FORGET_SUCCESS;
+						$redirect=site_url('Login');
+					}
+				}
+			}	
+		$this->load->view('common/ForgotPassword');
+	}
+
+
+	function Resetpassword($code='')
+	{
+		
+		$AdminId=$this->Login_model->checkResetCode($code);
+		//print_r($AdminId);die;
+	
+		$data = array();
+		
+		 if($AdminId!='')
+		 { echo "<pre>";print_r($_POST);}
+		 die;
+			if($_POST)
+			{
+				//echo "<pre>";print_r($_POST); die;
+				if($this->input->post('AdminId') != '')
+				{
+						$up=$this->Login_model->updatePassword();
+						if($up>0)
+						{
+							$redirect=site_url('Home/Login');
+						
+						}		
+					}
+				}
+			
+		//}
+		$data['AdminId']=$AdminId;
+		$data['code']=$code;
+		$this->load->view('common/ResestPassword',$data);
+	}
+		
+	
+	
 }
