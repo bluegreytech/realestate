@@ -61,45 +61,44 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<input type="text" class="form-control" placeholder="Contact" name="AdminContact" value="<?php echo $AdminContact;?>" minlength="5" maxlength="200">
 								</div>
 
-								<?php  if($IsActive!=''){ ?>
+					<?php  if($IsActive!=''){ ?>
                                 
 								<div class="form-group">
-																				<label>Status</label>
-																				<div class="input-group">
-																								<label class="display-inline-block custom-control custom-radio ml-1">
-																								<?php //echo $IsActive; ?>
-																												<input type="radio" name="IsActive" value="Active"
-		<?php if($IsActive=="Active") { echo "checked"; } ?>
-		 class="custom-control-input">
-																												<span class="custom-control-indicator"></span>
-																												<span class="custom-control-description ml-0">Active</span>
-																								</label>
-																								<label class="display-inline-block custom-control custom-radio">
-																												<input type="radio" name="IsActive" value="Inactive"  <?php if($IsActive=="Active") { echo "checked"; } ?>                                                  
-		class="custom-control-input">
-																												<span class="custom-control-indicator"></span>
-																												<span class="custom-control-description ml-0">Inactive</span>
-																								</label>
-																				</div>
+									<label>Status</label>
+									<div class="input-group">
+										<label class="display-inline-block custom-control custom-radio ml-1">
+										<input type="radio" name="IsActive" value="Active"
+										<?php if($IsActive=="Active") { echo "checked"; } ?>
+										class="custom-control-input">
+											<span class="custom-control-indicator"></span>
+											<span class="custom-control-description ml-0">Active</span>
+										</label>
+
+										<label class="display-inline-block custom-control custom-radio">
+											<input type="radio" name="IsActive" value="Inactive"  <?php if($IsActive=="Inactive") { echo "checked"; } ?>  class="custom-control-input">
+											<span class="custom-control-indicator"></span>
+											<span class="custom-control-description ml-0">Inactive</span>
+										</label>
+									</div>
 								</div>
 				<?php } else { ?>
+
 								<div class="form-group">
-																				<label>Status</label>
-																				<div class="input-group">
-																								<label class="display-inline-block custom-control custom-radio ml-1">                                                                                
-																												<input type="radio" name="IsActive" value="Active"
-	 checked="" 
-		 class="custom-control-input">
-																												<span class="custom-control-indicator"></span>
-																												<span class="custom-control-description ml-0">Active</span>
-																								</label>
-																								<label class="display-inline-block custom-control custom-radio">
-																												<input type="radio" name="IsActive" value="Inactive"
-		class="custom-control-input">
-																												<span class="custom-control-indicator"></span>
-																												<span class="custom-control-description ml-0">Inactive</span>
-																								</label>
-																				</div>
+									<label>Status</label>
+									<div class="input-group">
+										<label class="display-inline-block custom-control custom-radio ml-1">                           
+										<input type="radio" name="IsActive" value="Active" checked="" 
+											class="custom-control-input">
+											<span class="custom-control-indicator"></span>
+											<span class="custom-control-description ml-0">Active</span>
+										</label>
+										<label class="display-inline-block custom-control custom-radio">
+											<input type="radio" name="IsActive" value="Inactive"
+												class="custom-control-input">
+												<span class="custom-control-indicator"></span>
+												<span class="custom-control-description ml-0">Inactive</span>
+										</label>
+									</div>
 								</div>
 
 				<?php }?>
