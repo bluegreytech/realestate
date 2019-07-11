@@ -23,14 +23,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				
 				<div class="card-body collapse in">
 					<div class="card-block">
-						<form class="form" method="post" enctype="multipart/form-data" id="add_admin">
+						 <?php // Change the css classes to suit your needs    
+
+				        $attributes = array('class' => 'form', 'id' => 'add_admin','name'=>'admin', 'enctype'=>'multipart/form-data');
+				        echo form_open_multipart('admin/AddAdmin', $attributes); ?>
+						<!-- <form class="form"    method="post" enctype="multipart/form-data" id="add_admin"> -->
 							<div class="form-body">
 								<h4 class="form-section"><i class="icon-clipboard4"></i>Admin</h4>
 
 									<div class="form-group">
 								<input type="hidden"   value="<?php echo $AdminId; ?>" name="AdminId">
 									<label>Full Name</label>
-									<input type="text" class="form-control" placeholder="Full Name" name="FullName" value="<?php echo $FullName;?>" minlength="5" maxlength="200">
+									<input type="text" class="form-control" placeholder="Full Name" name="FullName" id="FullName" value="<?php echo $FullName;?>" minlength="5" maxlength="200">
 								</div>
 
 								
@@ -45,16 +49,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								</div>
 								<div class="form-group">
 									<label>Password</label>
-									<input type="text" class="form-control" placeholder="Email Address" name="EmailAddress" value="<?php echo $EmailAddress;?>" minlength="5" maxlength="200">
+									<input type="text" class="form-control" placeholder="******" name="password" id="password" value="<?php echo $Password;?>" minlength="5" maxlength="200">
 								</div>
 								<div class="form-group">
 									<label>Confrim password</label>
-									<input type="text" class="form-control" placeholder="Email Address" name="EmailAddress" value="<?php echo $EmailAddress;?>" minlength="5" maxlength="200">
+									<input type="text" class="form-control" placeholder="******" name="cpassword" id="cpassword" value="" minlength="5" maxlength="200">
 								</div>
 
 								<div class="form-group">
 									<label>Profile Image</label>
-									<input type="file" class="form-control" placeholder="Profile Image" name="ProfileImage" value="<?php echo $ProfileImage;?>" minlength="5" maxlength="200">
+									<input type="file" class="form-control" placeholder="Profile Image" name="ProfileImage"  id="ProfileImage" value="<?php echo $ProfileImage;?>" minlength="5" maxlength="200">
 								</div>
 
 								
@@ -77,9 +81,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<img id="blah" src="" class="img-thumbnail border-0" style="display: none;  width: 100px; height: 100px;">
 								</div>
 
-								
-
-					<?php  if($IsActive!=''){ ?>
+							<?php if($IsActive!=''){ ?>
                                 
 								<div class="form-group">
 									<label>Status</label>
@@ -119,6 +121,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									</div>
 
 								</div>
+							<?php } ?>
 								<div class="form-actions">
 								<input  type="submit" name="save" class="btn btn-primary" value="Add">
 							</div>
@@ -135,8 +138,77 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
       </div>
     </div>
+    <?php   $this->load->view('common/footer');
+    
+
+    ?>
  <script>
- 	 function readURL(input) {
+ 	  $(document).ready(function() {  
+ 	  	alert();
+    $.validator.addMethod("noSpace", function(value, element) { 
+        
+            return value.indexOf(" ") < 0 && value != ""; 
+        }, "No space please and don't leave it empty");     
+     $.validator.addMethod('filesize', function (value, element, param) {
+       
+    return this.optional(element) || (element.files[0].size <= param)
+} ,'File size must be equal to or less then 2MB'); 
+  
+  
+     
+         //alert("Sdfsdf");
+        // var form1 = $('#add_admin');
+        // var error1 = $('.alert-error');
+        // var success1 = $('.alert-success');
+
+       $('#add_admin').validate({
+
+	        // errorElement: 'span', //default input error message container
+	        // errorClass: 'help-inline', // default input error message class
+	        // focusInvalid: false, // do not focus the last invalid input
+	        // ignore: "",
+	        // success: function(label,element) {
+	        //     // label.parent().removeClass('error');
+	        //     // label.remove();
+	        // },
+			rules: {
+				FullName:{              
+					required: true,                
+					minlength: 3,
+					maxlength: 25, 
+				},  
+				AdminContact:{
+					required:true,
+					maxlength:15,
+					minlength:10,
+				},        
+				EmailAddress:{
+					required:true,
+					email:true,             
+				},
+				
+				password: {
+					noSpace: true,
+					required: true,
+					minlength: 8,
+					maxlength: 16,
+				},
+				cpassword: {                 
+					required: true,                                  
+					equalTo: "#password"
+				},
+				ProfileImage:{
+					accept: "jpg|jpeg|png|bmp",
+					filesize: 2097152  
+				},
+			}, 
+    });
+});
+
+ 	 
+ </script>
+ <script type="text/javascript">
+ 	function readURL(input) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
                 reader.onload = function (e) {
