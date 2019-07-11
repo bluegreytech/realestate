@@ -14,11 +14,11 @@
             </a>
             <ul class="menu-content">
               <li>
-                <a href="<?php echo base_url(); ?>Adminuser/Adminadd" data-i18n="nav.dash.main" class="menu-item"><i class="icon-plus"></i> Add Admin</a>
+                <a href="<?php echo base_url(); ?>Admin/AddAdmin" data-i18n="nav.dash.main" class="menu-item"><i class="icon-plus"></i> Add Admin</a>
               </li>
               <li>
               <li>
-                <a href="<?php echo base_url(); ?>Adminuser/Adminlist" data-i18n="nav.dash.main" class="menu-item"><i class="icon-file-text2"></i>List of admin</a>
+                <a href="<?php echo base_url(); ?>Admin/Adminlist" data-i18n="nav.dash.main" class="menu-item"><i class="icon-file-text2"></i>List of Admin</a>
               </li>
             </ul>
           </li>        
