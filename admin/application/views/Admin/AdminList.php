@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="card-header">
                 <h4 class="card-title">List of Admin
                 <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
-                <a href="<?php echo base_url();?>Adminuser/Adminadd/" class="btn btn-primary" style="float:right">Add Admin</a>
+                <a href="<?php echo base_url();?>Admin/AddAdmin/" class="btn btn-black" style="float:right">Add Admin</a>
                 </h4>
             </div>
             <div class="card-body collapse in">
@@ -56,16 +56,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <td>
                                         <?php if($admin->IsActive=="Active")
                                             {
-                                                echo "Active";
+                                                echo "<span class='label label-success'>Active</span>";
                                             } 
                                             else
                                             {
-                                                echo "Deactive";
+                                               echo "<span class='label label-danger'>Inactive</span>";
                                             } 
                                         ?>
                                     </td>
                                     <td>
-                                        <?php echo anchor('Adminuser/Editadmin/'.$admin->AdminId,'<i class="ficon icon-pencil2"></i>'); ?>
+                                        <?php echo anchor('Admin/Editadmin/'.$admin->AdminId,'<i class="ficon icon-pencil2"></i>'); ?>
                                         <a href="javascript:void(0)"  onclick="deletedata('<?php echo $admin->AdminId; ?>')" ><i class="ficon icon-bin"></i></a>    
                                     </td>  
                                 </tr>      
@@ -119,15 +119,14 @@ $(function() {
 function deletedata(id){  
     $('#myModal').modal('show')
    
-        $('#yes_btn').click(function(){
-           
+        $('#yes_btn').click(function(){           
                 url="<?php echo base_url();?>"
                 $.ajax({
-                url: url+"/Adminuser/deletedata/",
+                url: url+"/Admin/deletedata/",
                 type: "post",
                 data: {id:id} ,
                 success: function (response) {             
-                document.location.href = url+'Adminuser/Adminlist';                  
+                document.location.href = url+'Admin/Adminlist';                  
 
             },
             error: function(jqXHR, textStatus, errorThrown) {

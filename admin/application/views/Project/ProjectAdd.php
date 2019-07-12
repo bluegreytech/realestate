@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					}
 					?>
 					<a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
-					<a href="<?php echo base_url();?>Project/Projectlist/" class="btn btn-primary" style="float:right">Back to Project List</a>
+					<a href="<?php echo base_url();?>Project/Projectlist/" class="btn btn-black" style="float:right">Back to Project List</a>
 				</div>
 				</h4>
 				<div class="card-body collapse in">
@@ -36,14 +36,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<h4 class="form-section"><i class="icon-clipboard4"></i> Requirements</h4>
 							
 								<div class="form-group">
-								<input type="hidden"   value="<?php echo $ProjectId; ?>" name="ProjectId">
+								<input type="hidden" value="<?php echo $ProjectId; ?>" name="ProjectId">
 									<label>Project Title</label>
 									<input type="text" class="form-control" placeholder="Project Title" name="ProjectTitle" value="<?php echo $ProjectTitle;?>" minlength="5" maxlength="200">
 								</div>
+								<div class="form-group">
+									<label>Project Short Description</label>
+									<input type="text" class="form-control" placeholder="Project Title" name="ProjectTitle" value="<?php echo $ProjectTitle;?>" minlength="5" maxlength="200">
+								</div>
+
 
 								<div class="form-group">
-									<label>Project Description</label>
-									<input type="text" class="form-control" placeholder="Project Description" name="ProjectDescription" value="<?php echo $ProjectDescription;?>" minlength="5" maxlength="200">
+									<label>Project Long Description</label>
+									<textarea  class="ckeditor" placeholder="Project Description" name="ProjectDescription" minlength="5" maxlength="200"><?php echo $ProjectDescription;?></textarea>
 								</div>
 
 								<div class="form-group">
@@ -51,76 +56,68 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<input type="text" class="form-control" placeholder="Price" name="Price" value="<?php echo $Price;?>" minlength="5" maxlength="200">
 								</div>
 
-								<div class="form-group">
-									<label>Project Image</label>
-									<input type="text" class="form-control" placeholder="Project Image" name="ProjectImage" value="<?php echo $ProjectImage;?>" minlength="5" maxlength="200">
+									<div class="form-group  uploadfrm">
+									<label>Profile Image</label>
+									<p><span class="btn btn-black btn-file">
+										<input type="hidden" name="pre_profile_image" value="<?php echo $ProjectImage;?>">
+									Upload profile image <input type="file" name="ProjectImage" id="ProjectImage" onchange="readURL(this);">
+									</span></p>									
+									<span id="profileerror"></span>
 								</div>
+									<div class="preview">
+									
+									<?php if($ProjectId){ ?>
+										<img id="blah" src="<?php echo base_url()?>upload/admin/<?php echo $ProjectImage;?>" class="img-thumbnail border-0" style="display: block;  width: 100px; height: 100px;">
 
-								<div class="form-group">
-									<label>Project Image</label>
-									<input type="text" class="form-control" placeholder="Project Image" name="ProjectStatus" value="<?php echo $ProjectStatus;?>" minlength="5" maxlength="200">
+									<?php } else{?>
+									<img id="blah" src="" class="img-thumbnail border-0" style="display: none;  width: 100px; height: 100px;">
+									<?php } ?>
 								</div>
 
 								<?php  if($IsActive!=''){ ?>
                                 
 								<div class="form-group">
-																				<label>Status</label>
-																				<div class="input-group">
-																								<label class="display-inline-block custom-control custom-radio ml-1">
-																								<?php //echo $IsActive; ?>
-																												<input type="radio" name="IsActive" value="Active"
-		<?php if($IsActive=="Active") { echo "checked"; } ?>
-		 class="custom-control-input">
-																												<span class="custom-control-indicator"></span>
-																												<span class="custom-control-description ml-0">Active</span>
-																								</label>
-																								<label class="display-inline-block custom-control custom-radio">
-																												<input type="radio" name="IsActive" value="Inactive"  <?php if($IsActive=="Active") { echo "checked"; } ?>                                                  
-		class="custom-control-input">
-																												<span class="custom-control-indicator"></span>
-																												<span class="custom-control-description ml-0">Inactive</span>
-																								</label>
-																				</div>
+									<label>Status</label>
+									<div class="input-group">
+										<label class="display-inline-block custom-control custom-radio ml-1">
+											<?php //echo $IsActive; ?>
+											<input type="radio" name="IsActive" value="Active"
+												<?php if($IsActive=="Active") { echo "checked"; } ?>
+												 class="custom-control-input">																					<span class="custom-control-indicator"></span>																	<span class="custom-control-description ml-0">Active</span>
+													</label>
+													<label class="display-inline-block custom-control custom-radio">						<input type="radio" name="IsActive" value="Inactive"  <?php if($IsActive=="Active") { echo "checked"; } ?> class="custom-control-input">
+													<span class="custom-control-indicator"></span>class="custom-control-description ml-0">Inactive</span>
+													</label>
+														</div>
 								</div>
-				<?php } else { ?>
-								<div class="form-group">
-																				<label>Status</label>
-																				<div class="input-group">
-																								<label class="display-inline-block custom-control custom-radio ml-1">                                                                                
-																												<input type="radio" name="IsActive" value="Active"
-	 checked="" 
-		 class="custom-control-input">
-																												<span class="custom-control-indicator"></span>
-																												<span class="custom-control-description ml-0">Active</span>
-																								</label>
-																								<label class="display-inline-block custom-control custom-radio">
-																												<input type="radio" name="IsActive" value="Inactive"
-		class="custom-control-input">
-																												<span class="custom-control-indicator"></span>
-																												<span class="custom-control-description ml-0">Inactive</span>
-																								</label>
-																				</div>
+								<?php } else { ?>
+									<div class="form-group">
+									<label>Status</label>
+									<div class="input-group">
+										<label class="display-inline-block custom-control custom-radio ml-1">                           
+										<input type="radio" name="IsActive" value="Active" checked="" 
+											class="custom-control-input">
+											<span class="custom-control-indicator"></span>
+											<span class="custom-control-description ml-0">Active</span>
+										</label>
+										<label class="display-inline-block custom-control custom-radio">
+											<input type="radio" name="IsActive" value="Inactive"
+												class="custom-control-input">
+												<span class="custom-control-indicator"></span>
+												<span class="custom-control-description ml-0">Inactive</span>
+										</label>
+									</div>
+
 								</div>
 
 				<?php }?>
 
 
 							<div class="form-actions">
-					
-								<?php if($ProjectId!=''){?>
-									<button type="submit" name="updateAdmin" class="btn btn-primary">
-										<i class="icon-check2"></i> Update
-									</button>
-								<?php }else{ ?>
-									<button type="submit" name="addAdmin" class="btn btn-primary">
-									<i class="icon-check2"></i> Add
-									</button>
-								<?php } ?>
-								
+									 <button class="btn btn-black " type="submit"><i class="icon-ok"></i> <?php echo ($ProjectId!='')?'Update':'Submit' ?></button>
 							
-								<a href="<?php echo base_url(); ?>Project/Projectlist" name="CancelUser" class="btn btn-danger">
-								Cancel
-								</a>
+									<input type="button" name="cancel" class="btn btn-default" value="Cancel" onClick="location.href='<?php echo base_url(); ?>admin/<?php echo $redirect_page; ?>'">
+								
 							</div>
 						</form>
 					</div>
@@ -148,17 +145,20 @@ $(document).ready(function()
 		{
 			rules: {
 
-						StreamTypeId: {
+						ProjectTitle:{
 								required: true,
-													},
-						ProgramId: {
+								},
+						Sdesc:{
 								required: true,
-													},
-						AssesmentName: {
+							  },
+						ldesc: {
 								required: true,
-							//	pattern: /^[a-zA-Z0-9\s\-\ ]+$/,
-							//	minlength: 5,
-													},
+						
+							},
+							price: {
+								required: true,
+						
+							},
 
 						},
 
@@ -185,7 +185,16 @@ $(document).ready(function()
 });
 
  
-					                    CKEDITOR.replace('editor1');
-					                
+	 CKEDITOR.replace('editor1');
+function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#blah').css('display', 'block');
+                    $('#blah').attr('src', e.target.result);
+                };
+             reader.readAsDataURL(input.files[0]);
+            }
+        }					                
 
 </script>

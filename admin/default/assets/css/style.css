@@ -877,5 +877,20 @@ width:400px;
 height:400px;
 }
 
-
+.custom-control-input:checked ~ .custom-control-indicator {
+    color: #fff;
+    background-color: black !important;
+}
+.custom-control-input:active ~ .custom-control-indicator {
+    color: #fff;
+     box-shadow: 0 0 0 0.075rem #fff, 0 0 0 0.2rem #000;
+}
+.custom-control-input:focus ~ .custom-control-indicator {
+    box-shadow: 0 0 0 0.075rem #fff, 0 0 0 0.2rem #000;
+}
+form label {
+    color: #151313 ;
+    /* font-size: 10px; */
+    font-weight: 500 !important;
+}
 

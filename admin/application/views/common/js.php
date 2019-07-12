@@ -19,7 +19,7 @@
     <!-- END PAGE VENDOR JS-->
     <!-- BEGIN ROBUST JS-->
      <script type="text/javascript" src="<?php echo base_url(); ?>default/js/jquery.validate.min.js"></script>
-       
+
     <script src="<?php echo base_url(); ?>default/js/core/app-menu.js" type="text/javascript"></script>
     <script src="<?php echo base_url(); ?>default/js/core/app.js" type="text/javascript"></script>
 
@@ -31,10 +31,3 @@
 
 <!-- Mirrored from pixinvent.com/free-bootstrap-template/robust-lite/html/ltr/login-simple.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 04 Apr 2019 06:04:47 GMT -->
 </html>
-<SCRIPT>
-    $(document).ready(function() {
-    $('#example').DataTable( {
-       
-    } );
-} );
-</SCRIPT>

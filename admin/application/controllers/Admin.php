@@ -6,16 +6,19 @@ class Admin extends CI_Controller {
 	public function __construct()
 	{
       	parent::__construct();
-		$this->load->model('Admin_model');
+		$this->load->model('admin_model');
       
     }
 
 	function Adminlist()
 	{	
+		//echo "dsd ";
 		if(!check_admin_authentication()){ 
+			//echo "hghgfh";die;
 			redirect(base_url());
-		}else{		
-			$data['adminData']=$this->Admin_model->getadmin();
+		}else{	
+		//echo "else dfdf";die;	
+			$data['adminData']=$this->admin_model->getadmin();
 			$this->load->view('Admin/AdminList',$data);
 		}
 	}
@@ -25,36 +28,7 @@ class Admin extends CI_Controller {
 		if(!check_admin_authentication()){ 
 			redirect(base_url());
 		}   
-			 	$data=array();
-			// 	$data['AdminId']=$this->input->post('AdminId');
-			// 	$data['FullName']=$this->input->post('FullName');
-			// 	$data['EmailAddress']=$this->input->post('EmailAddress');
-			// 	$data['Addresses']=$this->input->post('Addresses');
-			// 	$data['ProfileImage']=$this->input->post('ProfileImage');
-			// 	$data['AdminContact']=$this->input->post('AdminContact');
-			// 	$data['IsActive']=$this->input->post('IsActive');
-			// 	if($_POST){
-			// 		if($this->input->post('AdminId')==''){
-								
-			// 			$result=$this->Admin_model->insertdata();	
-			// 			if($result)
-			// 			{
-			// 				$this->session->set_flashdata('success', 'Record has been Inserted Succesfully!');
-			// 				redirect('Admin/Adminlist');
-			// 			}
-			// 		}
-			// 		else
-			// 		{
-			// 			$result=$this->Admin_model->updatedata();
-			// 			if($result)
-			// 			{
-			// 				$this->session->set_flashdata('success', 'Record has been Updated Succesfully!');
-			// 				redirect('Admin/Adminlist');
-			// 			} 
-
-			// 		}
-			// }
-
+			 	$data=array();		
 		
 			$this->load->library("form_validation");
 			$this->form_validation->set_rules('FullName', 'Full Name', 'required');			
@@ -73,20 +47,20 @@ class Admin extends CI_Controller {
 			if(validation_errors())
 			{
 				$data["error"] = validation_errors();
+				//echo "<pre>";print_r($data["error"]);die;
 			}else{
 				$data["error"] = "";
 			}
-           
+            $data['redirect_page']='AdminList';
 			$data['AdminId']=$this->input->post('AdminId');
 			$data['FullName']=$this->input->post('FullName');
 			$data['Password']=$this->input->post('password');
 			$data['EmailAddress']=$this->input->post('EmailAddress');
-			$data['Addresses']=$this->input->post('Addresses');
+			$data['Address']=$this->input->post('Address');
 			$data['ProfileImage']=$this->input->post('ProfileImage');
 			$data['AdminContact']=$this->input->post('AdminContact');
 			$data['IsActive']=$this->input->post('IsActive');
             $data["pre_profile_image"] = $this->input->post('ProfileImage');
-			//$data["site_setting"] = site_setting();
 			
 			}
 			else
@@ -94,14 +68,16 @@ class Admin extends CI_Controller {
 				if($this->input->post("AdminId")!="")
 			{	
 				$this->admin_model->admin_update();
-				$this->session->set_flashdata('msg', 'update');
-				$msg = "update";
+				$this->session->set_flashdata('success', 'Record has been Updated Succesfully!');
+				redirect('admin/AdminList');
+				
 			}
 			else
-			{
+			{ // echo "dsfdf";die;
 				$this->admin_model->admin_insert();
-				$this->session->set_flashdata('msg', 'insert');
-				$msg = "insert";
+				$this->session->set_flashdata('success', 'Record has been Inserted Succesfully!');
+				redirect('admin/AdminList');
+			
 			}
 				
 			}
@@ -114,11 +90,12 @@ class Admin extends CI_Controller {
 			redirect(base_url());
 		}else{
 			$data=array();
-			$result=$this->Admin_model->getdata($AdminId);	
+			$result=$this->admin_model->getdata($AdminId);	
+			$data['redirect_page']='AdminList';
 			$data['AdminId']=$result['AdminId'];
 			$data['FullName']=$result['FullName'];	
 			$data['EmailAddress']=$result['EmailAddress'];	
-			$data['Addresses']=$result['Addresses'];
+			$data['Address']=$result['Address'];
 			$data['ProfileImage']=$result['ProfileImage'];	
 			$data['AdminContact']=$result['AdminContact'];
 			$data['IsActive']=$result['IsActive'];			
@@ -150,6 +127,22 @@ class Admin extends CI_Controller {
 			die;
 		}
 	}
+
+	  function adminmail_check($EmailAddress)
+       {
+
+         $query = $this->db->query("select EmailAddress from ".$this->db->dbprefix('tbladmin')." where EmailAddress = '$EmailAddress' and AdminId!='".$this->input->post('AdminId')."'");
+
+               if($query->num_rows() == 0)
+               {
+                       return TRUE;
+               }
+               else
+               {
+                 $this->form_validation->set_message('adminmail_check', 'Email address is already exist.');
+                  return FALSE;
+               }
+       }
 
     
 }

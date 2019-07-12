@@ -16,7 +16,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<div class="card-header">
 						<h4 class="card-title" id="basic-layout-form">Add Admin
 						<a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
-						<a href="AdminList" class="btn btn-primary" style="float:right;">Back to Admin list</a>
+						<a href="<?php echo base_url();?>admin/adminlist" class="btn btn-black" style="float:right;">Back to Admin list</a>
 					</h4>
 					
 				</div>
@@ -26,7 +26,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						 <?php // Change the css classes to suit your needs    
 
 				        $attributes = array('class' => 'form', 'id' => 'add_admin','name'=>'admin', 'enctype'=>'multipart/form-data');
-				        echo form_open_multipart('admin/AddAdmin', $attributes); ?>
+				        echo form_open_multipart('admin/addadmin', $attributes); ?>
 						<!-- <form class="form"    method="post" enctype="multipart/form-data" id="add_admin"> -->
 							<div class="form-body">
 								<h4 class="form-section"><i class="icon-clipboard4"></i>Admin</h4>
@@ -47,24 +47,45 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<label>Email Address</label>
 									<input type="text" class="form-control" placeholder="Email Address" name="EmailAddress" value="<?php echo $EmailAddress;?>" minlength="5" maxlength="200">
 								</div>
+									<?php if($AdminId==''){ ?>
 								<div class="form-group">
 									<label>Password</label>
-									<input type="text" class="form-control" placeholder="******" name="password" id="password" value="<?php echo $Password;?>" minlength="5" maxlength="200">
+									<input type="password" class="form-control" placeholder="******" name="password" id="password" value="<?php echo $Password;?>" minlength="5" maxlength="200">
 								</div>
 								<div class="form-group">
 									<label>Confrim password</label>
-									<input type="text" class="form-control" placeholder="******" name="cpassword" id="cpassword" value="" minlength="5" maxlength="200">
+									<input type="password" class="form-control" placeholder="******" name="cpassword" id="cpassword" value="" minlength="5" maxlength="200">
 								</div>
+							<?php } ?>
 
-								<div class="form-group">
+								<!-- <div class="form-group">
 									<label>Profile Image</label>
-									<input type="file" class="form-control" placeholder="Profile Image" name="ProfileImage"  id="ProfileImage" value="<?php echo $ProfileImage;?>" minlength="5" maxlength="200">
-								</div>
+									<input type="file" class="form-control" placeholder="Profile Image" name="ProfileImage"  id="ProfileImage" value="<?php //echo $ProfileImage;?>" minlength="5" maxlength="200">
+								</div> -->
+
+
 
 								
 								<div class="form-group">
 									<label>Address</label>
-									<textarea type="text" class="form-control" placeholder="Address"  name="Address" id="Address" ></textarea>
+									<textarea type="text" class="form-control" placeholder="Address"  name="Address" id="Address" ><?php echo $Address;?></textarea>
+								</div>
+								<div class="form-group  uploadfrm">
+									<label>Profile Image</label>
+									<p><span class="btn btn-black btn-file">
+										<input type="hidden" name="pre_profile_image" value="<?php echo $ProfileImage;?>">
+									Upload profile image <input type="file" name="ProfileImage" id="profileimage" onchange="readURL(this);">
+									</span></p>									
+									<span id="profileerror"></span>
+								</div>
+									<div class="preview">
+									
+									<?php if($AdminId){ ?>
+										<img id="blah" src="<?php echo base_url()?>upload/admin/<?php echo $ProfileImage;?>" class="img-thumbnail border-0" style="display: block;  width: 100px; height: 100px;">
+
+									<?php } else{?>
+									<img id="blah" src="" class="img-thumbnail border-0" style="display: none;  width: 100px; height: 100px;">
+									<?php } ?>
 								</div>
 
 
@@ -77,31 +98,29 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<span id="profileerror"></span>
 								</div> -->
 								
-								<div class="preview">
-									<img id="blah" src="" class="img-thumbnail border-0" style="display: none;  width: 100px; height: 100px;">
-								</div>
+							
 
 							<?php if($IsActive!=''){ ?>
                                 
 								<div class="form-group">
 									<label>Status</label>
 									<div class="input-group">
-										<label class="display-inline-block custom-control custom-radio ml-1">
+										<label class="display-inline-block custom-control custom-radio ml-1" >
 										<input type="radio" name="IsActive" value="Active"
 										<?php if($IsActive=="Active") { echo "checked"; } ?>
-										class="custom-control-input">
+										class="custom-control-input"  >
 											<span class="custom-control-indicator"></span>
 											<span class="custom-control-description ml-0">Active</span>
 										</label>
 
 										<label class="display-inline-block custom-control custom-radio">
 											<input type="radio" name="IsActive" value="Inactive"  <?php if($IsActive=="Inactive") { echo "checked"; } ?>  class="custom-control-input">
-											<span class="custom-control-indicator"></span>
+											<span class="custom-control-indicator" ></span>
 											<span class="custom-control-description ml-0">Inactive</span>
 										</label>
 									</div>
 								</div>
-				<?php } else { ?>
+								<?php } else { ?>
 
 								<div class="form-group">
 									<label>Status</label>
@@ -123,7 +142,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								</div>
 							<?php } ?>
 								<div class="form-actions">
-								<input  type="submit" name="save" class="btn btn-primary" value="Add">
+								 <button class="btn btn-black " type="submit"><i class="icon-ok"></i> <?php echo ($AdminId!='')?'Update':'Submit' ?></button>
+								
+								<input type="button" name="cancel" class="btn btn-default" value="Cancel" onClick="location.href='<?php echo base_url(); ?>admin/<?php echo $redirect_page?>'">
 							</div>
 							</div>
 						</form>
@@ -143,10 +164,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     ?>
  <script>
- 	  $(document).ready(function() {  
- 	  	alert();
-    $.validator.addMethod("noSpace", function(value, element) { 
-        
+ 	$(document).ready(function() {  
+ 	
+    $.validator.addMethod("noSpace", function(value, element) {        
             return value.indexOf(" ") < 0 && value != ""; 
         }, "No space please and don't leave it empty");     
      $.validator.addMethod('filesize', function (value, element, param) {
@@ -185,8 +205,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				EmailAddress:{
 					required:true,
 					email:true,             
-				},
-				
+				},				
 				password: {
 					noSpace: true,
 					required: true,
@@ -197,11 +216,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					required: true,                                  
 					equalTo: "#password"
 				},
-				ProfileImage:{
-					accept: "jpg|jpeg|png|bmp",
-					filesize: 2097152  
-				},
-			}, 
+				// ProfileImage:{
+				// 	accept: "jpg|jpeg|png|bmp",
+				// 	filesize: 2097152  
+				// },
+			 }, 
     });
 });
 

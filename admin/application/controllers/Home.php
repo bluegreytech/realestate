@@ -14,6 +14,7 @@ class Home extends CI_Controller {
 	{//echo "hghgfh";die;
 		//print_r(check_admin_authentication()); die;
 		if(!check_admin_authentication()){ 
+			echo "hjhj";die;
 			redirect(base_url());
 		}
 		$this->load->view('dashboard');
