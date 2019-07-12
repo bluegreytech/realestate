@@ -11,7 +11,7 @@
                 <div class="card-title text-xs-center">
                     <div class="p-1"><img src="<?php echo base_url(); ?>default/images/logo/logo-blue.png" alt="branding logo" width="100%"></div>
                 </div>
-                <h6 class="card-subtitle line-on-side text-muted text-xs-center font-small-3 pt-2"><span>Login with Topstarlogistics</span></h6>
+                <h6 class="card-subtitle line-on-side text-muted text-xs-center font-small-3 pt-2"><span>Forgot Password with Topstarlogistics</span></h6>
             </div>
            
             <?php if(($this->session->flashdata('error'))){ ?>
@@ -22,27 +22,16 @@
         
             <div class="card-body collapse in">
                 <div class="card-block">
-                    <form class="form-horizontal form-simple" method="post">
+                    <form class="form-horizontal form-simple" method="post" action="<?php echo base_url();?>Home/Forgotpassword">
                         <fieldset class="form-group position-relative has-icon-left">
                             <input type="text" name="EmailAddress" class="form-control form-control-lg input-lg" placeholder="Type your Email address">
                             <div class="form-control-position">
                                 <i class="icon-head"></i>
                             </div>
                         </fieldset>
-                        <fieldset class="form-group position-relative has-icon-left">
-                            <input type="password" required name="Password" class="form-control form-control-lg input-lg"  placeholder="Type your password">
-                            <div class="form-control-position">
-                                <i class="icon-key3"></i>
-                            </div>
-                        </fieldset>
+                      
                         <fieldset class="form-group row">
-                            <!-- <div class="col-md-6 col-xs-12 text-xs-center text-md-left">
-                                <fieldset>
-                                    <input type="checkbox" id="remember-me" class="chk-remember">
-                                    <label for="remember-me"> Remember Me</label>
-                                </fieldset>
-                            </div> -->
-                            <!-- <div class="col-md-6 col-xs-12 text-xs-center text-md-right"><a href="<?php //echo base_url();?>Home/Forgotpassword/" class="card-link">Forgot Password?</a></div> -->
+                            <!-- <div class="col-md-6 col-xs-12 text-xs-center text-md-right"><a href="<?php //echo base_url();?>Login" class="card-link">Back to Login</a></div> -->
                         </fieldset>
                         <input type="submit" name="logins" class="btn btn-primary btn-lg btn-block" value="Login">
                     </form>
@@ -50,7 +39,7 @@
             </div>
             <div class="card-footer">
                 <div class="">
-                    <p class="float-sm-left text-xs-center m-0"><a href="<?php echo base_url();?>Home/Forgotpassword/" class="card-link">Forgot Password?</a></p>
+                    <p class="float-sm-left text-xs-center m-0"><a href="<?php echo base_url();?>Login" class="card-link">Back to Login</a></p>
                     <p class="float-sm-right text-xs-center m-0">New to Register? <a href="register-simple.html" class="card-link">Sign Up</a></p>
                 </div>
             </div>

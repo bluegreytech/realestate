@@ -38,7 +38,7 @@
                                     <label for="remember-me"> Remember Me</label>
                                 </fieldset>
                             </div> -->
-                            <!-- <div class="col-md-6 col-xs-12 text-xs-center text-md-right"><a href="recover-password.php" class="card-link">Forgot Password?</a></div> -->
+                            <div class="col-md-6 col-xs-12 text-xs-center text-md-right"><a href="recover-password.php" class="card-link">Forgot Password?</a></div>
                         </fieldset>
                         <input type="submit" name="logins" class="btn btn-primary btn-lg btn-block" value="Login">
                     </form>
