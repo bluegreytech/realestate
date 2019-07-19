@@ -148,8 +148,8 @@ class Home extends CI_Controller {
 		$data = array();
 		
 		 if($AdminId!='')
-		 { echo "<pre>";print_r($_POST);}
-		 die;
+		 { //echo "<pre>";print_r($_POST);}
+		// die;
 			if($_POST)
 			{
 				//echo "<pre>";print_r($_POST); die;
@@ -164,7 +164,7 @@ class Home extends CI_Controller {
 					}
 				}
 			
-		//}
+		}
 		$data['AdminId']=$AdminId;
 		$data['code']=$code;
 		$this->load->view('common/ResestPassword',$data);
