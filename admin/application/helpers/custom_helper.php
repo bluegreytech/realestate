@@ -119,11 +119,13 @@
                 {
                     //check user active
                     $a_data = get_one_admin($CI->session->userdata('AdminId'));
-
+               
                     if($a_data->IsActive == 'Active'){
+                    	 
                      return true;
                     }
                     else{
+
                         redirect('login/logout');
                     }
                 }

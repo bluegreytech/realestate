@@ -10,7 +10,7 @@
         <ul id="main-menu-navigation" data-menu="menu-navigation" class="navigation navigation-main">
         <li class="nav-item">
             <a>
-              <i class="icon-blogger"></i><span data-i18n="nav.dash.main" class="menu-title">Admin</span>
+              <i class="icon-user"></i><span data-i18n="nav.dash.main" class="menu-title">Admin</span>
             </a>
             <ul class="menu-content">
               <li>
@@ -24,7 +24,7 @@
           </li>        
           <li class="nav-item">
             <a>
-              <i class="icon-blogger"></i><span data-i18n="nav.dash.main" class="menu-title">Project</span>
+              <i class="icon-tasks"></i><span data-i18n="nav.dash.main" class="menu-title">Project</span>
             </a>
             <ul class="menu-content">
               <li>
@@ -40,7 +40,7 @@
         
           <li class="nav-item">
             <a>
-              <i class="icon-blogger"></i><span data-i18n="nav.dash.main" class="menu-title">User</span>
+              <i class="icon-users"></i><span data-i18n="nav.dash.main" class="menu-title">Users</span>
             </a>
             <ul class="menu-content">
               <li>
