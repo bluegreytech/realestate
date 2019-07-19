@@ -111,7 +111,8 @@
 	 */
 	 
 	function check_admin_authentication()
-	{		
+	{	
+	//echo "hghgf";die;	
 		$CI =& get_instance();
 		
                 
@@ -119,7 +120,7 @@
                 {
                     //check user active
                     $a_data = get_one_admin($CI->session->userdata('AdminId'));
-               
+              		// echo $a_data;die;
                     if($a_data->IsActive == 'Active'){
                     	 
                      return true;
@@ -202,7 +203,7 @@
 	  // echo $str;
 
 		$CI =& get_instance();
-		$query = $CI->db->get_where("email_setting",array('email_setting_id'=>1));
+		$query = $CI->db->get_where("tblemail_setting",array('email_setting_id'=>1));
 		$email_set=$query->row();
 		 			
 									
@@ -212,6 +213,7 @@
 		
 		if($email_set->mailer=='mail')
 		{
+			//echo "hjjhg";die;
 			// 	$config = Array(
 			// 'protocol' => 'smtp',
 			// 'smtp_host' => 'ssl://smtp.gmail.com',
@@ -222,10 +224,10 @@
 			// 'charset'   => 'iso-8859-1'
 			// );
 			$config['protocol']='smtp';  
-			$config['smtp_host'] = trim("smtp.sendgrid.net");
-            $config['smtp_port']=trim(465);  
-            $config['smtp_user'] = trim("php.sanket@spaculus.info");
-            $config['smtp_pass'] = trim("sanket@123");
+			$config['smtp_host'] = trim("ssl://smtp.googlemail.com");
+            $config['smtp_port']='465';  
+            $config['smtp_user'] = trim("bluegreyindia@gmail.com");
+            $config['smtp_pass'] = trim("Test@123");
 		
 			// $config['protocol']='smtp';  
 			// $config['smtp_host']=trim($email_set->smtp_host);  
@@ -259,12 +261,14 @@
 			
 		$config['wordwrap'] = TRUE;	
 		$config['mailtype'] = 'html';
+		$config['charset']='utf-8';
 		$config['crlf'] = "\n\n";
 		$config['newline'] = "\r\n";
 		
 		$CI->email->initialize($config);
+		//echo "<pre>";print_r($config);die;
 		 
-		$CI->email->from($email_address_from,"Project Stand Up");
+		$CI->email->from($email_address_from,"REAL ESTATE");
 		$CI->email->reply_to($email_address_reply);
 		$CI->email->to($email_to);
 		$CI->email->subject($email_subject);
@@ -272,7 +276,7 @@
 		$CI->email->send();
 		// if($CI->email->send()){
 		// 	//echo $CI->email->prin
-		//    echo "send";
+		//    echo "send"; die;
 		// }else{
 		// 		echo $CI->email->print_debugger();
 		// }
@@ -857,12 +861,7 @@
 		}
 	}
         
-	function get_category_name($id)
-	{
-		$CI =& get_instance();
-		$query = $CI->db->select('category_name')->from('category')->where('category_id',$id)->get();
-		return $query->row()->category_name;
-	}
+	
 	
 	function get_country_iso($country)
 	{
@@ -1355,6 +1354,12 @@
 		{
 			return $query->result_array();
 		}
+	}
+	function getproject($id)
+	{
+		$CI =& get_instance();
+		$query = $CI->db->select('ProjectTitle')->from('tblprojects')->where('ProjectId',$id)->get();
+		return  $query->row()->ProjectTitle;
 	}
 
 

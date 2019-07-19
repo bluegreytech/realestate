@@ -1,4 +1,4 @@
- <!-- BEGIN VENDOR JS-->
+<!-- BEGIN VENDOR JS-->
  
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.js" type="text/javascript" ></script>
@@ -22,6 +22,7 @@
 
     <script src="<?php echo base_url(); ?>default/js/core/app-menu.js" type="text/javascript"></script>
     <script src="<?php echo base_url(); ?>default/js/core/app.js" type="text/javascript"></script>
+     <script src="http://jqueryvalidation.org/files/dist/additional-methods.min.js"></script>
 
     
     <!-- END ROBUST JS-->

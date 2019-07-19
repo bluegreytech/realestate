@@ -84,3 +84,11 @@ defined('EXIT_DATABASE')       OR define('EXIT_DATABASE', 8); // database error
 defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 //defined('ADDINSERT','Data insert successfully');
+
+define('LOGOUT_SUCCESS','You have logged out successfully.');
+define('EMAIL_NOT_FOUND','Email Address not found.');
+define('FORGET_SUCCESS','Please check your email for reset the password.');
+define('RESET_SUCCESS','Your password has been successfully reset.');
+define('PASS_RESET_FAIL','Password reset failed.');
+define('EXPIRED_RESET_LINK','Reset password link has been expired.');
+define('ACCOUNT_INACTIVE','Your account is inactive.');

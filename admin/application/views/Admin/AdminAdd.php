@@ -36,9 +36,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<label>Full Name</label>
 									<input type="text" class="form-control" placeholder="Full Name" name="FullName" id="FullName" value="<?php echo $FullName;?>" minlength="5" maxlength="200">
 								</div>
-
-								
-
 									<div class="form-group">
 									<label>Mobile No.</label>
 									<input type="text" class="form-control" placeholder="Mobile no." name="AdminContact" value="<?php echo $AdminContact;?>" minlength="5" maxlength="200">

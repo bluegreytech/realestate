@@ -9,7 +9,7 @@
         <div class="card border-grey border-lighten-3 m-0">
             <div class="card-header no-border">
                 <div class="card-title text-xs-center">
-                    <div class="p-1"><img src="<?php echo base_url(); ?>default/images/logo/logo-blue.png" alt="branding logo" width="100%"></div>
+                    <div class="p-1"><img src="<?php echo base_url(); ?>default/images/logo/logo.png" alt="branding logo" width="70%"></div>
                 </div>
                 <h6 class="card-subtitle line-on-side text-muted text-xs-center font-small-3 pt-2"><span>Forgot Password with Topstarlogistics</span></h6>
             </div>
@@ -22,26 +22,42 @@
         
             <div class="card-body collapse in">
                 <div class="card-block">
-                    <form   method="post" class="form-horizontal" action="<?php echo base_url();?>home/resetpassword">
+                       <?php $attributes = array('name'=>'frm_reset','id'=>'frm_restpwd','class'=>'reset-form');
+                        echo form_open('home/reset_password/'.$code,$attributes); ?>
+                    
                         <fieldset class="form-group position-relative has-icon-left">
-                        <input type="text"   value="<?php echo $AdminId; ?>" name="AdminId">
-                            <input type="text"   value="<?php echo $code; ?>" name="code">
-                            <input type="text" name="Password" class="form-control form-control-lg input-lg" placeholder="Type your password">
+                        <input type="hidden"   value="<?php echo $AdminId; ?>" name="AdminId">
+                            <input type="hidden"   value="<?php echo $code; ?>" name="code">
+                            <input type="password" name="Password" class="form-control  " placeholder="Password" id="Password">
                             <div class="form-control-position">
-                                <i class="icon-head"></i>
+                                <i class="icon-key3"></i>
+                                
                             </div>
+                             <p id="pwderror"></p>
+                        </fieldset>
+                         <fieldset class="form-group position-relative has-icon-left">
+                            <input type="password" name="Confrim_password" class="form-control  " placeholder="Confrim password">
+                             <div class="form-control-position">
+                                <i class="icon-key3"></i>
+                              
+                            </div>
+                              <p id="cpwderror"></p>
                         </fieldset>
                       
-                        <input type="submit" name="add" class="btn btn-primary btn-lg btn-block" value="Login">
+                        
+                        <fieldset class="form-group row">
+                            <div class="col-md-4 col-xs-12 text-xs-center text-md-left">
+                                <a href="<?php echo base_url(); ?>" name="back"  class="btn btn-grey btn-block"  role="button" >Back</a>
+                            </div>
+                             <div class="col-md-4 col-xs-12 text-xs-center text-md-left">
+                             </div>
+                            <div class="col-md-4 col-xs-12 text-xs-center text-md-right">  
+                            <input type="submit" name="submit" class="btn btnlogin btn-block" value="Submit"></div>
+                        </fieldset>
                     </form>
                 </div>
             </div>
-            <div class="card-footer">
-                <div class="">
-                    <p class="float-sm-left text-xs-center m-0"><a href="<?php echo base_url();?>Login" class="card-link">Back to Login</a></p>
-                    <p class="float-sm-right text-xs-center m-0">New to Register? <a href="register-simple.html" class="card-link">Sign Up</a></p>
-                </div>
-            </div>
+          
         </div>
     </div>
 </section>
@@ -58,6 +74,35 @@ $(function() {
   $('#errorMessage').fadeOut('fast');
 }, 3000);
    
+});
+
+ $("#frm_restpwd").validate(
+    {
+    rules:{       
+        Password:{
+            required: true,            
+        },  
+        Confrim_password:{
+            required: true,
+            equalTo:"#Password",
+        },      
+       
+    },
+    // messages:{
+    //  EmailAddress:"Email Address is required",
+    // },
+    errorPlacement: function (error, element) {
+            console.log('dd', element.attr("name"))
+            if (element.attr("name") == "Password") {
+                error.appendTo("#pwderror");
+            } else if (element.attr("name") == "Confrim_password") {
+                  error.appendTo("#cpwderror");
+              
+            }else{
+                  error.insertAfter(element)
+            }
+        }
+    
 });
 
 </script>

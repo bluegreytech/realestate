@@ -837,6 +837,13 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
 .label-primary {
     background-color: #337ab7;
 }
+.label-warning {
+    background-color: #f0ad4e;
+}
+.label-default {
+    background-color: #777;
+}
+
 .label {
     display: inline;
     padding: .2em .6em .3em;
@@ -894,3 +901,18 @@ form label {
     font-weight: 500 !important;
 }
 
+.btnlogin{
+  background-color: #283f82;
+  color: #fff;
+}
+a {
+    color: #283f82;
+    text-decoration: none;
+}
+a:hover {
+    color: #283f82;
+    text-decoration: none;
+}
+.form-control:focus {
+    border-color: #f88120;
+}

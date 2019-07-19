@@ -9,49 +9,46 @@
         <div class="card border-grey border-lighten-3 m-0">
             <div class="card-header no-border">
                 <div class="card-title text-xs-center">
-                    <div class="p-1"><img src="<?php echo base_url(); ?>default/images/logo/logo-blue.png" alt="branding logo" width="100%"></div>
+                    <div class="p-1"><img src="<?php echo base_url(); ?>default/images/logo/logo.png" alt="branding logo" width="70%"></div>
                 </div>
-                <h6 class="card-subtitle line-on-side text-muted text-xs-center font-small-3 pt-2"><span>Login with Topstarlogistics</span></h6>
+                <h6 class="card-subtitle line-on-side text-muted text-xs-center font-small-3 pt-2"><span>Login with Nyalkaran</span></h6>
             </div>
-           
-            <?php if(($this->session->flashdata('error'))){ ?>
-        <div class="alert alert-danger" id="errorMessage">
-        <strong> <?php echo $this->session->flashdata('error'); ?></strong> 
-        </div>
-        <?php } ?>
-        
             <div class="card-body collapse in">
                 <div class="card-block">
-                    <form class="form-horizontal form-simple" method="post">
+                      <?php if(($this->session->flashdata('error'))){ ?>
+            <div class="alert alert-danger" id="errorMessage">
+                 <strong> <?php echo $this->session->flashdata('error'); ?></strong> 
+            </div>
+        <?php } ?>
+              <?php if(($this->session->flashdata('success'))){ ?>
+            <div class="alert alert-success" id="successMessage">
+            <strong> <?php echo $this->session->flashdata('success'); ?></strong> 
+            </div>
+        <?php } ?>
+                    <form class="form-horizontal form-simple" method="post"  href="<?php echo base_url()?>/home/login" id="frm_login">
                         <fieldset class="form-group position-relative has-icon-left">
-                            <input type="text" name="EmailAddress" class="form-control form-control-lg input-lg" placeholder="Type your Email address">
+                            <input type="text" name="EmailAddress" class="form-control " placeholder="Type your Email address">
                             <div class="form-control-position">
                                 <i class="icon-head"></i>
+                                <p id="emailerror"></p>
                             </div>
                         </fieldset>
                         <fieldset class="form-group position-relative has-icon-left">
-                            <input type="password" required name="Password" class="form-control form-control-lg input-lg"  placeholder="Type your password">
+                            <input type="password"  name="Password" class="form-control "  placeholder="Type your password">
                             <div class="form-control-position">
                                 <i class="icon-key3"></i>
+                                  <p id="pwderror"></p>
                             </div>
                         </fieldset>
-                        <fieldset class="form-group row">
-                            <!-- <div class="col-md-6 col-xs-12 text-xs-center text-md-left">
-                                <fieldset>
-                                    <input type="checkbox" id="remember-me" class="chk-remember">
-                                    <label for="remember-me"> Remember Me</label>
-                                </fieldset>
-                            </div> -->
-                            <!-- <div class="col-md-6 col-xs-12 text-xs-center text-md-right"><a href="<?php //echo base_url();?>Home/Forgotpassword/" class="card-link">Forgot Password?</a></div> -->
-                        </fieldset>
-                        <input type="submit" name="logins" class="btn btn-primary btn-lg btn-block" value="Login">
+                       
+                        <input type="submit" name="logins" class="btn btnlogin btn-lg btn-block" value="LOGIN">
                     </form>
                 </div>
             </div>
             <div class="card-footer">
                 <div class="">
-                    <p class="float-sm-left text-xs-center m-0"><a href="<?php echo base_url();?>Home/Forgotpassword/" class="card-link">Forgot Password?</a></p>
-                    <p class="float-sm-right text-xs-center m-0">New to Register? <a href="register-simple.html" class="card-link">Sign Up</a></p>
+                    <p class="float-sm-left text-xs-center m-0"><a href="<?php echo base_url();?>home/forgotpassword/" class="card-link">Forgot Password?</a></p>
+                    <p class="float-sm-right text-xs-center m-0">New to Register? <a href="#" class="card-link">Sign Up</a></p>
                 </div>
             </div>
         </div>
@@ -70,6 +67,37 @@ $(function() {
   $('#errorMessage').fadeOut('fast');
 }, 3000);
    
+});
+$(function() { 
+    setTimeout(function() {
+  $('#successMessage').fadeOut('fast');
+}, 3000);
+   
+});
+//alert();
+   $("#frm_login").validate(
+    {
+    rules:{       
+        EmailAddress:{
+            required: true,
+            email: true
+        },
+        Password:{
+            required: true,         
+        },
+      
+       
+    },
+    errorPlacement: function (error, element) {
+
+         console.log('dd', element.attr("name"))
+            if (element.attr("name") == "remember_me") {
+                error.appendTo("#remerror");
+            } else {
+                error.insertAfter(element)
+            }
+        }
+    
 });
 
 </script>

@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="card-header">
                 <h4 class="card-title">List of Project
                 <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
-                <a href="<?php echo base_url();?>Project/Projectadd/" class="btn btn-primary" style="float:right">Add Project</a>
+                <a href="<?php echo base_url();?>project/projectadd/" class="btn btn-black" style="float:right">Add Project</a>
                 </h4>
             </div>
             <div class="card-body collapse in">
@@ -33,8 +33,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <thead class="thead-inverse">
                             <tr>
                                 <th>Sr No</th>
-                                <th>Project Title</th>
-                                <th>Price</th>
+                                <th>Project Title</th>                              
                                 <th>Project Image</th>
                                 <th>Project Status</th>
 								<th>Status</th>
@@ -44,31 +43,48 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<tbody>
                         <?php
                                 $i=1;
-                                if($adminData){                             
-                                foreach($adminData as $admin)
+                                if($result){                             
+                                foreach($result as $row)
                                 {
                             ?>
                             <tr>
                             
                                     <td><?php echo $i; ?></td>
-                                    <td><?php echo $admin->ProjectTitle; ?></td>
-                                    <td><?php echo $admin->Price; ?></td>
-                                    <td><?php echo $admin->ProjectImage; ?></td>
-                                    <td><?php echo $admin->ProjectStatus; ?></td>
+                                    <td><?php echo $row->ProjectTitle; ?></td>
+                                   
+                                    <td><?php  if($row->ProjectImage){ ?>
+                                          <img id="blahlogo" src="<?php echo base_url()?>upload/projectimage/<?php echo $row->ProjectImage;?>" class="img-thumbnail border-0" style="display: block;  width: 50px; height: 50px;">
+                                        <?php }else { echo "N/A" ?>
+                                          
+                                        <?php } ?>
+                                         </td>
                                     <td>
-                                        <?php if($admin->IsActive=="Active")
+                                        <?php if($row->ProjectStatus=='Ongoing'){ 
+                                            echo "<span class='label label-warning'>$row->ProjectStatus  Project</span>";
+
+                                           }elseif ($row->ProjectStatus=='Past') {
+                                             echo "<span class='label label-default'>$row->ProjectStatus Project</span>";
+
+                                           }elseif ($row->ProjectStatus=='Upcoming') { 
+                                            echo "<span class='label label-primary'>$row->ProjectStatus Project</span>";
+
+                                           }?>
+                                    </td>
+                                    <td>
+                                        <?php if($row->IsActive=="Active")
                                             {
-                                                echo "Active";
+
+                                                echo "<span class='label label-success'>Active</span>";
                                             } 
                                             else
                                             {
-                                                echo "Deactive";
+                                                echo "<span class='label label-danger'>Inactive</span>";
                                             } 
                                         ?>
                                     </td>
                                     <td>
-                                        <?php echo anchor('Project/Editproject/'.$admin->ProjectId,'<i class="ficon icon-pencil2"></i>'); ?>
-                                        <a href="javascript:void(0)"  onclick="deletedata('<?php echo $admin->ProjectId; ?>')" ><i class="ficon icon-bin"></i></a>    
+                                        <?php echo anchor('Project/Editproject/'.$row->ProjectId,'<i class="ficon icon-pencil2"></i>'); ?>
+                                        <a href="javascript:void(0)"  onclick="deletedata('<?php echo $row->ProjectId; ?>')" ><i class="ficon icon-bin"></i></a>    
                                     </td>  
                                 </tr>      
                                 <?php
@@ -119,17 +135,20 @@ $(function() {
 });
 
 function deletedata(id){  
-    $('#myModal').modal('show')
-   
+    $('#myModal').modal('show');
+  // alert(id);
         $('#yes_btn').click(function(){
            
-                url="<?php echo base_url();?>"
+                url="<?php echo base_url();?>project/project_delete/";
+                alert(url);
                 $.ajax({
-                url: url+"/Project/deletedata/",
+                url: url,
                 type: "post",
                 data: {id:id} ,
-                success: function (response) {             
-                document.location.href = url+'Project/Projectlist';                  
+                success: function (response) {   
+                    console.log(response);  
+                    return false;        
+                //document.location.href = url+'project/projectlist';                  
 
             },
             error: function(jqXHR, textStatus, errorThrown) {

@@ -11,11 +11,12 @@ class Home extends CI_Controller {
     }
 
 	public function dashboard()
-	{
+	{ //echo "hhg";die;
 		if(!check_admin_authentication()){ 
-			echo "hjhj";die;
+			//echo "hjhj";die;
 			redirect(base_url());
 		}
+		//echo "else echo ";die;
 		$this->load->view('dashboard');
 	}
 
@@ -101,76 +102,162 @@ class Home extends CI_Controller {
 
 	}   
 	
-	public function Forgotpassword()
+	public function Forgotpassword($msg='')
 	{
-		if($_POST){
-				if($this->input->post('UserId')==''){
-							
-					$result=$this->Login_model->forgotpass_check();	
-					if($result)
-					{
-						$this->session->set_flashdata('success', 'Record has been Inserted Succesfully!');
-						redirect('User/Userlist');
-					}
+		$this->form_validation->set_rules('EmailAddress', 'Email', 'required|valid_email');
+
+			if($this->form_validation->run() == FALSE){			
+				if(validation_errors())
+				{
+					echo json_encode(array("status"=>"error","msg"=>validation_errors()));
+				}
+			}
+			else
+			{ 
+			// echo "jhjg";die;
+				$chk_mail=$this->Login_model->forgot_email();
+				//echo $chk_mail;die;
+				if($chk_mail==0)
+				{
+					$error=EMAIL_NOT_FOUND;
+					 $this->session->set_flashdata('error',EMAIL_NOT_FOUND);
+	              
+				}
+				elseif($chk_mail==2)
+				{
+				 	$error=EMAIL_NOT_FOUND;
+					$this->session->set_flashdata('error',EMAIL_NOT_FOUND);   
+				}elseif($chk_mail==3)
+				{
+					$error=ACCOUNT_INACTIVE;
+					 $this->session->set_flashdata('error',ACCOUNT_INACTIVE);
+					 
 				}
 				else
-				{
-					$chk_mail=$this->Login_model->forgotpass_check();
-					if($chk_mail==0)
-					{
-						$this->session->set_flashdata('success', 'Record has been Updated Succesfully1!');
-						
-					}
-					elseif($chk_mail==2)
-					{	$redirect=site_url('Login');
-						$this->session->set_flashdata('success', 'Record has been Updated Succesfully2!');
-					}elseif($chk_mail==3)
-					{   
-						$redirect=site_url('Login');
-						$this->session->set_flashdata('success','User Login successfullyuuuuuuu3');		  
-					}
-					else
-					{			echo "111114444";die;		
-						$forget=FORGET_SUCCESS;
-						$redirect=site_url('Login');
-					}
+				{				
+					$forget=FORGET_SUCCESS;
+					//email_send();
+					 $this->session->set_flashdata('success','Please check your email for reset the password!');
+					redirect('login');
+
+	                // $redirect=site_url('home/index/forget');
+	                // echo json_encode(array("status"=>"success","msg"=> $forget,"redirect"=>$redirect));
 				}
-			}	
+			}
 		$this->load->view('common/ForgotPassword');
 	}
 
 
-	function Resetpassword($code='')
+	function reset_password($code='')
 	{
-		
-		$AdminId=$this->Login_model->checkResetCode($code);
-		//print_r($AdminId);die;
-	
-		$data = array();
-		
-		 if($AdminId!='')
-		 { echo "<pre>";print_r($_POST);}
-		 die;
-			if($_POST)
+
+		if(check_admin_authentication())
 			{
-				//echo "<pre>";print_r($_POST); die;
-				if($this->input->post('AdminId') != '')
-				{
-						$up=$this->Login_model->updatePassword();
-						if($up>0)
-						{
-							$redirect=site_url('Home/Login');
-						
-						}		
-					}
-				}
+				redirect('home/dashbord');
+			}
 			
-		//}
-		$data['AdminId']=$AdminId;
-		$data['code']=$code;
-		$this->load->view('common/ResestPassword',$data);
+			$admin_id=$this->Login_model->checkResetCode($code);
+			//print_r($admin_id);die;
+
+			$data = array();
+			$data['errorfail']=($code=='' || $admin_id=='')?'fail':'';
+			$data['AdminId']=$admin_id;
+			$data['code']=$code;
+	        
+            if($admin_id){
+            	if($_POST){
+				
+				if($this->input->post('AdminId') != ''){
+					$this->form_validation->set_rules('Password', 'Password', 'required');
+					$this->form_validation->set_rules('Confrim_password', 'Re-type Password', 'required|matches[Password]');
+				
+					if($this->form_validation->run() == FALSE){			
+						if(validation_errors()){
+							echo json_encode(array("status"=>"error","msg"=>validation_errors()));
+						}
+					}else{
+						
+							$up=$this->Login_model->updatePassword();
+						if($up>0){
+							$this->session->set_flashdata('success',RESET_SUCCESS); 
+							redirect('login');
+						}elseif($up=='') {
+							
+							$error = EXPIRED_RESET_LINK;
+					      $this->session->set_flashdata('error',EXPIRED_RESET_LINK); die; 
+						}
+						else{
+							//echo "gfgfdg";die;
+							$error = PASS_RESET_FAIL;
+		                    $this->session->set_flashdata('error',PASS_RESET_FAIL); die; 
+						}
+
+					
+						
+					}
+				}else{
+					//echo "hii";die;
+					$error = EXPIRED_RESET_LINK;
+					// $redirect=site_url('home/index');
+					//$redirect=site_url();
+	              $this->session->set_flashdata('error',EXPIRED_RESET_LINK); die; 
+				}
+				 $this->load->view('common/ResestPassword',$data);
+		    }else{
+		    	//echo 'dfdfds';die;
+		    	$this->load->view('common/ResestPassword',$data);
+		    }
+
+            }else{
+
+            	  //echo "hii";die;
+					$error = EXPIRED_RESET_LINK;
+					 $this->session->set_flashdata('error',EXPIRED_RESET_LINK); die; 
+					 redirect('home');
+		    }
 	}
-		
+
+	//change password
+    public function change_password($id)
+    {
+        
+   		if(!check_admin_authentication()){
+			redirect('login');
+		}
+		if(!$id){
+			redirect('login');
+
+		 }
+            
+		$data = array();
+        $this->load->library('form_validation');	
+		$this->form_validation->set_rules('password', 'Password', 'required|matches[cpassword]|min_length[8]');
+		$this->form_validation->set_rules('cpassword', 'Password Confirm', 'required|min_length[8]');	
 	
+		if($this->form_validation->run() == FALSE){			
+			if(validation_errors())
+			{
+				$data["error"] = validation_errors();
+			}else{
+				$data["error"] = "";
+			}
+			if($_POST){
+				
+				$data["password"] = $this->input->post('password');
+                $data["cpassword"] = $this->input->post('cpassword');
+			}else{
+				$data["password"] = '';
+                $data["cpassword"] = '';
+			}
+			
+		}else{
+            $res=$this->admin_model->updateAdminPassword($id);
+			if($res){
+         		$this->session->set_flashdata('success', 'change_password_success');	
+				redirect('home/change_password');
+			}
+		}
 	
+        $this->load->view('common/ChangePassword',$data);    
+	}
 }

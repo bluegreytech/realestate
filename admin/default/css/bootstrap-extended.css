@@ -873,7 +873,7 @@ button:focus {
   .header-navbar .navbar-container ul.nav li .selected-language {
     display: none; }
   .header-navbar .navbar-container ul.nav li a.dropdown-user-link .user-name {
-    display: none; } }
+    display: -webkit-inline-box; } }
 
 @media (max-width: 767px) {
   #navbar-mobile.navbar-toggleable-sm .navbar-nav {
@@ -1517,7 +1517,7 @@ a:hover {
   padding-bottom: 1rem; }
 
 .line-on-side {
-  border-bottom: 1px solid #dadada;
+  border-bottom: 1px solid #f88120;
   line-height: 0.1em;
   margin: 10px 0 20px; }
 

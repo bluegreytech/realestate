@@ -36,6 +36,49 @@
               </li>
             </ul>
           </li>
+
+           <li class="nav-item">
+            <a>
+              <i class="icon-cog"></i><span data-i18n="nav.dash.main" class="menu-title">Project Details</span>
+            </a>
+            <ul class="menu-content">
+              <li>
+                <a href="<?php echo base_url(); ?>project/projectadd" data-i18n="nav.dash.main" class="menu-item"><i class="icon-tasks"></i>Project Specification</a>
+                    <ul class="menu-content">
+                      <li>
+                      <a href="<?php echo base_url(); ?>project/add_specification" data-i18n="nav.dash.main" class="menu-item"><i class="icon-plus"></i>Add Project Specification</a>
+                      </li>
+                      <li>
+                      <a href="<?php echo base_url(); ?>project/list_specification" data-i18n="nav.dash.main" class="menu-item"><i class="icon-file-text2"></i>List of Specification </a>
+                      </li>
+                    </ul>
+              </li>
+               <li>
+                   <a href="<?php echo base_url(); ?>project/list_planlayout" data-i18n="nav.dash.main" class="menu-item"><i class="icon-map-o"></i> Plan & Layouts </a>
+                    <ul class="menu-content">
+                      <li>
+                      <a href="<?php echo base_url(); ?>project/add_planlayout" data-i18n="nav.dash.main" class="menu-item"><i class="icon-plus"></i>Add Plan & Layouts</a>
+                      </li>
+                      <li>
+                      <a href="<?php echo base_url(); ?>project/list_planlayout" data-i18n="nav.dash.main" class="menu-item"><i class="icon-file-text2"></i>List of Plan & Layouts </a>
+                      </li>
+                    </ul>
+              </li>
+              <li>
+                <a href="<?php echo base_url(); ?>project/list_gallery" data-i18n="nav.dash.main" class="menu-item"><i class="icon-image"></i> Project Gallery </a>
+                    <ul class="menu-content">
+                      <li>
+                      <a href="<?php echo base_url(); ?>project/add_gallery" data-i18n="nav.dash.main" class="menu-item"><i class="icon-plus"></i>Add Gallery</a>
+                      </li>
+                      <li>
+                      <a href="<?php echo base_url(); ?>project/list_gallery" data-i18n="nav.dash.main" class="menu-item"><i class="icon-file-text2"></i>List of Gallery</a>
+                      </li>
+                    </ul>
+              </li>
+            
+              
+            </ul>
+          </li>
        
         
           <li class="nav-item">

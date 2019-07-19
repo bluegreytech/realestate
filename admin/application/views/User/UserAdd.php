@@ -24,13 +24,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					}
 					?>
 					<a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
-					<a href="<?php echo base_url();?>User/Userlist/" class="btn btn-primary" style="float:right">Back to User List</a>
+					<a href="<?php echo base_url();?>User/Userlist/" class="btn btn-black" style="float:right">Back to User List</a>
 				</div>
 				</h4>
 				<div class="card-body collapse in">
 					<div class="card-block">
 				
-						<form class="form" method="post" enctype="multipart/form-data" id="form_assesment" action="<?php echo base_url();?>User/Useradd">
+						<form class="form" method="post" enctype="multipart/form-data" id="add_user" action="<?php echo base_url();?>User/Useradd">
 					
 							<div class="form-body">
 								<h4 class="form-section"><i class="icon-clipboard4"></i> Requirements</h4>
@@ -40,99 +40,61 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<label>Full Name</label>
 									<input type="text" class="form-control" placeholder="Full Name" name="FullName" value="<?php echo $FullName;?>" minlength="5" maxlength="200">
 								</div>
-
 								<div class="form-group">
 									<label>Email Address</label>
 									<input type="text" class="form-control" placeholder="Email Address" name="EmailAddress" value="<?php echo $EmailAddress;?>" minlength="5" maxlength="200">
 								</div>
-
 								<div class="form-group">
 									<label>Address</label>
-									<input type="text" class="form-control" placeholder="Address" name="Addresses" value="<?php echo $Addresses;?>" minlength="5" maxlength="200">
+									<textarea type="text" class="form-control" placeholder="Address" name="Addresses" value="" minlength="5" maxlength="200"><?php echo $Addresses;?></textarea>
 								</div>
-
-								<!-- <div class="form-group">
-									<label>Profile Image</label>
-									<input type="text" class="form-control" placeholder="Profile Image" name="ProfileImage" value="<?php //echo $ProfileImage;?>" minlength="5" maxlength="200">
-								</div> -->
-
+								<div class="form-group">
+									<label>Mobile no.</label>
+									<input type="text" class="form-control" placeholder="Mobile no." name="UserContact" value="<?php echo $UserContact;?>" minlength="5" maxlength="200">
+								</div>
 								<div class="form-group  uploadfrm">
 									<label>Profile Image</label>
-									<p><span class="btn btn-primary btn-file">
+									<p><span class="btn btn-black btn-file">
+										<input type="hidden" class="form-control" name="pre_profile_image" value="<?php echo $ProfileImage;?>">
 									Upload profile image <input type="file" name="ProfileImage" id="profileimage" onchange="readURL(this);">
 									</span></p>									
 									<span id="profileerror"></span>
 								</div>
 								
 								<div class="preview">
-									<img id="blah" src="" class="img-thumbnail border-0" style="display: none;  width: 100px; height: 100px;">
-								</div>
+									<?php if($UserId){ ?>
+										<img id="blah" src="<?php echo base_url()?>upload/user/<?php echo $ProfileImage;?>" class="img-thumbnail border-0" style="display: block;  width: 100px; height: 100px;">
 
-								<div class="form-group">
-									<label>Contact</label>
-									<input type="text" class="form-control" placeholder="Contact" name="UserContact" value="<?php echo $UserContact;?>" minlength="5" maxlength="200">
+									<?php } else{?>
+									<img id="blah" src="" class="img-thumbnail border-0" style="display: none;  width: 100px; height: 100px;">
+									<?php } ?>
 								</div>
 
 								<?php  if($IsActive!=''){ ?>
                                 
 								<div class="form-group">
-																				<label>Status</label>
-																				<div class="input-group">
-																								<label class="display-inline-block custom-control custom-radio ml-1">
-																								<?php //echo $IsActive; ?>
-																												<input type="radio" name="IsActive" value="Active"
-		<?php if($IsActive=="Active") { echo "checked"; } ?>
-		 class="custom-control-input">
-																												<span class="custom-control-indicator"></span>
-																												<span class="custom-control-description ml-0">Active</span>
-																								</label>
-																								<label class="display-inline-block custom-control custom-radio">
-																												<input type="radio" name="IsActive" value="Inactive"  <?php if($IsActive=="Active") { echo "checked"; } ?>                                                  
-		class="custom-control-input">
-																												<span class="custom-control-indicator"></span>
-																												<span class="custom-control-description ml-0">Inactive</span>
-																								</label>
-																				</div>
+									<label>Status</label>
+										<div class="input-group">								<label class="display-inline-block custom-control custom-radio ml-1">										<?php //echo $IsActive; ?>							<input type="radio" name="IsActive" value="Active"
+											<?php if($IsActive=="Active") { echo "checked"; } ?>
+											 class="custom-control-input">					
+											 <span class="custom-control-indicator"></span>
+											 <span class="custom-control-description ml-0">Active</span>										</label>										<label class="display-inline-block custom-control custom-radio">					<input type="radio" name="IsActive" value="Inactive"  <?php if($IsActive=="Inactive") { echo "checked"; } ?> 
+												class="custom-control-input">					<span class="custom-control-indicator"></span>										
+												<span class="custom-control-description ml-0">Inactive</span>								</label></div>
+											</div>
+									<?php } else { ?>
+									<div class="form-group">
+										<label>Status</label>									<div class="input-group">								<label class="display-inline-block custom-control custom-radio ml-1">							<input type="radio" name="IsActive" value="Active" checked="" class="custom-control-input">		
+										<span class="custom-control-indicator"></span>		<span class="custom-control-description ml-0">Active</span>	</label>										<label class="display-inline-block custom-control custom-radio">										<input type="radio" name="IsActive" value="Inactive"
+										class="custom-control-input">						
+										<span class="custom-control-indicator"></span>		<span class="custom-control-description ml-0">Inactive</span></label>
+										</div>
 								</div>
-				<?php } else { ?>
-								<div class="form-group">
-																				<label>Status</label>
-																				<div class="input-group">
-																								<label class="display-inline-block custom-control custom-radio ml-1">                                                                                
-																												<input type="radio" name="IsActive" value="Active"
-	 checked="" 
-		 class="custom-control-input">
-																												<span class="custom-control-indicator"></span>
-																												<span class="custom-control-description ml-0">Active</span>
-																								</label>
-																								<label class="display-inline-block custom-control custom-radio">
-																												<input type="radio" name="IsActive" value="Inactive"
-		class="custom-control-input">
-																												<span class="custom-control-indicator"></span>
-																												<span class="custom-control-description ml-0">Inactive</span>
-																								</label>
-																				</div>
-								</div>
-
-				<?php }?>
-
-
+							<?php } ?>
 							<div class="form-actions">
-					
-								<?php if($UserId!=''){?>
-									<button type="submit" name="updateAdmin" class="btn btn-primary">
-										<i class="icon-check2"></i> Update
-									</button>
-								<?php }else{ ?>
-									<button type="submit" name="addAdmin" class="btn btn-primary">
-									<i class="icon-check2"></i> Add
-									</button>
-								<?php } ?>
-								
+							 <button class="btn btn-black " type="submit"><i class="icon-ok"></i> <?php echo ($UserId!='')?'Update':'Submit' ?></button>
 							
-								<a href="<?php echo base_url(); ?>User/Userlist" name="CancelUser" class="btn btn-danger">
-								Cancel
-								</a>
+								<input type="button" name="cancel" class="btn btn-default" value="Cancel" onClick="location.href='<?php echo base_url(); ?>user/<?php echo $redirect_page; ?>'">
 							</div>
 						</form>
 					</div>
@@ -156,44 +118,42 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 $(document).ready(function()
 {
-		$("#form_assesment").validate(
-		{
+	
+       $('#add_user').validate({
+
+	        // errorElement: 'span', //default input error message container
+	        // errorClass: 'help-inline', // default input error message class
+	        // focusInvalid: false, // do not focus the last invalid input
+	        // ignore: "",
+	        // success: function(label,element) {
+	        //     // label.parent().removeClass('error');
+	        //     // label.remove();
+	        // },
 			rules: {
-
-						StreamTypeId: {
-								required: true,
-													},
-						ProgramId: {
-								required: true,
-													},
-						AssesmentName: {
-								required: true,
-							//	pattern: /^[a-zA-Z0-9\s\-\ ]+$/,
-							//	minlength: 5,
-													},
-
-						},
-
-						messages: {
-
-						StreamTypeId: {
-						required: "Plesae select stream",
-
-										},
-						ProgramId: {
-						required: "Plesae select program",
-
-										},
-						AssesmentName: {
-						required: "Please enter assesment name",
-						pattern : "Enter only characters and numbers and \"space , \" -",
-						minlength: "Please enter at least 5 and maximum to 200 letters!",
-										},
-					
-					
-						}
+				FullName:{              
+					required: true,                
+					minlength: 3,
+					maxlength: 25, 
+				},  
+				UserContact:{
+					required:true,
+					maxlength:15,
+					minlength:10,
+				},        
+				EmailAddress:{
+					required:true,
+					email:true,             
+				},
+				Addresses:{
+						required:true,
+				}				
 				
-		});
+				// ProfileImage:{
+				// 	accept: "jpg|jpeg|png|bmp",
+				// 	filesize: 2097152  
+				// },
+			 }, 
+    });
 });
 
  //CKEDITOR.replace('editor1');

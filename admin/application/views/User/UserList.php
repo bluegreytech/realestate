@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="card-header">
                 <h4 class="card-title">List of User
                 <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
-                <a href="<?php echo base_url();?>User/Useradd/" class="btn btn-primary" style="float:right">Add User</a>
+                <a href="<?php echo base_url();?>User/Useradd/" class="btn btn-black" style="float:right">Add User</a>
                 </h4>
             </div>
             <div class="card-body collapse in">
@@ -43,30 +43,30 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<tbody>
                         <?php
                                 $i=1;
-                                if($adminData){                             
-                                foreach($adminData as $admin)
+                                if($result){                             
+                                foreach($result as $row)
                                 {
                             ?>
                             <tr>
                             
                                     <td><?php echo $i; ?></td>
-                                    <td><?php echo $admin->FullName; ?></td>
-                                    <td><?php echo $admin->EmailAddress; ?></td>
-                                    <td><?php echo $admin->UserContact; ?></td>
+                                    <td><?php echo $row->FullName; ?></td>
+                                    <td><?php echo $row->EmailAddress; ?></td>
+                                    <td><?php echo $row->UserContact; ?></td>
                                     <td>
-                                        <?php if($admin->IsActive=="Active")
+                                        <?php if($row->IsActive=="Active")
                                             {
-                                                echo "Active";
+                                                  echo "<span class='label label-success'>Active</span>";
                                             } 
                                             else
                                             {
-                                                echo "Deactive";
+                                                echo "<span class='label label-danger'>Inactive</span>";
                                             } 
                                         ?>
                                     </td>
                                     <td>
-                                        <?php echo anchor('User/Edituser/'.$admin->UserId,'<i class="ficon icon-pencil2"></i>'); ?>
-                                        <a href="javascript:void(0)"  onclick="deletedata('<?php echo $admin->UserId; ?>')" ><i class="ficon icon-bin"></i></a>    
+                                        <?php echo anchor('User/Edituser/'.$row->UsersId,'<i class="ficon icon-pencil2"></i>'); ?>
+                                        <a href="javascript:void(0)"  onclick="deletedata('<?php echo $row->UsersId; ?>')" ><i class="ficon icon-bin"></i></a>    
                                     </td>  
                                 </tr>      
                                 <?php
@@ -117,17 +117,19 @@ $(function() {
 });
 
 function deletedata(id){  
+   // alert(id);
     $('#myModal').modal('show')
    
         $('#yes_btn').click(function(){
            
                 url="<?php echo base_url();?>"
                 $.ajax({
-                url: url+"/Adminuser/deletedata/",
+                url: url+"/user/deletedata/",
                 type: "post",
                 data: {id:id} ,
-                success: function (response) {             
-                document.location.href = url+'Adminuser/Adminlist';                  
+                success: function (response) {  
+                console.log(response);           
+                //document.location.href = url+'user/userlist';                  
 
             },
             error: function(jqXHR, textStatus, errorThrown) {
