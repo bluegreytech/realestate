@@ -77,7 +77,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								</div>
 									<div class="preview">
 									
-									<?php if($AdminId){ ?>
+									<?php if($ProfileImage){ ?>
 										<img id="blah" src="<?php echo base_url()?>upload/admin/<?php echo $ProfileImage;?>" class="img-thumbnail border-0" style="display: block;  width: 100px; height: 100px;">
 
 									<?php } else{?>
@@ -213,11 +213,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					required: true,                                  
 					equalTo: "#password"
 				},
-				// ProfileImage:{
-				// 	accept: "jpg|jpeg|png|bmp",
-				// 	filesize: 2097152  
-				// },
-			 }, 
+				ProfileImage:{
+					extension: "JPG|jpeg|png|bmp",
+					filesize: 2097152,   
+				},
+			 },
+			 errorPlacement: function (error, element) {
+            console.log('dd', element.attr("name"))
+            if (element.attr("name") == "ProfileImage") {
+                error.appendTo("#profileerror");
+            } else{
+                  error.insertAfter(element)
+            }
+        } 
     });
 });
 

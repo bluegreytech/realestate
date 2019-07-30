@@ -27,7 +27,7 @@ class Login extends CI_Controller {
 		{
                
             $login =$this->login_model->check_login();
-		// echo $login;die;
+		 //echo $login;die;
 		if($login == '1')
 		{
 			 //echo site_url();

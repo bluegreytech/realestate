@@ -27,3 +27,29 @@ ERROR - 2019-07-19 12:13:14 --> Severity: error --> Exception: syntax error, une
 ERROR - 2019-07-19 12:14:18 --> Query error: Unknown column 'password' in 'field list' - Invalid query: UPDATE `tbluser` SET `password` = '0e7517141fb53f21ee439b355b5a1d0a'
 WHERE `UsersId` = '3'
 AND `UserPassword` = 'e6e061838856bf47e1de730719fb2609'
+ERROR - 2019-07-19 13:06:04 --> Severity: error --> Exception: Too few arguments to function Home::change_password(), 0 passed in C:\xampp\htdocs\realestate\admin\system\core\CodeIgniter.php on line 532 and exactly 1 expected C:\xampp\htdocs\realestate\admin\application\controllers\Home.php 221
+ERROR - 2019-07-19 13:06:37 --> Severity: Notice --> Undefined variable: id C:\xampp\htdocs\realestate\admin\application\controllers\Home.php 227
+ERROR - 2019-07-19 13:06:37 --> 404 Page Not Found: Favicon/favicon-32.png
+ERROR - 2019-07-19 13:06:37 --> 404 Page Not Found: Favicon/favicon.ico
+ERROR - 2019-07-19 13:07:35 --> 404 Page Not Found: Favicon/favicon-32.png
+ERROR - 2019-07-19 13:07:35 --> 404 Page Not Found: Favicon/favicon.ico
+ERROR - 2019-07-19 13:08:43 --> 404 Page Not Found: Favicon/favicon-32.png
+ERROR - 2019-07-19 13:08:43 --> 404 Page Not Found: Favicon/favicon.ico
+ERROR - 2019-07-19 13:38:03 --> 404 Page Not Found: Favicon/favicon-32.png
+ERROR - 2019-07-19 13:38:03 --> 404 Page Not Found: Favicon/favicon.ico
+ERROR - 2019-07-19 13:38:21 --> 404 Page Not Found: Favicon/favicon-32.png
+ERROR - 2019-07-19 13:38:21 --> 404 Page Not Found: Favicon/favicon.ico
+ERROR - 2019-07-19 13:38:43 --> 404 Page Not Found: Favicon/favicon-32.png
+ERROR - 2019-07-19 13:38:43 --> 404 Page Not Found: Favicon/favicon.ico
+ERROR - 2019-07-19 13:41:40 --> 404 Page Not Found: Favicon/favicon-32.png
+ERROR - 2019-07-19 13:41:40 --> 404 Page Not Found: Favicon/favicon.ico
+ERROR - 2019-07-19 14:00:26 --> Severity: Notice --> Undefined property: Home::$home_model C:\xampp\htdocs\realestate\admin\application\controllers\Home.php 251
+ERROR - 2019-07-19 14:00:26 --> Severity: error --> Exception: Call to a member function updateAdminPassword() on null C:\xampp\htdocs\realestate\admin\application\controllers\Home.php 251
+ERROR - 2019-07-19 14:00:36 --> Severity: Notice --> Undefined property: Home::$login_model C:\xampp\htdocs\realestate\admin\application\controllers\Home.php 251
+ERROR - 2019-07-19 14:00:36 --> Severity: error --> Exception: Call to a member function updateAdminPassword() on null C:\xampp\htdocs\realestate\admin\application\controllers\Home.php 251
+ERROR - 2019-07-19 14:13:39 --> 404 Page Not Found: Favicon/favicon-32.png
+ERROR - 2019-07-19 14:13:39 --> 404 Page Not Found: Favicon/favicon.ico
+ERROR - 2019-07-19 14:13:41 --> 404 Page Not Found: Favicon/favicon-32.png
+ERROR - 2019-07-19 14:13:41 --> 404 Page Not Found: Favicon/favicon.ico
+ERROR - 2019-07-19 14:15:50 --> 404 Page Not Found: Favicon/favicon-32.png
+ERROR - 2019-07-19 14:15:51 --> 404 Page Not Found: Favicon/favicon.ico

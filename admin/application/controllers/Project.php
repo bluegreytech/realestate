@@ -16,7 +16,7 @@ class Project extends CI_Controller {
 			redirect(base_url());
 		}else{		
 			$data['result']=$this->project_model->getproject();
-			$this->load->view('Project/Projectlist',$data);
+			$this->load->view('Project/ProjectList',$data);
 		}
 	}
 
@@ -71,7 +71,7 @@ class Project extends CI_Controller {
 			}
 				
 			}
-			$this->load->view('project/projectadd',$data);
+			$this->load->view('Project/ProjectAdd',$data);
 				
 	}
 	
@@ -171,7 +171,7 @@ class Project extends CI_Controller {
 				
 			}
 			$data['projectlist']=$this->project_model->getproject();
-			$this->load->view('project/Add_gallery',$data);
+			$this->load->view('Project/Add_gallery',$data);
 
 	}
 
@@ -190,7 +190,7 @@ class Project extends CI_Controller {
 			$data['GalleryImage']=$result['gallery_image'];
 			$data['IsActive']=$result['IsActive'];	
 			//echo "<pre>";print_r($data);die;		
-			$this->load->view('project/Add_gallery',$data);	
+			$this->load->view('Project/Add_gallery',$data);	
 
 	}
 	function gallery_delete(){
@@ -223,7 +223,7 @@ class Project extends CI_Controller {
 		}else{		
 			$data['result']=$this->project_model->getgallery();
 			$data['projectlist']=$this->project_model->getproject();
-			$this->load->view('Project/list_gallery',$data);
+			$this->load->view('Project/List_gallery',$data);
 		}
 		
 	}
@@ -274,7 +274,7 @@ class Project extends CI_Controller {
 				
 			}
 			$data['projectlist']=$this->project_model->getproject();
-			$this->load->view('project/add_planlayout',$data);
+			$this->load->view('Project/Add_planlayout',$data);
 
 	}
 
@@ -292,7 +292,7 @@ class Project extends CI_Controller {
 			$data['PlanlayoutImage']=$result['planlayout_image'];
 			$data['IsActive']=$result['IsActive'];	
 			//echo "<pre>";print_r($data);die;		
-			$this->load->view('project/add_planlayout',$data);	
+			$this->load->view('Project/Add_planlayout',$data);	
 
 	}
 
@@ -326,7 +326,7 @@ class Project extends CI_Controller {
 		}else{		
 			$data['result']=$this->project_model->getplanlayout();
 			$data['projectlist']=$this->project_model->getproject();
-			$this->load->view('Project/list_planlayout',$data);
+			$this->load->view('Project/List_planlayout',$data);
 		}
 		
 	}
@@ -380,7 +380,7 @@ class Project extends CI_Controller {
 				
 			}
 			$data['projectlist']=$this->project_model->getproject();
-			$this->load->view('project/add_specification',$data);
+			$this->load->view('Project/Add_specification',$data);
 
 	}
 
@@ -400,7 +400,7 @@ class Project extends CI_Controller {
 			$data['LogoImages']=$result['logo_image'];
 			$data['IsActive']=$result['IsActive'];	
 			//echo "<pre>";print_r($data);die;		
-			$this->load->view('project/add_specification',$data);	
+			$this->load->view('Project/Add_specification',$data);	
 
 	}
 
@@ -421,7 +421,7 @@ class Project extends CI_Controller {
 			$id=$this->input->post('id');
 			$this->db->where("specification_id",$id);			
 			$res=$this->db->update('tblspecification',$data);
-			//echo $this->db->last_query();die;
+			echo $this->db->last_query();die;
 			echo json_encode($res);
 			die;
 		
@@ -433,7 +433,7 @@ class Project extends CI_Controller {
 		}else{		
 			$data['result']=$this->project_model->getspecification();
 			$data['projectlist']=$this->project_model->getproject();
-			$this->load->view('project/list_specification',$data);
+			$this->load->view('Project/List_specification',$data);
 		}
 		
 	}

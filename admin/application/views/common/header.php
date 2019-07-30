@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="author" content="">
-    <title>Nyalkaran</title>
+    <title>Nyalkaran  Group</title>
     <link rel="apple-touch-icon" sizes="60x60" href="<?php echo base_url(); ?>default/images/ico/apple-icon-60.png">
     <link rel="apple-touch-icon" sizes="76x76" href="<?php echo base_url(); ?>default/images/ico/apple-icon-76.png">
     <link rel="apple-touch-icon" sizes="120x120" href="<?php echo base_url(); ?>default/images/ico/apple-icon-120.png">
@@ -83,20 +83,16 @@
                                      
                                                 <img src="<?php echo base_url().'upload/admin/'.$admin_profile->ProfileImage; ?>" class="avatar" alt="">
                                                 <?php }else{ ?>
-                                             <img src="<?php echo base_url().'upload/no_image/user_no_image.jpg'; ?>" class="avatar" alt=""> 
+                                             <img src="<?php echo base_url().'upload/no_image/user_no_image.png'; ?>" class="avatar" alt=""> 
                                                 <?php } ?>
-                                          
                                            <!--   </i></span> -->
-                                              <span class="user-name"><?php echo ucfirst($this->session->userdata('FullName')); ?></span>
+                                              <span class="user-name"><?php echo ucfirst($admin_profile->FullName); ?></span>
                                               </a>
                                                <div class="dropdown-menu dropdown-menu-right">
-                                                <a href="<?php echo base_url();?>home/profile" class="dropdown-item"><i class="icon-user"></i> Profile</a> 
-
-                                                  <a href="<?php echo base_url();?>home/change_password" class="dropdown-item"><i class="icon-user"></i> Change Password</a> 
+                                                <a href="<?php echo base_url();?>home/profile" class="dropdown-item"><i class="icon-user"></i> Profile</a>
+                                                  <a href="<?php echo base_url();?>home/change_password" class="dropdown-item"><i class="icon-key3"></i> Change Password</a> 
                                                  <a href="<?php echo base_url();?>home/logout" class="dropdown-item"><i class="icon-power3"></i> Logout</a> 
-                                              </div>
-                                             
-                                                                          
+                                              </div>                    
                                              
                                             </li>
 

@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="card-header">
                 <h4 class="card-title">List of User
                 <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
-                <a href="<?php echo base_url();?>User/Useradd/" class="btn btn-black" style="float:right">Add User</a>
+               <!--  <a href="<?php //echo base_url();?>User/Useradd/" class="btn btn-black" style="float:right">Add User</a> -->
                 </h4>
             </div>
             <div class="card-body collapse in">
@@ -56,7 +56,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <td>
                                         <?php if($row->IsActive=="Active")
                                             {
-                                                  echo "<span class='label label-success'>Active</span>";
+                                                echo "<span class='label label-success'>Active</span>";
                                             } 
                                             else
                                             {

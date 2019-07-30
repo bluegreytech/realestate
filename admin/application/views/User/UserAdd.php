@@ -42,7 +42,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								</div>
 								<div class="form-group">
 									<label>Email Address</label>
-									<input type="text" class="form-control" placeholder="Email Address" name="EmailAddress" value="<?php echo $EmailAddress;?>" minlength="5" maxlength="200">
+									<input type="text" class="form-control" placeholder="Email Address" name="EmailAddress" value="<?php echo $EmailAddress;?>" minlength="5" maxlength="200" readonly="">
 								</div>
 								<div class="form-group">
 									<label>Address</label>
@@ -50,9 +50,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								</div>
 								<div class="form-group">
 									<label>Mobile no.</label>
-									<input type="text" class="form-control" placeholder="Mobile no." name="UserContact" value="<?php echo $UserContact;?>" minlength="5" maxlength="200">
+									<input type="text" class="form-control" placeholder="Mobile no." name="UserContact" value="<?php echo $UserContact;?>" minlength="5" maxlength="200" readonly>
 								</div>
-								<div class="form-group  uploadfrm">
+								<!-- <div class="form-group  uploadfrm">
 									<label>Profile Image</label>
 									<p><span class="btn btn-black btn-file">
 										<input type="hidden" class="form-control" name="pre_profile_image" value="<?php echo $ProfileImage;?>">
@@ -68,7 +68,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<?php } else{?>
 									<img id="blah" src="" class="img-thumbnail border-0" style="display: none;  width: 100px; height: 100px;">
 									<?php } ?>
-								</div>
+								</div> -->
 
 								<?php  if($IsActive!=''){ ?>
                                 

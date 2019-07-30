@@ -8,6 +8,7 @@
       <!-- main menu content-->
       <div class="main-menu-content">
         <ul id="main-menu-navigation" data-menu="menu-navigation" class="navigation navigation-main">
+          <?php if($this->session->userdata('AdminId')==1){ ?>
         <li class="nav-item">
             <a>
               <i class="icon-user"></i><span data-i18n="nav.dash.main" class="menu-title">Admin</span>
@@ -21,7 +22,8 @@
                 <a href="<?php echo base_url(); ?>Admin/Adminlist" data-i18n="nav.dash.main" class="menu-item"><i class="icon-file-text2"></i>List of Admin</a>
               </li>
             </ul>
-          </li>        
+          </li> 
+          <?php } ?>       
           <li class="nav-item">
             <a>
               <i class="icon-tasks"></i><span data-i18n="nav.dash.main" class="menu-title">Project</span>
@@ -75,22 +77,32 @@
                       </li>
                     </ul>
               </li>
-            
-              
             </ul>
           </li>
-       
-        
           <li class="nav-item">
             <a>
               <i class="icon-users"></i><span data-i18n="nav.dash.main" class="menu-title">Users</span>
             </a>
             <ul class="menu-content">
-              <li>
-                <a href="<?php echo base_url(); ?>User/Useradd" data-i18n="nav.dash.main" class="menu-item"><i class="icon-plus"></i> Add User </a>
-              </li>
+            <!--   <li>
+                <a href="<?php //echo base_url(); ?>User/Useradd" data-i18n="nav.dash.main" class="menu-item"><i class="icon-plus"></i> Add User </a>
+              </li> -->
               <li>
                 <a href="<?php echo base_url(); ?>User/Userlist" data-i18n="nav.dash.main" class="menu-item"><i class="icon-file-text2"></i> List of Users </a>
+              </li>
+            </ul>
+          </li>
+           <li class="nav-item">
+            <a>
+              <i class="icon-bell-o"></i><span data-i18n="nav.dash.main" class="menu-title">Broadcast Notification</span>
+            </a>
+            <ul class="menu-content">
+              <li>
+                <a href="<?php echo base_url(); ?>Project/Projectadd" data-i18n="nav.dash.main" class="menu-item"><i class="icon-plus"></i>Add Broadcast</a>
+              </li>
+              <li>
+              <li>
+                <a href="<?php echo base_url(); ?>broadcast/broadcastlist" data-i18n="nav.dash.main" class="menu-item"><i class="icon-file-text2"></i>List of Notification</a>
               </li>
             </ul>
           </li>

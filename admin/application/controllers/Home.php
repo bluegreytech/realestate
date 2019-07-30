@@ -11,12 +11,11 @@ class Home extends CI_Controller {
     }
 
 	public function dashboard()
-	{ //echo "hhg";die;
+	{ 
 		if(!check_admin_authentication()){ 
-			//echo "hjhj";die;
+		
 			redirect(base_url());
-		}
-		//echo "else echo ";die;
+		}		
 		$this->load->view('dashboard');
 	}
 
@@ -218,16 +217,13 @@ class Home extends CI_Controller {
 	}
 
 	//change password
-    public function change_password($id)
+    public function change_password()
     {
         
    		if(!check_admin_authentication()){
 			redirect('login');
 		}
-		if(!$id){
-			redirect('login');
-
-		 }
+		
             
 		$data = array();
         $this->load->library('form_validation');	
@@ -251,13 +247,24 @@ class Home extends CI_Controller {
 			}
 			
 		}else{
-            $res=$this->admin_model->updateAdminPassword($id);
+			//echo "fghg";die;
+            $res=$this->Login_model->updateAdminPassword();
 			if($res){
-         		$this->session->set_flashdata('success', 'change_password_success');	
+         		$this->session->set_flashdata('success', 'Your password change successfully');
 				redirect('home/change_password');
 			}
 		}
 	
         $this->load->view('common/ChangePassword',$data);    
 	}
+	function oldpassword_check() {
+		$query = $this->db->query("select Password from " . $this->db->dbprefix('tbladmin') . " where Password = '".md5($this->input->post('password'))."' and AdminId!='" . $this->session->userdata('AdminId') . "'");
+		//echo $this->db->last_query();die;
+		if ($query->num_rows() > 0) {
+			echo 1;die;
+		} else {
+			echo 0;die;
+		}
+	}
+
 }

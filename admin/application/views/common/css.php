@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="author" content="">
-    <title>Realestate</title>
+    <title>Nyalkaran  Group</title>
     <link rel="apple-touch-icon" sizes="60x60" href="<?php echo base_url(); ?>default/images/ico/apple-icon-60.png">
     <link rel="apple-touch-icon" sizes="76x76" href="<?php echo base_url(); ?>default/images/ico/apple-icon-76.png">
     <link rel="apple-touch-icon" sizes="120x120" href="<?php echo base_url(); ?>default/images/ico/apple-icon-120.png">

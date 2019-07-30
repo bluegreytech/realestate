@@ -103,18 +103,7 @@ class Admin extends CI_Controller {
 		}
 	}
 
-	function updatedata($AdminId){
-		if(!check_admin_authentication()){ 
-			redirect(base_url());
-		}else{
-		$result=$this->Admin_model->updatedata($AdminId);	
-    	if($result=='1'){
-		  $this->session->set_flashdata('success', 'Record has been updated Succesfully!');
-		 	redirect('Adminuser/Adminlist');	
-			}
-			redirect('Adminuser/Adminlist');
-		}
-	}
+	
 
 	function deletedata(){
 		if(!check_admin_authentication()){ 
@@ -128,21 +117,21 @@ class Admin extends CI_Controller {
 		}
 	}
 
-	  function adminmail_check($EmailAddress)
-       {
+	function adminmail_check($EmailAddress)
+    {
 
-         $query = $this->db->query("select EmailAddress from ".$this->db->dbprefix('tbladmin')." where EmailAddress = '$EmailAddress' and AdminId!='".$this->input->post('AdminId')."'");
+		$query = $this->db->query("select EmailAddress from ".$this->db->dbprefix('tbladmin')." where EmailAddress = '$EmailAddress' and AdminId!='".$this->input->post('AdminId')."'");
 
-               if($query->num_rows() == 0)
-               {
-                       return TRUE;
-               }
-               else
-               {
-                 $this->form_validation->set_message('adminmail_check', 'Email address is already exist.');
-                  return FALSE;
-               }
-       }
-
+		if($query->num_rows() == 0)
+		{
+			return TRUE;
+		}
+		else
+		{
+			$this->form_validation->set_message('adminmail_check', 'Email address is already exist.');
+			return FALSE;
+		}
+    }
+     
     
 }

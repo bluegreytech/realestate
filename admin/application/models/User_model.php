@@ -193,7 +193,7 @@ class User_model extends CI_Model
 			'UserContact'=>$this->input->post('UserContact'),
 			'IsActive'=>$this->input->post('IsActive'),
 			  );
-		echo "<pre>";print_r($data);die;	
+		//echo "<pre>";print_r($data);die;	
 	    $this->db->where("UsersId",$id);
 		$this->db->update('tbluser',$data);		
 		

@@ -33,9 +33,6 @@ class User extends CI_Controller {
 			
 			$this->form_validation->set_rules('UserContact', 'Mobileno', 'required');
 			
-			
-			
-		
 		
 		if($this->form_validation->run() == FALSE){			
 			if(validation_errors())

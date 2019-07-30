@@ -77,7 +77,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     </td>
                                     <td>
                                         <?php echo anchor('project/edit_specification/'.$row->specification_id,'<i class="ficon icon-pencil2"></i>'); ?>
-                                        <a href="javascript:void(0)"  onclick="deletedata('<?php echo $row->specification_id; ?>')" ><i class="ficon icon-bin"></i></a>    
+                                        <a href="javascript:void(0)"  onclick="deletedata('<?php echo $row->specification_id; ?>','<?php echo  $row->logo_image; ?>')" ><i class="ficon icon-bin"></i></a>    
                                     </td>  
                                 </tr>      
                                 <?php
@@ -127,20 +127,20 @@ $(function() {
    
 });
 
-function deletedata(id){  
+function deletedata(id,images){  
     $('#myModal').modal('show');
-     
+   //  alert(images);
         $('#yes_btn').click(function(){
             logo_image=$('#logoimage').val();
          
                 url="<?php echo base_url();?>";
-               // alert(url);
+                //alert(logo_image);
                 $.ajax({
-                url: url+'project/specification_delete/',
-                type: "post",
-                data: {id:id,logo_image:logo_image} ,
+                url: url+'project/specification_delete',
+                type:"post",
+                data:{id:id,logo_image:images} ,
                 success: function (response) {   
-                    console.log(response);  
+                console.log(response);  
                     //return false;   
                     if(response==true){
                       document.location.href = url+'project/list_specification';    

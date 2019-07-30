@@ -75,7 +75,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     </td>
                                     <td>
                                         <?php echo anchor('project/edit_gallery/'.$row->gallery_id,'<i class="ficon icon-pencil2"></i>'); ?>
-                                        <a href="javascript:void(0)"  onclick="deletedata('<?php echo $row->gallery_id; ?>')" ><i class="ficon icon-bin"></i></a>    
+                                        <a href="javascript:void(0)"  onclick="deletedata('<?php echo $row->gallery_id; ?>','<?php echo $row->gallery_image;?>')" ><i class="ficon icon-bin"></i></a>    
                                     </td>  
                                 </tr>      
                                 <?php
@@ -83,7 +83,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     } }
                                 ?>           
                         </tbody>
-
                     </table>
                 </div>
             </div>
@@ -125,18 +124,18 @@ $(function() {
    
 });
 
-function deletedata(id){  
+function deletedata(id,image){  
     $('#myModal').modal('show');
      
         $('#yes_btn').click(function(){
-            galleryimage=$('#galleryimage').val();
+            //galleryimage=$('#galleryimage').val();
          
                 url="<?php echo base_url();?>";
-                alert(url);
+               // alert(url);
                 $.ajax({
                 url: url+'project/gallery_delete/',
                 type: "post",
-                data: {id:id,gallery_image:galleryimage} ,
+                data: {id:id,gallery_image:image} ,
                 success: function (response) {   
                     console.log(response);  
                     //return false;   

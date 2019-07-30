@@ -180,10 +180,10 @@ class Login_model extends CI_Model
    // die;
                 //,'status'=>'Active'
     $admin = $query->row_array();
-   // echo "<pre>";print_r($admin);die;
+    //xecho "<pre>";print_r($admin);die;
     if($query->num_rows()>0)
     {
-            $admin_type=$admin['Admin_Type'];
+                         $admin_type=$admin['Admin_Type'];
                         $admin_status=$admin['IsActive'];
                         
                         if($admin_status !='Active')
@@ -228,9 +228,9 @@ class Login_model extends CI_Model
         //$admin_role = $admin['admin_role'];
         //$site_id    = $admin['site_id'];
         $data = array(
-            'AdminId' => $admin_id,
-            'FullName' => $FullName,
-            'admin_type'=>$admin_type,          
+              'AdminId' => $admin_id,
+              'FullName' => $admin['FullName'],
+              'admin_type'=>$admin_type,         
             );  
           
         $this->session->set_userdata($data);
@@ -350,5 +350,21 @@ class Login_model extends CI_Model
   //   }
     
   // }
+
+  function updateAdminPassword(){
+    $id=$this->session->userdata('AdminId'); 
+
+    $data = array('Password' => md5($this->input->post('password')));
+    $query=$this->db->where(array('AdminId'=>$id))->get_where('tbladmin');
+    if($query->num_rows()>0){
+      $this->db->where(array('AdminId'=>$id));
+      $this->db->update('tbladmin',$data);
+      $query2 = $this->db->get_where('tbladmin',array('AdminId'=>$id));
+      $row = $query2->row();
+      return true;
+    }else{
+      return false;
+    }
+  }  
 
 }
