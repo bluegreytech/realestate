@@ -1,8 +1,6 @@
 
 <!DOCTYPE html>
 <html lang="en" data-textdirection="ltr" class="loading">
-  
-<!-- Mirrored from pixinvent.com/free-bootstrap-template/robust-lite/html/ltr/login-simple.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 04 Apr 2019 06:04:43 GMT -->
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">

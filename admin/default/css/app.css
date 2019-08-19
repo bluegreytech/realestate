@@ -35,6 +35,10 @@ html {
     html body .pace .pace-progress {
       background: #3BAFDA; }
 
+
+.main-bg{
+  background-image: url(../images/backgrounds/main_bg.jpg);
+}
 /*
 * Blank page
 */
@@ -343,7 +347,7 @@ footer.footer-dark {
           .main-menu.menu-dark .navigation > li ul .has-sub:not(.open) > ul {
             display: none; }
           .main-menu.menu-dark .navigation > li ul .open {
-            background: #0f161b; }
+            background: #8a8a89; }
             .main-menu.menu-dark .navigation > li ul .open > a {
               color: #dcdcdc; }
             .main-menu.menu-dark .navigation > li ul .open > ul {
@@ -359,7 +363,7 @@ footer.footer-dark {
                   .main-menu.menu-dark .navigation > li ul .open > ul .open > ul li > a {
                     padding: 8px 20px 8px 70px; }
             .main-menu.menu-dark .navigation > li ul .open .hover > a {
-              background: #0b1115; }
+              background: #8a8a89; }
           .main-menu.menu-dark .navigation > li ul .hover > a, .main-menu.menu-dark .navigation > li ul:hover > a {
             color: #fff;
             background-color: #8a8a89; }
@@ -1872,7 +1876,7 @@ select[multiple='multiple'] {
 
 .form-control-position {
   position: absolute;
-  top: 0;
+  top: 10px;
   right: 0;
   z-index: 2;
   display: block;

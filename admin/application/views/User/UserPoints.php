@@ -12,16 +12,56 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <section id="basic-form-layouts">
 	<div class="row match-height">
 		<div class="col-md-12">
-			<div class="card col-md-4">
-				 		<h2>Referral Points <?php  echo $referral_point; ?></h2>
-					
+			<div class="col-md-4">
+				<div class="card">
+                    <div class="card-body">
+                        <div class="card-block">
+                            <div class="media">
+                                <div class="media-body text-xs-left">
+                                    <h3 class="pink"><?php  echo $referral_point; ?></h3>
+                                    <span>Referral Points</span>
+                                </div>
+                                <div class="media-right media-middle">
+                                    <i class="icon-trophy pink font-large-2 float-xs-right"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>	
 			</div>
-			<div class="card col-md-4">
-				 		<h2>Closing Points <?php  echo $closing_point; ?></h2>
-					
+			<div class="col-md-4">
+				<div class="card">
+                    <div class="card-body">
+                        <div class="card-block">
+                            <div class="media">
+                                <div class="media-body text-xs-left">
+                                    <h3 class="pink"><?php  echo $closing_point; ?></h3>
+                                    <span>Closing Points</span>
+                                </div>
+                                <div class="media-right media-middle">
+                                    <i class="icon-trophy pink font-large-2 float-xs-right"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>	
 			</div>
-			<div class="card col-md-4">
-				 		<h2>Redeem Points <?php echo  $redeem_point; ?></h2>
+			<div class="col-md-4">
+				<div class="card">
+                    <div class="card-body">
+                        <div class="card-block">
+                            <div class="media">
+                                <div class="media-body text-xs-left">
+                                    <h3 class="pink"><?php echo  $redeem_point; ?></h3>
+                                    <span>Redeem Points</span>
+                                </div>
+                                <div class="media-right media-middle">
+                                    <i class="icon-trophy pink font-large-2 float-xs-right"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 			</div>
 		</div>
 
