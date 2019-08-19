@@ -1,4 +1,5 @@
 <?php
+//echo "hghgf";die;
 /**
  * CodeIgniter
  *

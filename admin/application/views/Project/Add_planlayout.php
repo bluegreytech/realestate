@@ -134,7 +134,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script>
 
 $(document).ready(function()
-{
+{ 
+	$.validator.addMethod('dimention', function(value, element, param) {
+    if(element.files.length == 0){
+        return true;
+    }
+   // console.log(value);
+
+    var width = $(element).data('imageWidth');
+ 	// console.log(width);
+    var height = $(element).data('imageHeight');
+    //  console.log(height);
+    if(width == param[0] && height == param[1]){
+        return true;
+    }else{
+        return false;
+    }
+},'Please upload an image with 760 x 428 pixels dimension');
 	$.validator.addMethod('filesize', function (value, element, param) {
 	return this.optional(element) || (element.files[0].size <= param)
 	} ,'File size must be equal to or less then 2MB');
@@ -143,7 +159,7 @@ $(document).ready(function()
 		ignore: []  ,
 		rules:
 		{
-			GalleryImages:
+			PlanlayoutImages:
 			{
 				required:function(){
                    galleryimage='<?php echo $PlanlayoutImage; ?>';
@@ -155,7 +171,8 @@ $(document).ready(function()
 
 				},
 				extension: "JPG|jpeg|png|bmp",
-				filesize: 2097152,  
+				filesize: 2097152, 
+				dimention:[760,428], 
 			},
 			project_id:
 			{
@@ -168,8 +185,8 @@ $(document).ready(function()
 		},
 		 errorPlacement: function (error, element) {
             console.log('dd', element.attr("name"))
-            if (element.attr("name") == "GalleryImages") {
-                error.appendTo("#galleryerrorimg");
+            if (element.attr("name") == "PlanlayoutImages") {
+                error.appendTo("#planlayouterrorimg");
             } else{
                   error.insertAfter(element)
             }
@@ -192,6 +209,19 @@ function readURLimg(input) {
      reader.readAsDataURL(input.files[0]);
     }
 }
-       		                
+    
+     $('#PlanlayoutImages').change(function() {
+    $('#PlanlayoutImages').removeData('imageWidth');
+    $('#PlanlayoutImages').removeData('imageHeight');
+    var file = this.files[0];
+    var tmpImg = new Image();
+    tmpImg.src=window.URL.createObjectURL( file ); 
+    tmpImg.onload = function() {
+        width = tmpImg.naturalWidth,
+        height = tmpImg.naturalHeight;
+        $('#PlanlayoutImages').data('imageWidth', width);
+        $('#PlanlayoutImages').data('imageHeight', height);
+    }
+});   		                
 
 </script>

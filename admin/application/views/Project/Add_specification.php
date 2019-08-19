@@ -133,6 +133,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 $(document).ready(function()
 {
+	$.validator.addMethod('dimention', function(value, element, param) {
+    if(element.files.length == 0){
+        return true;
+    }
+    console.log(value);
+
+    var width = $(element).data('imageWidth');
+     console.log(width);
+
+
+    var height = $(element).data('imageHeight');
+     
+    if(width == param[0] && height == param[1]){
+        return true;
+    }else{
+        return false;
+    }
+},'Please upload an image with 110 x 110 pixels dimension');
 	$.validator.addMethod('filesize', function (value, element, param) {
 	return this.optional(element) || (element.files[0].size <= param)
 	} ,'File size must be equal to or less then 2MB');
@@ -153,7 +171,8 @@ $(document).ready(function()
 
 				},
 				extension: "JPG|jpeg|png|bmp",
-				filesize: 2097152,  
+				//filesize: 2097152,  
+				dimention:[110,110]
 			},
 			project_id:
 			{
@@ -198,6 +217,20 @@ function readURLimg(input) {
      reader.readAsDataURL(input.files[0]);
     }
 }
+
+$('#LogoImages').change(function() {
+    $('#LogoImages').removeData('imageWidth');
+    $('#LogoImages').removeData('imageHeight');
+    var file = this.files[0];
+    var tmpImg = new Image();
+    tmpImg.src=window.URL.createObjectURL( file ); 
+    tmpImg.onload = function() {
+        width = tmpImg.naturalWidth,
+        height = tmpImg.naturalHeight;
+        $('#LogoImages').data('imageWidth', width);
+        $('#LogoImages').data('imageHeight', height);
+    }
+});
        		                
 
 </script>

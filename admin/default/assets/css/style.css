@@ -832,6 +832,9 @@
 .label-default {
     background-color: #777;
 }
+.label-info {
+    background-color: #5bc0de;
+}
 
 .label {
     display: inline;
