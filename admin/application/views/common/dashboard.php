@@ -7,16 +7,59 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 
     <div class="app-content content container-fluid">
-      <div class="content-wrapper">
-         <div class="card col-md-4">
-           <h6>Today b'day date ==  <?php echo Count($result);?></h6>
+    <div class="content-wrapper">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-block">
+                        <div class="media">
+                            <div class="media-body text-xs-left">
+                                <h3 class="pink"><?php echo Count($result);?></h3>
+                                <span>Today B'day Date</span>
+                            </div>
+                            <div class="media-right media-middle">
+                                <i class="icon-gift pink font-large-2 float-xs-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="card col-md-4">
-            <h6>total User <?php echo Count($users);?></h6>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-block">
+                        <div class="media">
+                            <div class="media-body text-xs-left">
+                                <h3 class="pink"><?php echo Count($users);?></h3>
+                                <span>Total User</span>
+                            </div>
+                            <div class="media-right media-middle">
+                                <i class="icon-users pink font-large-2 float-xs-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="card col-md-4">
-           <h6>Today Inquires <?php echo Count($userrefer);?></h6>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-block">
+                        <div class="media">
+                            <div class="media-body text-xs-left">
+                                <h3 class="pink"><?php echo Count($userrefer);?></h3>
+                                <span>Today Inquires</span>
+                            </div>
+                            <div class="media-right media-middle">
+                                <i class="icon-paper pink font-large-2 float-xs-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+        
         <div class="content-body"><!-- Basic Tables start -->
   
 <!-- Table head options start -->

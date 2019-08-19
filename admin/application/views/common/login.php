@@ -1,4 +1,4 @@
-
+<body class="main-bg">
  <?php $this->load->view('common/css'); ?>
   <div class="app-content content container-fluid">
       <div class="content-wrapper">
@@ -58,7 +58,7 @@
         </div>
       </div>
     </div>
-
+</body>
     <?php $this->load->view('common/js'); ?>
 
     <script>
