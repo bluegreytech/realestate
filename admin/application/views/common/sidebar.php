@@ -8,7 +8,14 @@
       <!-- main menu content-->
       <div class="main-menu-content">
         <ul id="main-menu-navigation" data-menu="menu-navigation" class="navigation navigation-main">
+           <li class="nav-item">
+            <a href="<?php echo base_url(); ?>home/dashboard">
+              <i class="icon-dashboard"></i><span data-i18n="nav.dash.main" class="menu-title">Dashboard</span>
+            </a>
+            
+          </li> 
           <?php if($this->session->userdata('AdminId')==1){ ?>
+            
         <li class="nav-item">
             <a>
               <i class="icon-user"></i><span data-i18n="nav.dash.main" class="menu-title">Admin</span>
@@ -77,6 +84,17 @@
                       </li>
                     </ul>
               </li>
+               <li>
+                <a href="<?php echo base_url(); ?>project/list_projectslider" data-i18n="nav.dash.main" class="menu-item"><i class="icon-image"></i> Project Silder </a>
+                    <ul class="menu-content">
+                      <li>
+                      <a href="<?php echo base_url(); ?>project/add_projectslider" data-i18n="nav.dash.main" class="menu-item"><i class="icon-plus"></i>Add project slider</a>
+                      </li>
+                      <li>
+                      <a href="<?php echo base_url(); ?>project/list_projectslider" data-i18n="nav.dash.main" class="menu-item"><i class="icon-file-text2"></i>List of Project slider</a>
+                      </li>
+                    </ul>
+              </li>
             </ul>
           </li>
           <li class="nav-item">
@@ -92,13 +110,26 @@
               </li>
             </ul>
           </li>
+          <li class="nav-item">
+            <a>
+              <i class="icon-users"></i><span data-i18n="nav.dash.main" class="menu-title">User Refer </span>
+            </a>
+            <ul class="menu-content">
+            <!--   <li>
+                <a href="<?php //echo base_url(); ?>User/Useradd" data-i18n="nav.dash.main" class="menu-item"><i class="icon-plus"></i> Add User </a>
+              </li> -->
+              <li>
+                <a href="<?php echo base_url(); ?>User/Userrefer_list" data-i18n="nav.dash.main" class="menu-item"><i class="icon-file-text2"></i> List of User Refer </a>
+              </li>
+            </ul>
+          </li>
            <li class="nav-item">
             <a>
               <i class="icon-bell-o"></i><span data-i18n="nav.dash.main" class="menu-title">Broadcast Notification</span>
             </a>
             <ul class="menu-content">
               <li>
-                <a href="<?php echo base_url(); ?>Project/Projectadd" data-i18n="nav.dash.main" class="menu-item"><i class="icon-plus"></i>Add Broadcast</a>
+                <a href="<?php echo base_url(); ?>broadcast/add_broadcast" data-i18n="nav.dash.main" class="menu-item"><i class="icon-plus"></i>Add Broadcast</a>
               </li>
               <li>
               <li>
@@ -106,6 +137,10 @@
               </li>
             </ul>
           </li>
+           <li>
+                <a href="<?php echo base_url(); ?>home/add_pages" data-i18n="nav.dash.main" class="menu-item"><i class="icon-file"></i> Page Setting </a>
+                    
+              </li>
         </ul>
       </div>
       <!-- /main menu content-->

@@ -169,7 +169,7 @@ class Login_model extends CI_Model
 
      function check_login()
     {
-     //echo "vfcgcv";die;
+       //echo "vfcgcv";die;
          //$this->load->helper('cookie');
         
     $EmailAddress = trim($this->input->post('EmailAddress'));
@@ -255,10 +255,10 @@ class Login_model extends CI_Model
     function forgot_email()
     {
       $email = trim($this->input->post('EmailAddress'));
-       $rnd=randomCode();
+      $rnd=randomCode();
     
-    $query = $this->db->get_where('tbladmin',array('EmailAddress'=>$email));
-    //echo $this->db->last_query(); die;
+       $query = $this->db->get_where('tbladmin',array('EmailAddress'=>$email));
+      //echo $this->db->last_query(); die;
     if($query->num_rows()>0)
     {
       $row = $query->row();
@@ -335,21 +335,7 @@ class Login_model extends CI_Model
     }
   }
         
-  //       function updatePassword(){
-  //         $code=$this->input->post('code');
-  //         $query=$this->db->get_where('admin',array('password_reset_code'=>$code));
-  //   if($query->num_rows()>0)
-  //   {
-  //     $data=array('password'=>md5(trim($this->input->post('password'))),'password_reset_code'=>'');
-  //       $this->db->where(array('admin_id'=>$this->input->post('admin_id'),'password_reset_code'=>trim($this->input->post('code'))));
-  //       $d=$this->db->update('admin',$data);
-  //       return $d;
-      
-  //   }else{
-  //     return '';
-  //   }
-    
-  // }
+ 
 
   function updateAdminPassword(){
     $id=$this->session->userdata('AdminId'); 
@@ -365,6 +351,18 @@ class Login_model extends CI_Model
     }else{
       return false;
     }
-  }  
+  } 
+
+
+    function updatePages(){
+        $data = array(
+        'PageTitle' =>trim($this->input->post('PageTitle')),
+        'PageDescription' =>trim($this->input->post('PageDescription')),
+        'Isactive' => trim($this->input->post('IsActive')), 
+        );  
+          $this->db->where('page_id',$this->input->post('page_id'));
+          $this->db->update('tblpage',$data);
+       
+    } 
 
 }

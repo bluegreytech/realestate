@@ -49,26 +49,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <tr>
                             
                                     <td><?php echo $i; ?></td>
-                                    <td><?php echo $row->ProjectTitle; ?></td>
+                                    <td><?php echo $row->broadcast_title; ?></td>
                                    
-                                    <td><?php  if($row->ProjectImage){ ?>
-                                          <img id="blahlogo" src="<?php echo base_url()?>upload/projectimage/<?php echo $row->ProjectImage;?>" class="img-thumbnail border-0" style="display: block;  width: 50px; height: 50px;">
+                                    <td><?php  if($row->broadcast_image){ ?>
+                                         <input type="hidden" name="broadcastimage" id="broadcastimage" value="<?php echo $row->broadcast_image;?>">
+                                          <img id="blahlogo" src="<?php echo base_url()?>upload/broadcastimage/<?php echo $row->broadcast_image;?>" class="img-thumbnail border-0" style="display: block;  width: 50px; height: 50px;">
                                         <?php }else { echo "N/A" ?>
                                           
                                         <?php } ?>
                                          </td>
-                                    <td>
-                                        <?php if($row->ProjectStatus=='Ongoing'){ 
-                                            echo "<span class='label label-warning'>$row->ProjectStatus  Project</span>";
-
-                                           }elseif ($row->ProjectStatus=='Past') {
-                                             echo "<span class='label label-default'>$row->ProjectStatus Project</span>";
-
-                                           }elseif ($row->ProjectStatus=='Upcoming') { 
-                                            echo "<span class='label label-primary'>$row->ProjectStatus Project</span>";
-
-                                           }?>
-                                    </td>
+                                  
                                     <td>
                                         <?php if($row->IsActive=="Active")
                                             {
@@ -82,8 +72,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         ?>
                                     </td>
                                     <td>
-                                        <?php echo anchor('Project/Editproject/'.$row->ProjectId,'<i class="ficon icon-pencil2"></i>'); ?>
-                                        <a href="javascript:void(0)"  onclick="deletedata('<?php echo $row->ProjectId; ?>')" ><i class="ficon icon-bin"></i></a>    
+                                        <?php echo anchor('broadcast/edit_broadcast/'.$row->broadcast_id,'<i class="ficon icon-pencil2"></i>'); ?>
+                                        <a href="javascript:void(0)"  onclick="deletedata('<?php echo $row->broadcast_id; ?>','<?php  echo $row->broadcast_image; ?>')" ><i class="ficon icon-bin"></i></a>    
                                     </td>  
                                 </tr>      
                                 <?php
@@ -133,20 +123,20 @@ $(function() {
    
 });
 
-function deletedata(id){  
+function deletedata(id,image){  
     $('#myModal').modal('show');
-  // alert(id);
+   //alert(image);
         $('#yes_btn').click(function(){
            
-                url="<?php echo base_url();?>project/project_delete/";
-                alert(url);
+                url="<?php echo base_url();?>broadcast/broadcast_delete/";
+               // alert(url);
                 $.ajax({
                 url: url,
                 type: "post",
-                data: {id:id} ,
+                data: {id:id,broadcastimage:image} ,
                 success: function (response) {   
                     console.log(response);  
-                    return false;        
+                   // return false; 
                 //document.location.href = url+'project/projectlist';                  
 
             },

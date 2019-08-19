@@ -82,10 +82,10 @@
 	function getThemeName()
 	{
 		
-		$default_theme_name='default';
+		$default_theme_name='common';
 		
 		$CI =& get_instance();
-		$query = $CI->db->get_where("template_manager",array('active_template'=>1 ,'is_admin_template'=>1));
+		$query = $CI->db->get_where("tbltemplate_manager",array('active_template'=>1 ,'is_admin_template'=>1));
 		$row = $query->row();
 		//echo "<pre>dfd ";print_r($row);die;
 		$theme_name=trim($row->template_name);
@@ -120,7 +120,7 @@
                 {
                     //check user active
                     $a_data = get_one_admin($CI->session->userdata('AdminId'));
-              		// echo $a_data;die;
+              		// echo "<pre>";print_r($a_data);die;
                     if($a_data->IsActive == 'Active'){
                     	 
                      return true;
@@ -341,7 +341,7 @@
 	function site_setting()
 	{		
 		$CI =& get_instance();
-		$query = $CI->db->get("site_setting");
+		$query = $CI->db->get("tblsitesetting");
 		return $query->row();
 	
 	}
@@ -446,7 +446,7 @@
 	{
 	 	$CI =& get_instance();
 		//$query = $CI->db->get($table);
-		$query = $CI->db->get_where($table,array('status'=>'Active'));
+		$query = $CI->db->get_where($table,array('IsActive'=>'Active'));
 		if($query->num_rows() > 0)
 		{
 			return $query->result();
@@ -1052,16 +1052,16 @@
 		
 	}
 	
-	function sendPushNotificationAndroid($type,$title,$message,$id,$booking_id='')
+	function sendPushNotificationAndroid($type,$title,$message,$id,$broadcastimage='')
 	{
-				//	echo $message;die;
+					//echo $broadcastimage;die;
 				$CI=& get_instance();
 				$site_setting = site_setting();
 
 				//print_r($id); die;
 				// foreach($id  as $user_id) {
 				//echo "<pre>";print_r($user_id);
-		       	$select_user = $CI->db->query('SELECT * FROM '.$CI->db->dbprefix('device_master').' WHERE `device_type` =  "android" AND `login_status` =  "1" AND user_id='.$id.' GROUP BY `device_id`');	
+		       	$select_user = $CI->db->query('SELECT * FROM '.$CI->db->dbprefix('tbldevice_master').' WHERE `device_type` =  "android" AND `login_status` =  "1" AND user_id='.$id.' GROUP BY `device_id`');	
            
 	      		 //  echo "<pre>";print_r($CI->db->last_query()); die;
 
@@ -1108,7 +1108,7 @@
 									// 'notification' => $notification,
 									// 'data' => $data
 									// );
-						       //	echo $su['token_id'];die;
+						    	   //	echo $su['token_id'];die;
 					                    $to = $su['token_id']; 
 									// print_r($to);
 										$api_key = $site_setting->android_push_notification_token;
@@ -1119,13 +1119,14 @@
 										'message' => $message,
 										'title' => $title,
 										'type' => $type,
+										'broadcastimage' =>$broadcastimage,
 										'vibrate' => 1,
 										'sound' => 1,
-										 'data'=>array("booking_id" => $booking_id,	
-										  ) 
+										 // 'data'=>array("broadcastimage" =>$broadcastimage,	
+										 //  ) 
 										// you can also add images, additionalData
 										);
-					                   //echo "<pre>";print_r($msg);
+					                 //  echo "<pre>";print_r($msg);
 										$fields = array
 										(
 										'registration_ids' => $registrationIds,
@@ -1141,14 +1142,14 @@
 										);
 										$ch = curl_init();
 										curl_setopt( $ch,CURLOPT_URL, 'https://fcm.googleapis.com/fcm/send'); //$site_setting->android_push_notification_url
-										curl_setopt( $ch,CURLOPT_POST, true );
-										curl_setopt( $ch,CURLOPT_HTTPHEADER, $headers );
-										curl_setopt( $ch,CURLOPT_RETURNTRANSFER, true );
-										curl_setopt( $ch,CURLOPT_SSL_VERIFYPEER, false );
-										curl_setopt( $ch,CURLOPT_POSTFIELDS, json_encode( $fields ) );
-										$result = curl_exec($ch );
-										//echo "<pre>";print_r($result); 
-										curl_close( $ch );
+										curl_setopt($ch,CURLOPT_POST, true );
+										curl_setopt($ch,CURLOPT_HTTPHEADER, $headers );
+										curl_setopt($ch,CURLOPT_RETURNTRANSFER, true );
+										curl_setopt($ch,CURLOPT_SSL_VERIFYPEER, false );
+										curl_setopt($ch,CURLOPT_POSTFIELDS, json_encode( $fields));
+										$result = curl_exec($ch);
+										//echo "<pre>";print_r($result); die;
+										curl_close($ch);
 									//}
 								//}
 							//}
@@ -1281,9 +1282,10 @@
 	function get_page_by_slug($slug=null,$id=0)
 	{
 		$CI =& get_instance();
-		$query=$CI->db->get_where('pages',array('slug'=>$slug));
+		$query=$CI->db->get_where('tblpage',array('slug'=>$slug));
 		if($query->num_rows() > 0)
 		{
+			//echo "<pre>";print_r($query->row());die;
 			return $query->row();
 		}
 		return '';

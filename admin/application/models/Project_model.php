@@ -141,6 +141,8 @@ class Project_model extends CI_Model
 			'ProjectTitle'=>trim($this->input->post('ProjectTitle')),			
 			'Projectsdesc'=>trim($this->input->post('Projectsdesc')),
 			'Projectldesc'=>trim($this->input->post('Projectldesc')),
+			'Project_lat'=>trim($this->input->post('project_lat')),
+			'Project_long'=>trim($this->input->post('project_long')),
 			'ProjectImage'=>$project_image,
 			'Projectlogo'=>$project_logo,
 			'Project_brochure'=>$project_brochure,
@@ -245,7 +247,7 @@ class Project_model extends CI_Model
 			  } 
 			$picture = $this->upload->data();	
 			//echo "<pre>";print_r($picture);die;		
-			echo $project_logo=$picture['file_name'];
+			 $project_logo=$picture['file_name'];
 
 			if($this->input->post('pre_project_logo')!='')
 				{
@@ -310,6 +312,8 @@ class Project_model extends CI_Model
             $data = array(
 			'ProjectTitle' => trim($this->input->post('ProjectTitle')),			
 			'Projectsdesc' => trim($this->input->post('Projectsdesc')),
+			'Project_lat'=>trim($this->input->post('project_lat')),
+			'Project_long'=>trim($this->input->post('project_long')),
 			'ProjectImage'=>$project_image,
 			'Projectlogo'=>$project_logo,
 			'Project_brochure'=>$project_brochure,
@@ -746,5 +750,148 @@ class Project_model extends CI_Model
 		$res=$this->db->update('tblspecification',$data);		
 		return $res;
 	}
+   
 
+   function getprojectslider(){
+		$this->db->select('*');
+		$this->db->from('tblproject_slider');
+		$this->db->where('Is_deleted','0');
+		$r=$this->db->get();
+		$res = $r->result();
+		return $res;
+	}
+	function getprojectsliderdata($id){
+		$this->db->select('*');
+		$this->db->from('tblproject_slider');
+		$this->db->where('Is_deleted','0');
+		$this->db->where("projectslider_id",$id);
+		$query=$this->db->get();
+		return $query->row_array();
+	}
+
+    function projectslider_insert(){
+		//echo "<pre>";print_r($_FILES['ProjectsliderImages']['name']);die;
+		
+         	$projectslider_image='';
+         	$picture=array();
+         	//$image_settings=image_setting();
+         
+		if(isset($_FILES['ProjectsliderImages']) &&  $_FILES['ProjectsliderImages']['name']!='')
+        {
+			$this->load->library('upload');
+			$rand=rand(0,100000); 
+			  
+			$_FILES['userfile']['name']     =   $_FILES['ProjectsliderImages']['name'];
+			$_FILES['userfile']['type']     =   $_FILES['ProjectsliderImages']['type'];
+			$_FILES['userfile']['tmp_name'] =   $_FILES['ProjectsliderImages']['tmp_name'];
+			$_FILES['userfile']['error']    =   $_FILES['ProjectsliderImages']['error'];
+			$_FILES['userfile']['size']     =   $_FILES['ProjectsliderImages']['size'];
+   
+			$config['file_name'] = $rand.'ProjectsliderImages';			
+			$config['upload_path'] = base_path().'upload/projectimage/';		
+			$config['allowed_types'] = 'jpg|jpeg|gif|png|bmp';  
+ 
+             $this->upload->initialize($config);
+ 
+              if (!$this->upload->do_upload())
+			  {
+				$error =  $this->upload->display_errors();
+				echo "<pre>";print_r($error);
+			  } 
+			$picture = $this->upload->data();	
+			//echo "<pre>";print_r($picture);		
+		    $projectslider_image=$picture['file_name'];
+			if($this->input->post('pre_projectslider_image')!='')
+				{
+					if(file_exists(base_path().'upload/projectimage/'.$this->input->post('pre_projectslider_image')))
+					{
+						$link=base_path().'upload/projectimage/'.$this->input->post('pre_projectslider_image');
+						unlink($link);
+					}
+				}
+			} else {
+				if($this->input->post('pre_projectslider_image')!='')
+				{
+					$projectslider_image=$this->input->post('pre_projectslider_image');
+				}
+	    }
+		$data = array(					
+		'project_id' => trim($this->input->post('project_id')),
+		'projectslider_img'=>$projectslider_image,		
+		'IsActive' => $this->input->post('IsActive'),			
+		'created_date'=>date('Y-m-d  H:i:s')		
+		);
+		   
+		$res=$this->db->insert('tblproject_slider',$data);
+
+	
+   
+		return $res;	
+			//project logo upload end //
+
+	}
+	function projectslider_update(){
+		//echo "<pre>";print_r($_POST);die;
+		$id=$this->input->post('projectslider_id');
+      	$projectslider_image='';
+         	$picture=array();
+         	//$image_settings=image_setting();
+         	 $cpt = count($_FILES['ProjectsliderImages']['name']);
+   
+		if(isset($_FILES['ProjectsliderImages']) &&  $_FILES['ProjectsliderImages']['name']!='')
+        {
+             $this->load->library('upload');
+             $rand=rand(0,100000); 
+			  
+			$_FILES['userfile']['name']     =   $_FILES['ProjectsliderImages']['name'];
+			$_FILES['userfile']['type']     =   $_FILES['ProjectsliderImages']['type'];
+			$_FILES['userfile']['tmp_name'] =   $_FILES['ProjectsliderImages']['tmp_name'];
+			$_FILES['userfile']['error']    =   $_FILES['ProjectsliderImages']['error'];
+			$_FILES['userfile']['size']     =   $_FILES['ProjectsliderImages']['size'];
+   
+			$config['file_name'] = $rand.'ProjectsliderImages';			
+			$config['upload_path'] = base_path().'upload/projectimage/';		
+			$config['allowed_types'] = 'jpg|jpeg|gif|png|bmp';  
+ 
+             $this->upload->initialize($config);
+ 
+              if (!$this->upload->do_upload())
+			  {
+				$error =  $this->upload->display_errors();
+				echo "<pre>";print_r($error);
+			  } 
+			$picture = $this->upload->data();	
+			//echo "<pre>";print_r($picture);		
+		    $projectslider_image=$picture['file_name'];
+			if($this->input->post('pre_projectslider_image')!='')
+				{
+					if(file_exists(base_path().'upload/projectimage/'.$this->input->post('pre_projectslider_image')))
+					{
+						$link=base_path().'upload/projectimage/'.$this->input->post('pre_projectslider_image');
+						unlink($link);
+					}
+				}
+			} else {
+				if($this->input->post('pre_projectslider_image')!='')
+				{
+					$projectslider_image=$this->input->post('pre_projectslider_image');
+				}
+	    }
+	      $data = array(					
+			'project_id' => trim($this->input->post('project_id')),
+			'projectslider_img'=>$projectslider_image,		
+			'IsActive' => $this->input->post('IsActive'),			
+			'created_date'=>date('Y-m-d  H:i:s')		
+			);
+		   
+		
+		 $this->db->where("projectslider_id",$id);
+		$res=$this->db->update('tblproject_slider',$data);
+   
+	return $res;	
+
+	}
+
+	       
+	
 }

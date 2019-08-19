@@ -52,7 +52,7 @@ class Broadcast extends CI_Controller {
 			{
 				if($this->input->post("broadcastid")!="")
 			{
-			  echo "fddgfd";die;	
+			 // echo "fddgfd";die;	
 				$this->broadcast_model->broadcast_update();
 				$this->session->set_flashdata('success', 'Record has been Updated Succesfully!');
 				redirect('broadcast/broadcastlist');
@@ -76,20 +76,16 @@ class Broadcast extends CI_Controller {
 			redirect(base_url());
 		}
 			$data=array();
-			$result=$this->project_model->getdata($ProjectId);	
-			$data['redirect_page']='projectlist';
-			$data['ProjectId']=$result['ProjectId'];
-			$data['ProjectTitle']=$result['ProjectTitle'];	
-			$data['Projectsdesc']=$result['Projectsdesc'];
-			$data['Projectldesc']=$result['Projectldesc'];		
-		
-			$data['ProjectImage']=$result['ProjectImage'];	
-			$data['Projectlogo']=$result['Projectlogo'];
-			$data['Project_brochure']=$result['Project_brochure'];	
-			$data['ProjectStatus']=$result['ProjectStatus'];
+			$result=$this->broadcast_model->getdata($broadcastId);	
+			//echo "<pre>";print_r($result);die;
+			$data['redirect_page']='broadcastlist';
+			$data['broadcastid']=$result['broadcast_id'];
+			$data['broadcastitle']=$result['broadcast_title'];	
+			$data['broadcastdesc']=$result['broadcast_desc'];
+			$data['broadcastimage']=$result['broadcast_image'];
 			$data['IsActive']=$result['IsActive'];	
 			//echo "<pre>";print_r($data);die;		
-			$this->load->view('Project/ProjectAdd',$data);	
+			$this->load->view('broadcast/add_broadcast',$data);	
 		
 	}
 
@@ -106,16 +102,26 @@ class Broadcast extends CI_Controller {
 		}
 	}
 
-	function delete_broadcast(){
-		//echo "gfgfd" ;die;
-		//echo $id=$this->input->post('id'); die;
+	function broadcast_delete(){
+		
+		 $id=$this->input->post('id'); 
+		//echo  $this->input->post('broadcastimage'); die;
+
 		if(!check_admin_authentication()){ 
 			redirect(base_url());
 		}
+		if($this->input->post('broadcastimage')!='')
+			{
+				if(file_exists(base_path().'upload/broadcastimage/'.$this->input->post('broadcastimage')))
+				{
+					$link=base_path().'upload/broadcastimage/'.$this->input->post('broadcastimage');
+					unlink($link);
+				}
+			}
 			$data= array('Is_deleted' =>'1');
 			$id=$this->input->post('id');
-			$this->db->where("ProjectId",$id);			
-			$res=$this->db->update('tblprojects',$data);
+			$this->db->where("broadcast_id",$id);			
+			$res=$this->db->update('tblbroadcast',$data);
 			//echo $this->db->last_query();die;
 			echo json_encode($res);
 			die;

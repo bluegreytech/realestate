@@ -58,6 +58,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<label>Project Amenities</label>
 									<textarea  class="ckeditor" placeholder="Project Long Description" name="Projectldesc" ><?php echo $Projectldesc;?></textarea>
 								</div>
+								<div class="form-group">
+									<label>Project Latitude</label>
+									<input type="text" class="form-control" placeholder="Project Latitude" name="project_lat" value="<?php echo $Project_lat;?>" />
+								</div>
+								<div class="form-group">
+									<label>Project Longitude</label>
+									<input type="text" class="form-control" placeholder="Project Longitude" name="project_long"  value="<?php echo $Project_long;?>" />
+								</div>
+
 
 								<!--<div class="form-group">
 									<label>Price</label>
@@ -70,7 +79,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 											<input type="hidden" name="pre_project_logo" value="<?php echo $Projectlogo;?>">
 										Upload project logo <input type="file" name="Projectlogo" id="Projectlogo" onchange="readURL(this);">
 										</span></p>									
-										<span id="profileerrorlogo"></span>
+										<span id="projecterror"></span>
 								</div>
 								<div class="preview">									
 								<?php if($Projectlogo){ ?>
@@ -84,9 +93,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<label>Project Image</label>
 									<p><span class="btn btn-black btn-file">
 									<input type="hidden" name="pre_project_image" value="<?php echo $ProjectImage;?>">
-									Upload project image <input type="file" name="ProjectImage" id="ProjectImage" onchange="readURLimg(this);">
+									Upload project image <input type="file" name="ProjectImage" id="ProjectImage" onchange="readURLimg(this);" >
 									</span></p>									
-									<span id="profileerrorimg"></span>
+									<span id="profileimgerror"></span>
 								</div>
 								<div class="preview">									
 									<?php if($ProjectImage){ ?>
@@ -176,6 +185,42 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 $(document).ready(function()
 {
+	$.validator.addMethod('filesize', function (value, element, param) {
+	return this.optional(element) || (element.files[0].size <= param)
+	} ,'File size must be equal to or less then 2MB');
+
+	$.validator.addMethod('dimention', function(value, element, param) {
+    if(element.files.length == 0){
+        return true;
+    }
+   // console.log(value);
+
+    var width = $(element).data('imageWidth');
+  
+    var height = $(element).data('imageHeight');
+     
+    if(width == param[0] && height == param[1]){
+        return true;
+    }else{
+        return false;
+    }
+},'Please upload an image with 300 x 150 pixels dimension');
+$.validator.addMethod('imgdimention', function(value, element, param) {
+if(element.files.length == 0){
+    return true;
+}
+// console.log(value);
+
+var width = $(element).data('imageWidth');
+
+var height = $(element).data('imageHeight');
+ 
+if(width == param[0] && height == param[1]){
+    return true;
+}else{
+    return false;
+}
+},'Please upload an image with 760 x 428 pixels dimension');
 		$("#frm_project").validate(
 		{
 			 ignore: []  ,
@@ -197,11 +242,60 @@ $(document).ready(function()
 								required: true,
 						
 							},
+							Projectlogo:{
+									required:function(){
+									logoimage='<?php echo $Projectlogo; ?>';
+										if(logoimage){
+											return false;
+										}else{
+											return true;
+										}
+									},
+								extension: "JPG|jpeg|png|bmp",							
+								dimention:[300,150],
+								filesize: 2097152, 
+							},
+							ProjectImage:{
+									required:function(){
+									logoimage='<?php echo $ProjectImage; ?>';
+										if(logoimage){
+											return false;
+										}else{
+											return true;
+										}
+									},
+								extension: "JPG|jpeg|png|bmp",							
+								imgdimention:[760,428],
+								filesize: 2097152, 
+							},
+							Projectbrochure:{
+								required:function(){
+									logoimage='<?php echo $ProjectImage; ?>';
+										if(logoimage){
+											return false;
+										}else{
+											return true;
+										}
+									},
+							}
+
+							
 
 						},
 						messages: {			
 					
-						}				
+						},	
+				errorPlacement: function (error, element) {
+				console.log('dd', element.attr("name"))
+				if (element.attr("name") == "Projectlogo") {
+				error.appendTo("#projecterror");
+				}else if(element.attr("name") == "ProjectImage"){
+               error.appendTo("#profileimgerror");
+				}
+				else{
+				error.insertAfter(element)
+				}
+				}			
 		});
 });
 
@@ -236,6 +330,36 @@ function readURL(input) {
                 };
              reader.readAsDataURL(input.files[0]);
             }
-        }				                
+        }
+
+ $('#Projectlogo').change(function() {
+    $('#Projectlogo').removeData('imageWidth');
+    $('#Projectlogo').removeData('imageHeight');
+    var file = this.files[0];
+    var tmpImg = new Image();
+    tmpImg.src=window.URL.createObjectURL( file ); 
+    tmpImg.onload = function() {
+        width = tmpImg.naturalWidth,
+        height = tmpImg.naturalHeight;
+        $('#Projectlogo').data('imageWidth', width);
+        $('#Projectlogo').data('imageHeight', height);
+    }
+});
+
+  $('#ProjectImage').change(function() {
+    $('#ProjectImage').removeData('imageWidth');
+    $('#ProjectImage').removeData('imageHeight');
+    var file = this.files[0];
+    var tmpImg = new Image();
+    tmpImg.src=window.URL.createObjectURL( file ); 
+    tmpImg.onload = function() {
+        width = tmpImg.naturalWidth,
+        height = tmpImg.naturalHeight;
+        $('#ProjectImage').data('imageWidth', width);
+        $('#ProjectImage').data('imageHeight', height);
+    }
+});
+   
+      				                
 
 </script>

@@ -46,7 +46,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								</div>
 								<div class="form-group">
 									<label>Address</label>
-									<textarea type="text" class="form-control" placeholder="Address" name="Addresses" value="" minlength="5" maxlength="200"><?php echo $Addresses;?></textarea>
+									<textarea type="text" class="form-control" placeholder="Address" name="Addresses" value="" minlength="5" maxlength="200"><?php echo $Address;?></textarea>
 								</div>
 								<div class="form-group">
 									<label>Mobile no.</label>

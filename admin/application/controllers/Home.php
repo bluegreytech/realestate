@@ -7,16 +7,21 @@ class Home extends CI_Controller {
 	{
       	parent::__construct();
 		$this->load->model('Login_model');
+		$this->load->model('user_model');
       
     }
 
 	public function dashboard()
 	{ 
-		if(!check_admin_authentication()){ 
-		
+		if(!check_admin_authentication()){
 			redirect(base_url());
 		}		
-		$this->load->view('dashboard');
+		$data['result']=$this->user_model->getbdayuser();
+		$data['users']=$this->user_model->getuser();
+		$data['userrefer']=$this->user_model->get_userefer();
+
+		//echo count($data['result']); die;
+		$this->load->view('common/dashboard',$data);
 	}
 
 	public function profile($msg='')
@@ -266,5 +271,58 @@ class Home extends CI_Controller {
 			echo 0;die;
 		}
 	}
+   
 
+   public function add_pages($msg='')
+    {  //echo "fdsf";die;
+            
+		if(!check_admin_authentication())
+		{
+		redirect('login');
+		}
+                
+		$data = array();
+		//echo "<pre>";print_r($_POST);die;
+        $this->load->library('form_validation');
+	
+		$this->form_validation->set_rules('PageTitle', 'Page Title', 'required');
+		$this->form_validation->set_rules('IsActive', 'IsActive', 'required');		
+		
+		if($this->form_validation->run() == FALSE){	
+		
+			if(validation_errors())
+			{
+				$data["error"] = validation_errors();
+				//echo "<pre>";print_r($data);die;
+			}else{
+				$data["error"] = "";
+			}
+			if($_POST){			
+				$data["PageTitle"] = $this->input->post('PageTitle');
+				$data["PageDescription"]   = $this->input->post('PageDescription');
+				
+              
+			
+			}else{
+			$oneAdmin=get_page_by_slug('termcondition');
+			//print_r($oneAdmin);die;
+			$data["page_id"] 	= $oneAdmin->page_id;
+			$data["slug"] 		= $oneAdmin->slug;				
+			$data["PageTitle"]      = $oneAdmin->PageTitle;			
+           	$data['PageDescription']=$oneAdmin->PageDescription;
+           	$data['IsActive']=$oneAdmin->IsActive;
+			
+			}
+		}else{
+			//echo "else fdf";die;
+         //   $this->session->set_flashdata('successmsg', 'Profile has been updated successfully');				
+			$res=$this->Login_model->updatePages();
+			redirect('home/add_pages/');
+		}
+	
+		
+
+        $this->load->view('common/termsandcondition',$data);    
+            
+    }
 }
