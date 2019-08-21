@@ -132,6 +132,16 @@ class Admin extends CI_Controller {
 			return FALSE;
 		}
     }
+
+    function email_check() {
+		$query = $this->db->query("select EmailAddress from " . $this->db->dbprefix('tbladmin') . " where EmailAddress= '".md5($this->input->post('email'))."' and AdminId!='" . $this->session->userdata('AdminId') . "'");
+		//echo $this->db->last_query();die;
+		if ($query->num_rows() > 0) {
+			echo 1;die;
+		} else {
+			echo 0;die;
+		}
+	}
      
     
 }

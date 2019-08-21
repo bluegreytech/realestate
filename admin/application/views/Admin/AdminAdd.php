@@ -42,7 +42,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								</div>
 								<div class="form-group">
 									<label>Email Address</label>
-									<input type="text" class="form-control" placeholder="Email Address" name="EmailAddress" value="<?php echo $EmailAddress;?>" minlength="5" maxlength="200">
+									<input type="text" class="form-control" placeholder="Email Address" name="EmailAddress" id="EmailAddress" value="<?php echo $EmailAddress;?>" minlength="5" maxlength="200">
 								</div>
 									<?php if($AdminId==''){ ?>
 								<div class="form-group">
@@ -171,12 +171,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     return this.optional(element) || (element.files[0].size <= param)
 } ,'File size must be equal to or less then 2MB'); 
   
-  
-     
-         //alert("Sdfsdf");
-        // var form1 = $('#add_admin');
-        // var error1 = $('.alert-error');
-        // var success1 = $('.alert-success');
+  $.validator.addMethod("email_check", function(value, element) {
+
+        var response;
+        var user_id=$("#EmailAddress").val();
+    $.ajax({
+      type: "POST",
+      url: "<?php echo site_url('home/email_check'); ?>",
+      data:{email:value},  
+      async:false,
+      success:function(data) {
+      	console.log()
+          response = data;
+      }
+    });
+    if(response == 0) {
+    	alert();
+      return false;
+    } else if(response == 1) {
+      return true;
+    }
+  }, "Email address is already exist.");
 
        $('#add_admin').validate({
 
@@ -201,7 +216,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				},        
 				EmailAddress:{
 					required:true,
-					email:true,             
+					email:true,  
+					email_check:true,           
 				},				
 				password: {
 					noSpace: true,
