@@ -315,7 +315,7 @@ class Home extends CI_Controller {
 			}
 		}else{
 			//echo "else fdf";die;
-         //   $this->session->set_flashdata('successmsg', 'Profile has been updated successfully');				
+            $this->session->set_flashdata('successmsg', 'Page has been updated successfully');				
 			$res=$this->Login_model->updatePages();
 			redirect('home/add_pages/');
 		}

@@ -69,7 +69,7 @@ class Broadcast_model extends CI_Model
             	
                 $type='Broadcast Message';
             	$title = $broadcasttitle; 
-                $message = "Nyalkaran this is new broadcast msg";
+                $message = $broadcastdesc;
                 $broadcastimage=$broadcast_image; 
                // $message = "Your ".$service_name." booking for ".date("d/m/Y",strtotime($get_booking_info['booking_date']))." ".date('h:i A',strtotime($get_booking_info['starting_time']))." has been cancelled";
             

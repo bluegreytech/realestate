@@ -312,6 +312,7 @@ class Project_model extends CI_Model
             $data = array(
 			'ProjectTitle' => trim($this->input->post('ProjectTitle')),			
 			'Projectsdesc' => trim($this->input->post('Projectsdesc')),
+			'Projectldesc' => trim($this->input->post('Projectldesc')),
 			'Project_lat'=>trim($this->input->post('project_lat')),
 			'Project_long'=>trim($this->input->post('project_long')),
 			'ProjectImage'=>$project_image,

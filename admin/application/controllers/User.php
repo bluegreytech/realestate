@@ -111,7 +111,7 @@ class User extends CI_Controller {
 		if(!check_admin_authentication()){ 
 			redirect(base_url());
 		}
-			$data= array('Is_deleted' =>'1');
+			$data= array('Is_deleted' =>'1','IsActive'=>'Inactive');
 			$id=$this->input->post('id');
 			$this->db->where("UsersId",$id);
 			$res=$this->db->update('tbluser',$data);

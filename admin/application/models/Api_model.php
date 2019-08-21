@@ -657,7 +657,8 @@ class Api_model extends CI_Model
 		$data= array();
 		$this->db->select('ProjectId,ProjectTitle,Project_brochure,Projectlogo,ProjectStatus,Project_lat,Project_long');
 		$this->db->from('tblprojects');	
-		$this->db->order_by('ProjectId','asc');
+		$this->db->where('IsActive',"Active");	
+		$this->db->order_by('ProjectId','Desc');
 		$query=$this->db->get();
 		
 		return $query->result_array();
@@ -676,7 +677,8 @@ class Api_model extends CI_Model
 		$this->db->select('*');
 		$this->db->from('tblprojects');
 		$this->db->where('ProjectId',$project_id);	
-		$this->db->where('Is_deleted','0');	
+		$this->db->where('Is_deleted','0');
+		$this->db->where('IsActive',"Active");	
 		$this->db->order_by('ProjectId','desc');
 		$query1=$this->db->get();
 		//echo $this->db->last_query();die;
@@ -685,6 +687,7 @@ class Api_model extends CI_Model
 		$this->db->from('tblplanlayout');
 		$this->db->where('project_id',$project_id);	
 		$this->db->where('Is_deleted','0');	
+		$this->db->where('IsActive',"Active");	
 		$this->db->order_by('planlayout_id','desc');
 		$query=$this->db->get();
 		//echo $this->db->last_query();die;
@@ -693,13 +696,15 @@ class Api_model extends CI_Model
 		$this->db->from('tblgallery');
 		$this->db->where('project_id',$project_id);	
 		$this->db->where('Is_deleted','0');	
+		$this->db->where('IsActive',"Active");	
 		$this->db->order_by('gallery_id','desc');
 		$query2=$this->db->get();
 
 		$this->db->select('*');
 		$this->db->from('tblspecification');
 		$this->db->where('project_id',$project_id);
-		$this->db->where('Is_deleted','0');		
+		$this->db->where('Is_deleted','0');	
+		$this->db->where('IsActive',"Active");		
 		$this->db->order_by('specification_id','desc');
 		$query3=$this->db->get();
 
@@ -707,6 +712,7 @@ class Api_model extends CI_Model
 		$this->db->from('tblproject_slider');
 		$this->db->where('project_id',$project_id);	
 		$this->db->where('Is_deleted','0');	
+		$this->db->where('IsActive',"Active");	
 		$this->db->order_by('projectslider_id','desc');
 		$query4=$this->db->get();
 
@@ -806,6 +812,7 @@ class Api_model extends CI_Model
 		$this->db->select('broadcast_title,broadcast_desc,broadcast_image,created_date');
 		$this->db->from('tblbroadcast');
 		$this->db->where('Is_deleted','0');	
+		$this->db->where('IsActive',"Active");	
 		$this->db->order_by('broadcast_id','desc');
 		$query=$this->db->get();
 		
@@ -819,6 +826,8 @@ class Api_model extends CI_Model
 	
 		$this->db->select('referral_point,closing_point,redeem_point');
 		$this->db->from('tbluser');
+		$this->db->where('Is_deleted','0');	
+		$this->db->where('IsActive',"Active");	
 		$this->db->where('UsersId',$user_id);	
 		$this->db->order_by('UsersId','desc');
 		$query=$this->db->get();
@@ -853,6 +862,7 @@ class Api_model extends CI_Model
 		$this->db->where('user_id',$user_id);
 		$this->db->where('status',$this->input->post('status'));	
 		$this->db->where('Is_deleted','0');	
+		$this->db->where('IsActive',"Active");		
 		$this->db->order_by('user_id','desc');
 		$query=$this->db->get();
 		//echo $this->db->last_query();
@@ -873,7 +883,7 @@ class Api_model extends CI_Model
 	   $this->db->order_by('ru.userredeem_id','desc');
 		$this->db->where('ru.user_id',$user_id);
 		$query=$this->db->get();
-		echo $this->db->last_query();die;
+		//echo $this->db->last_query();die;
 		if($query->num_rows()>0){		
 				
 				return $query->result_array();
