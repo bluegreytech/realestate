@@ -57,12 +57,13 @@ class Broadcast_model extends CI_Model
                     
             $res=$this->db->insert('tblbroadcast',$data);	
             if($res){
+            	$user_id=array();
             	$datauser=get_all_records('tbluser');
             	foreach ($datauser as $row) {
             		//echo "<pre>";print_r($row->UsersId);
             		$user_id=$row->UsersId;
-            	}
-            	//die;
+            	
+            
             	$broadcasttitle=$this->input->post('broadcastitle');
             	$broadcastdesc=$this->input->post('broadcastdesc');
             	$broadcastimage=$this->input->post('BroadcastImage');
@@ -74,17 +75,19 @@ class Broadcast_model extends CI_Model
                // $message = "Your ".$service_name." booking for ".date("d/m/Y",strtotime($get_booking_info['booking_date']))." ".date('h:i A',strtotime($get_booking_info['starting_time']))." has been cancelled";
             
             	sendPushNotificationAndroid($type,$title,$message,$user_id,$broadcastimage);
+            	}
             }
 			return $res;
 	}
 
 	function getbroadcast(){
-		$r=$this->db->select('*')
-					->from('tblbroadcast')->where('Is_deleted','0')
-					->get();
-		$res = $r->result();
+		$this->db->select('*');
+		$this->db->from('tblbroadcast');
+		$this->db->where('Is_deleted','0');
+		$this->db->order_by('broadcast_id','desc');
+		$query=$this->db->get();
+		$res = $query->result();
 		return $res;
-
 	}
 
 	function getdata($id){
@@ -92,19 +95,20 @@ class Broadcast_model extends CI_Model
 		$this->db->from("tblbroadcast");
 		$this->db->where("Is_deleted",'0');
 		$this->db->where("broadcast_id",$id);
+		$this->db->order_by('broadcast_id','desc');
 		$query=$this->db->get();
 		return $query->row_array();
 	}
 
 	function broadcast_update(){
-		//echo "<pre>";print_r($_POST);die;
-		 $id=$this->input->post('broadcastid');
-         	$broadcast_image='';
-         	//$image_settings=image_setting();
+		
+		$id=$this->input->post('broadcastid');
+        $broadcast_image='';
+         
 		if(isset($_FILES['BroadcastImage']) &&  $_FILES['BroadcastImage']['name']!='')
         {
-             $this->load->library('upload');
-             $rand=rand(0,100000); 
+			$this->load->library('upload');
+			$rand=rand(0,100000); 
 			  
 			$_FILES['userfile']['name']     =   $_FILES['BroadcastImage']['name'];
 			$_FILES['userfile']['type']     =   $_FILES['BroadcastImage']['type'];
@@ -116,7 +120,7 @@ class Broadcast_model extends CI_Model
 			$config['upload_path'] = base_path().'upload/broadcastimage/';		
 			$config['allowed_types'] = 'jpg|jpeg|gif|png|bmp';  
  
-             $this->upload->initialize($config);
+            $this->upload->initialize($config);
  
               if (!$this->upload->do_upload())
 			  {
@@ -146,8 +150,7 @@ class Broadcast_model extends CI_Model
 			'broadcast_image'=>$broadcast_image,
 			'IsActive' =>$this->input->post('IsActive'),
 			);
-		 // echo "<pre>";print_r($data);die;	
-		  // echo "<pre>";print_r($data);die;	
+		
           
 	    $this->db->where("broadcast_id",$id);
 		$res=$this->db->update('tblbroadcast',$data);		

@@ -223,11 +223,13 @@
 			// 'mailtype'  => 'html', 
 			// 'charset'   => 'iso-8859-1'
 			// );
-			$config['protocol']='smtp';  
-			$config['smtp_host'] = trim("ssl://smtp.googlemail.com");
-            $config['smtp_port']='465';  
-            $config['smtp_user'] = trim("bluegreyindia@gmail.com");
-            $config['smtp_pass'] = trim("Test@123");
+			 	$config['protocol']='smtp';  
+			 	$config['smtp_host'] = trim("relay-hosting.secureserver.net");
+				$config['smtp_port']='587';  
+				$config['smtp_user'] = trim("binny@bluegrey.co.in");
+				$config['smtp_pass'] = trim("Binny@123");
+             	$config['smtp_crypto'] = false;
+				$config['smtp_keepalive']=false;
 		
 			// $config['protocol']='smtp';  
 			// $config['smtp_host']=trim($email_set->smtp_host);  
@@ -235,6 +237,7 @@
 			// $config['smtp_timeout']='30';  
 			// $config['smtp_user']=trim($email_set->smtp_email);  
 			// $config['smtp_pass']=trim($email_set->smtp_password);  
+			// $config['SMTP_Secure']=false;
 					
 		}
 		
@@ -268,19 +271,19 @@
 		$CI->email->initialize($config);
 		//echo "<pre>";print_r($config);die;
 		 
-		$CI->email->from($email_address_from,"REAL ESTATE");
+		$CI->email->from($email_address_from,"Nyalkaran Group");
 		$CI->email->reply_to($email_address_reply);
 		$CI->email->to($email_to);
 		$CI->email->subject($email_subject);
 		$CI->email->message($str);
-		$CI->email->send();
-		// if($CI->email->send()){
-		// 	//echo $CI->email->prin
-		//    echo "send"; die;
-		// }else{
-		// 		echo $CI->email->print_debugger();
-		// }
-	   //echo "<pre>"; print_r($CI->email->send()); die;
+		//$CI->email->send();
+		if($CI->email->send()){
+			//echo $CI->email->prin
+		   echo "send"; die;
+		}else{
+				echo $CI->email->print_debugger();die;
+		}
+	  // echo "<pre>"; print_r($CI->email->send()); die;
 
 	}
 

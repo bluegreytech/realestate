@@ -41,7 +41,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<label class="col-md-3"><span><?php if($EmailAddress) { echo $EmailAddress; }else{ echo "-"; } ?></span></label>
 									
 									<label class="col-md-3">Refer user Address</label>
-									<label class="col-md-3"><span><?php if($Address){ echo $Address; }else{ echo "-";}  ?></span></label>
+									<label class="col-md-3"><span><?php if($Project_name && $House_no){ echo  $House_no.' '.$Project_name; }else{ echo "-";}  ?></span></label>
 								
 
 									<h4 class="form-section"><i class="icon-clipboard4"></i> Refered To</h4>
@@ -52,6 +52,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<label class="col-md-3"><span><?php if($mobileno ){ echo $mobileno; }else{ echo "-" ;} ?></span></label>
 									<label class="col-md-3">Email</label>
 									<label class="col-md-3"><span><?php if($email){ echo $email; }else{ echo "-";}  ?></span></label>
+										<label class="col-md-3">Property</label>
+									<label class="col-md-3"><span><?php if($property){ echo $property; }else{ echo "-";}  ?></span></label>
 									
 									<label class="col-md-3">Status</label>
 
@@ -71,7 +73,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 											<?php }elseif ($status=='Declined') { ?>
 											
 												<option value="Declined" <?php if($status=='Declined'){ echo "selected"; } ?>>Declined</option>
-												<option value="Closed" <?php if($status=='Closed'){ echo "selected"; } ?>>Closed</option>
+												
 										
 											<?php }elseif ($status=='Closed') { ?>
 												<option value="Closed" <?php if($status=='Closed'){ echo "selected"; } ?>>Closed</option>
@@ -94,7 +96,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							 <hr>
 
 							<div class="form-action">
-							<button class="btn btn-black " type="submit"><i class="icon-ok"></i> <?php echo ($refer_id!='')?'Update':'Submit' ?></button>
+							<button class="btn btn-black " type="submit"  <?php if($status=='Closed'){echo "disabled";}?>><i class="icon-ok"></i> <?php echo ($refer_id!='')?'Update':'Submit' ?></button>
 							
 								<input type="button" name="cancel" class="btn btn-default" value="Cancel" onClick="location.href='<?php echo base_url(); ?>user/<?php echo $redirect_page; ?>'">
 							</div>
@@ -119,20 +121,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script>
 
 $(document).ready(function()
-{
+{jQuery.validator.addMethod("specialChars", function( value, element ) {
+        var regex = new RegExp("^[0-9-!@#$%*?]");
+        var key = value;
+
+        if (!regex.test(key)) {
+           return false;
+        }
+        return true;
+    }, "please use only Numbers and special characters");
 	
        $('#add_user').validate({
-
-	        // errorElement: 'span', //default input error message container
-	        // errorClass: 'help-inline', // default input error message class
-	        // focusInvalid: false, // do not focus the last invalid input
-	        // ignore: "",
-	        // success: function(label,element) {
-	        //     // label.parent().removeClass('error');
-	        //     // label.remove();
-	        // },
+	       
 			rules:{
-				
+				closing_points:{
+					specialChars:true
+				}
 			
 			 }, 
     });

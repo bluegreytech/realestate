@@ -19,6 +19,7 @@ class Home extends CI_Controller {
 		$data['result']=$this->user_model->getbdayuser();
 		$data['users']=$this->user_model->getuser();
 		$data['userrefer']=$this->user_model->get_userefer();
+		$data['activeTab']="dashboard";
 
 		//echo count($data['result']); die;
 		$this->load->view('common/dashboard',$data);
@@ -263,8 +264,8 @@ class Home extends CI_Controller {
         $this->load->view('common/ChangePassword',$data);    
 	}
 	function oldpassword_check() {
-		$query = $this->db->query("select Password from " . $this->db->dbprefix('tbladmin') . " where Password = '".md5($this->input->post('password'))."' and AdminId!='" . $this->session->userdata('AdminId') . "'");
-		//echo $this->db->last_query();die;
+		$query = $this->db->query("select Password from " . $this->db->dbprefix('tbladmin') . " where Password ='".md5($this->input->post('password'))."' and AdminId='" . $this->session->userdata('AdminId') . "'");
+		//aecho $this->db->last_query();die;
 		if ($query->num_rows() > 0) {
 			echo 1;die;
 		} else {
@@ -319,8 +320,6 @@ class Home extends CI_Controller {
 			$res=$this->Login_model->updatePages();
 			redirect('home/add_pages/');
 		}
-	
-		
 
         $this->load->view('common/termsandcondition',$data);    
             
