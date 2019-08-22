@@ -34,6 +34,7 @@ class Home extends CI_Controller {
 		}
                 
 		$data = array();
+		$data['activeTab']="profile";
 		//echo "<pre>";print_r($_POST);die;
         $this->load->library('form_validation');
 		$this->form_validation->set_rules('EmailAddress', 'Email', 'required|valid_email|callback_adminmail_check');
@@ -232,6 +233,7 @@ class Home extends CI_Controller {
 		
             
 		$data = array();
+		$data['activeTab']="change_password";
         $this->load->library('form_validation');	
 		$this->form_validation->set_rules('password', 'Password', 'required|matches[cpassword]|min_length[8]');
 		$this->form_validation->set_rules('cpassword', 'Password Confirm', 'required|min_length[8]');	
@@ -283,7 +285,7 @@ class Home extends CI_Controller {
 		}
                 
 		$data = array();
-		//echo "<pre>";print_r($_POST);die;
+		$data['activeTab']="add_pages";	
         $this->load->library('form_validation');
 	
 		$this->form_validation->set_rules('PageTitle', 'Page Title', 'required');

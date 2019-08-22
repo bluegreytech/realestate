@@ -45,13 +45,13 @@
               </li>
             </ul>
           </li>
-          <li class="nav-item <?php echo($activeTab =="add_specification"||$activeTab =="list_specification"||$activeTab =="list_planlayout"||$activeTab =="add_planlayout"||$activeTab =="add_gallery"||$activeTab =="list_gallery"||$activeTab =="add_projectslider"||$activeTab =="add_projectslider"||$activeTab =="list_projectslider") ? "open" : ""; ?>">
+          <li class="nav-item <?php echo($activeTab =="add_specification"||$activeTab =="list_specification"||$activeTab =="list_planlayout"||$activeTab =="add_planlayout"||$activeTab =="add_gallery"||$activeTab =="list_gallery"||$activeTab =="add_projectslider"||$activeTab =="list_projectslider") ? "open" : ""; ?>">
             <a>
               <i class="icon-cog"></i><span data-i18n="nav.dash.main" class="menu-title">Project Details</span>
             </a>
             <ul class="menu-content">
               <li class="<?php echo ($activeTab == "add_specification"|| $activeTab =="list_specification") ? "open" : ""; ?>">
-                <a  data-i18n="nav.dash.main" class="menu-item  <?php echo ($activeTab == "add_specification") ? "active" : ""; ?> "><i class="icon-tasks"></i>Project Specification</a>
+                <a  data-i18n="nav.dash.main" class="menu-item  <?php echo ($activeTab == "add_specification"|| $activeTab =="list_specification") ? "active" : ""; ?> "><i class="icon-tasks"></i>Project Specification</a>
                     <ul class="menu-content">
                       <li>
                       <a href="<?php echo base_url(); ?>project/add_specification" data-i18n="nav.dash.main" class="menu-item <?php echo ($activeTab == "add_specification") ? "active" : ""; ?>"><i class="icon-plus"></i>Add Project Specification</a>
@@ -84,7 +84,7 @@
                     </ul>
               </li>
                <li class="<?php echo ($activeTab == "list_projectslider"|| $activeTab =="add_projectslider") ? "open" : ""; ?>">
-                <a href="<?php echo base_url(); ?>project/list_projectslider" data-i18n="nav.dash.main" class="menu-item <?php echo ($activeTab == "list_projectslider") ? "active" : ""; ?>"><i class="icon-image"></i> Project Silder </a>
+                <a href="<?php echo base_url(); ?>project/list_projectslider" data-i18n="nav.dash.main" class="menu-item <?php echo ($activeTab == "list_projectslider"||$activeTab =="add_projectslider") ? "active" : ""; ?>"><i class="icon-image"></i> Project Silder </a>
                     <ul class="menu-content">
                       <li>
                       <a href="<?php echo base_url(); ?>project/add_projectslider" data-i18n="nav.dash.main" class="menu-item <?php echo ($activeTab == "add_projectslider") ? "active" : ""; ?>"><i class="icon-plus"></i>Add project slider</a>
@@ -96,48 +96,42 @@
               </li>
             </ul>
           </li>
-          <li class="nav-item">
+          <li class="nav-item <?php echo($activeTab == "Userlist") ? "open" : ""; ?>">
             <a>
               <i class="icon-users"></i><span data-i18n="nav.dash.main" class="menu-title">Users</span>
             </a>
             <ul class="menu-content">
-            <!--   <li>
-                <a href="<?php //echo base_url(); ?>User/Useradd" data-i18n="nav.dash.main" class="menu-item"><i class="icon-plus"></i> Add User </a>
-              </li> -->
               <li>
-                <a href="<?php echo base_url(); ?>User/Userlist" data-i18n="nav.dash.main" class="menu-item"><i class="icon-file-text2"></i> List of Users </a>
+                <a href="<?php echo base_url(); ?>User/Userlist" data-i18n="nav.dash.main" class="menu-item <?php echo ($activeTab == "Userlist") ? "active" : ""; ?> "><i class="icon-file-text2"></i> List of Users </a>
               </li>
             </ul>
           </li>
-          <li class="nav-item">
+          <li class="nav-item <?php echo($activeTab == "Userrefer_list") ? "open" : ""; ?>">
             <a>
               <i class="icon-users"></i><span data-i18n="nav.dash.main" class="menu-title">User Refer </span>
             </a>
             <ul class="menu-content">
-            <!--   <li>
-                <a href="<?php //echo base_url(); ?>User/Useradd" data-i18n="nav.dash.main" class="menu-item"><i class="icon-plus"></i> Add User </a>
-              </li> -->
               <li>
-                <a href="<?php echo base_url(); ?>User/Userrefer_list" data-i18n="nav.dash.main" class="menu-item"><i class="icon-file-text2"></i> List of User Refer </a>
+                <a href="<?php echo base_url(); ?>User/Userrefer_list" data-i18n="nav.dash.main" class="menu-item <?php echo ($activeTab == "Userrefer_list") ? "active" : ""; ?>"><i class="icon-file-text2"></i> List of User Refer </a>
               </li>
             </ul>
           </li>
-          <li class="nav-item">
+          <li class="nav-item <?php echo($activeTab == "add_broadcast"|| $activeTab == "broadcastlist") ? "open" : ""; ?>">
             <a>
               <i class="icon-bell-o"></i><span data-i18n="nav.dash.main" class="menu-title">Broadcast Notification</span>
             </a>
             <ul class="menu-content">
               <li>
-                <a href="<?php echo base_url(); ?>broadcast/add_broadcast" data-i18n="nav.dash.main" class="menu-item"><i class="icon-plus"></i>Add Broadcast</a>
+                <a href="<?php echo base_url(); ?>broadcast/add_broadcast" data-i18n="nav.dash.main" class="menu-item <?php echo ($activeTab == "add_broadcast") ? "active" : ""; ?>"><i class="icon-plus"></i>Add Broadcast</a>
               </li>
               <li>
               <li>
-                <a href="<?php echo base_url(); ?>broadcast/broadcastlist" data-i18n="nav.dash.main" class="menu-item"><i class="icon-file-text2"></i>List of Notification</a>
+                <a href="<?php echo base_url(); ?>broadcast/broadcastlist" data-i18n="nav.dash.main" class="menu-item <?php echo ($activeTab == "broadcastlist") ? "active" : ""; ?>"><i class="icon-file-text2"></i>List of Notification</a>
               </li>
             </ul>
           </li>
           
-            <li class="nav-item">
+            <li class="nav-item <?php echo($activeTab == "add_pages") ? "open" : ""; ?>">
             <a href="<?php echo base_url(); ?>home/add_pages">
               <i class="icon-file"></i><span data-i18n="nav.dash.main" class="menu-title"> Page Setting</span>
             </a>

@@ -394,14 +394,14 @@ footer.footer-dark {
           color: #dcdcdc; }
         .main-menu.menu-dark ul.menu-popout .open > ul {
           display: block;
-          background: #0f161b; }
+          background: #fff; }
           .main-menu.menu-dark ul.menu-popout .open > ul .open {
             background: #06090b; }
             .main-menu.menu-dark ul.menu-popout .open > ul .open > ul {
               display: block;
               background: #06090b; }
         .main-menu.menu-dark ul.menu-popout .open li.hover > a, .main-menu.menu-dark ul.menu-popout .open li:hover > a {
-          background: #0b1115; }
+          background: #8a8a89; }
       .main-menu.menu-dark ul.menu-popout .hover > a, .main-menu.menu-dark ul.menu-popout:hover > a {
         color: #e6e6e6;
         background-color: #162029; }

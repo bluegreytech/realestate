@@ -14,7 +14,8 @@ class User extends CI_Controller {
 	{	
 		if(!check_admin_authentication()){ 
 			redirect(base_url());
-		}else{		
+		}else{	
+			$data['activeTab']="Userlist";	
 			$data['result']=$this->user_model->getuser();
 			//echo "<pre>";print_r($data);die;
 			$data['redirect_page']="userlist";
@@ -27,12 +28,11 @@ class User extends CI_Controller {
 		if(!check_admin_authentication()){ 
 			redirect(base_url());
 		}   
-				$data=array();
-				$this->load->library("form_validation");
-			$this->form_validation->set_rules('FullName', 'Full Name', 'required');			
-			
+			$data=array();
+			$data['activeTab']="Useradd";	
+			$this->load->library("form_validation");
+			$this->form_validation->set_rules('FullName', 'Full Name', 'required');
 			$this->form_validation->set_rules('UserContact', 'Mobileno', 'required');
-			
 		
 		if($this->form_validation->run() == FALSE){			
 			if(validation_errors())
@@ -80,6 +80,7 @@ class User extends CI_Controller {
 			redirect(base_url());
 		}else{
 			$data=array();
+			$data['activeTab']="Edituser";	
 			$result=$this->user_model->getdata($UsersId);	
 			$data['UserId']=$result['UsersId'];
 			$data['FullName']=$result['FullName'];	
@@ -109,46 +110,47 @@ class User extends CI_Controller {
 	}
 
 	function deletedata(){
-		//echo "jhjh";die;
-		if(!check_admin_authentication()){ 
+		
+		if(!check_admin_authentication())
+		{ 
 			redirect(base_url());
 		}
-			$data= array('Is_deleted' =>'1','IsActive'=>'Inactive');
-			$id=$this->input->post('id');
-			$this->db->where("UsersId",$id);
-			$res=$this->db->update('tbluser',$data);
-			//echo $this->db->last_query();die;
-			echo json_encode($res);
-			die;
+		$data= array('Is_deleted' =>'1','IsActive'=>'Inactive');
+		$id=$this->input->post('id');
+		$this->db->where("UsersId",$id);
+		$res=$this->db->update('tbluser',$data);
+		echo json_encode($res);
+		die;
 		
 	}
 
 	function usermail_check($EmailAddress)
 	{
 
-	$query = $this->db->query("select EmailAddress from ".$this->db->dbprefix('tbluser')." where EmailAddress = '$EmailAddress' and UsersId!='".$this->input->post('UsersId')."'");
+		$query = $this->db->query("select EmailAddress from ".$this->db->dbprefix('tbluser')." where EmailAddress = '$EmailAddress' and UsersId!='".$this->input->post('UsersId')."'");
 
-	if($query->num_rows() == 0)
-	{
-	return TRUE;
-	}
-	else
-	{
-	$this->form_validation->set_message('usermail_check', 'Email address is already exist.');
-	return FALSE;
-	}
+		if($query->num_rows() == 0)
+		{
+		return TRUE;
+		}
+		else
+		{
+		$this->form_validation->set_message('usermail_check', 'Email address is already exist.');
+		return FALSE;
+		}
 	}
 
    function Userrefer_list()
 	{	
-		if(!check_admin_authentication()){ 
+		if(!check_admin_authentication())
+		{ 
 			redirect(base_url());
-		}else{		
-			$data['result']=$this->user_model->get_userefer();
-			//echo "<pre>";print_r($data);die;
-			$data['redirect_page']="userreferlist";
-			$this->load->view('User/UserRefer_list',$data);
-		}
+		}	
+		$data['activeTab']="Userrefer_list";
+		$data['result']=$this->user_model->get_userefer();
+		$data['redirect_page']="userreferlist";
+		$this->load->view('User/UserRefer_list',$data);
+		
 	}
 
 	function Edituser_refer($refer_id){
@@ -156,8 +158,8 @@ class User extends CI_Controller {
 			redirect(base_url());
 		}else{
 			$data=array();
+			$data['activeTab']="Edituser_refer";
 			$result=$this->user_model->getreferdata($refer_id);	
-			//echo "<pre>";print_r($result);die;
 			
 			$data['refer_id']=$result['refer_id'];
 			$data['UsersId']=$result['UsersId'];
@@ -196,8 +198,9 @@ class User extends CI_Controller {
 		if(!check_admin_authentication()){ 
 			redirect(base_url());
 		}   
-				$data=array();
-				$this->load->library("form_validation");
+			$data=array();
+			$data['activeTab']="UserReferAdd";
+			$this->load->library("form_validation");
 			$this->form_validation->set_rules('status', 'Status', 'required');			
 			
 			
@@ -253,7 +256,7 @@ class User extends CI_Controller {
 			$data['closing_point']=$userpoints['closing_point'];
 			$data['redeem_point']=$userpoints['redeem_point'];
 			$data['UsersId']=$userpoints['UsersId'];
-
+          	$data['activeTab']="loyalty_point";
 
 
 			$this->load->view('User/UserPoints',$data);

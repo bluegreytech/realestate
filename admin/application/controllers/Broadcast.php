@@ -14,7 +14,8 @@ class Broadcast extends CI_Controller {
 	{	
 		if(!check_admin_authentication()){ 
 			redirect(base_url());
-		}else{		
+		}else{	
+			$data['activeTab']="broadcastlist";	
 			$data['result']=$this->broadcast_model->getbroadcast();
 			$this->load->view('broadcast/broadcast_list',$data);
 		}
@@ -27,6 +28,7 @@ class Broadcast extends CI_Controller {
 		}   
 			
 			$data=array();	
+			$data['activeTab']="add_broadcast";	
 			$this->load->library("form_validation");
 			$this->form_validation->set_rules('broadcastitle', 'Broadcast title', 'required');			
 			$this->form_validation->set_rules('broadcastdesc', 'Broadcast Description', 'required');
@@ -76,6 +78,7 @@ class Broadcast extends CI_Controller {
 			redirect(base_url());
 		}
 			$data=array();
+			$data['activeTab']="edit_broadcast";	
 			$result=$this->broadcast_model->getdata($broadcastId);	
 			//echo "<pre>";print_r($result);die;
 			$data['redirect_page']='broadcastlist';
@@ -104,9 +107,7 @@ class Broadcast extends CI_Controller {
 
 	function broadcast_delete(){
 		
-		 $id=$this->input->post('id'); 
-		//echo  $this->input->post('broadcastimage'); die;
-
+		$id=$this->input->post('id');		
 		if(!check_admin_authentication()){ 
 			redirect(base_url());
 		}

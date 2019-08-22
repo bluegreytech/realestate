@@ -139,3 +139,260 @@ ERROR - 2019-08-22 10:11:00 --> 404 Page Not Found: Default/images
 ERROR - 2019-08-22 10:11:00 --> 404 Page Not Found: Default/images
 ERROR - 2019-08-22 10:11:44 --> 404 Page Not Found: Default/images
 ERROR - 2019-08-22 10:11:44 --> 404 Page Not Found: Default/images
+ERROR - 2019-08-22 10:18:26 --> 404 Page Not Found: Default/images
+ERROR - 2019-08-22 10:18:26 --> 404 Page Not Found: Default/images
+ERROR - 2019-08-22 10:19:37 --> 404 Page Not Found: Default/images
+ERROR - 2019-08-22 10:19:37 --> 404 Page Not Found: Default/images
+ERROR - 2019-08-22 10:20:15 --> 404 Page Not Found: Default/images
+ERROR - 2019-08-22 10:20:15 --> 404 Page Not Found: Default/images
+ERROR - 2019-08-22 10:20:35 --> 404 Page Not Found: Default/images
+ERROR - 2019-08-22 10:20:36 --> 404 Page Not Found: Default/images
+ERROR - 2019-08-22 10:21:46 --> 404 Page Not Found: Default/images
+ERROR - 2019-08-22 10:21:46 --> 404 Page Not Found: Default/images
+ERROR - 2019-08-22 10:22:02 --> 404 Page Not Found: Default/images
+ERROR - 2019-08-22 10:22:02 --> 404 Page Not Found: Default/images
+ERROR - 2019-08-22 10:27:01 --> 404 Page Not Found: Default/images
+ERROR - 2019-08-22 10:27:01 --> 404 Page Not Found: Default/images
+ERROR - 2019-08-22 10:29:42 --> 404 Page Not Found: Default/images
+ERROR - 2019-08-22 10:29:42 --> 404 Page Not Found: Default/images
+ERROR - 2019-08-22 10:29:45 --> 404 Page Not Found: Default/images
+ERROR - 2019-08-22 10:29:45 --> 404 Page Not Found: Default/images
+ERROR - 2019-08-22 10:29:53 --> 404 Page Not Found: Default/images
+ERROR - 2019-08-22 10:29:53 --> 404 Page Not Found: Default/images
+ERROR - 2019-08-22 10:29:56 --> 404 Page Not Found: Default/images
+ERROR - 2019-08-22 10:29:56 --> 404 Page Not Found: Default/images
+ERROR - 2019-08-22 10:31:34 --> 404 Page Not Found: Default/images
+ERROR - 2019-08-22 10:31:34 --> 404 Page Not Found: Default/images
+ERROR - 2019-08-22 10:31:44 --> 404 Page Not Found: Default/images
+ERROR - 2019-08-22 10:31:44 --> 404 Page Not Found: Default/images
+ERROR - 2019-08-22 10:31:54 --> 404 Page Not Found: Default/images
+ERROR - 2019-08-22 10:31:54 --> 404 Page Not Found: Default/images
+ERROR - 2019-08-22 10:32:03 --> 404 Page Not Found: Default/images
+ERROR - 2019-08-22 10:32:03 --> 404 Page Not Found: Default/images
+ERROR - 2019-08-22 10:32:06 --> 404 Page Not Found: Default/images
+ERROR - 2019-08-22 10:32:06 --> 404 Page Not Found: Default/images
+ERROR - 2019-08-22 10:32:10 --> 404 Page Not Found: Default/images
+ERROR - 2019-08-22 10:32:10 --> 404 Page Not Found: Default/images
+ERROR - 2019-08-22 10:32:49 --> 404 Page Not Found: Default/images
+ERROR - 2019-08-22 10:32:49 --> 404 Page Not Found: Default/images
+ERROR - 2019-08-22 10:33:16 --> 404 Page Not Found: Default/images
+ERROR - 2019-08-22 10:33:16 --> 404 Page Not Found: Default/images
+ERROR - 2019-08-22 10:33:37 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 12
+ERROR - 2019-08-22 10:33:37 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 19
+ERROR - 2019-08-22 10:33:37 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 19
+ERROR - 2019-08-22 10:33:37 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 20
+ERROR - 2019-08-22 10:33:37 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 20
+ERROR - 2019-08-22 10:33:37 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 25
+ERROR - 2019-08-22 10:33:37 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 29
+ERROR - 2019-08-22 10:33:37 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 34
+ERROR - 2019-08-22 10:33:37 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 34
+ERROR - 2019-08-22 10:33:37 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 35
+ERROR - 2019-08-22 10:33:37 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 35
+ERROR - 2019-08-22 10:33:37 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 40
+ERROR - 2019-08-22 10:33:37 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 44
+ERROR - 2019-08-22 10:33:37 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 48
+ERROR - 2019-08-22 10:33:37 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 48
+ERROR - 2019-08-22 10:33:37 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 48
+ERROR - 2019-08-22 10:33:37 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 48
+ERROR - 2019-08-22 10:33:37 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 48
+ERROR - 2019-08-22 10:33:37 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 48
+ERROR - 2019-08-22 10:33:37 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 48
+ERROR - 2019-08-22 10:33:37 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 48
+ERROR - 2019-08-22 10:33:37 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 48
+ERROR - 2019-08-22 10:33:37 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 53
+ERROR - 2019-08-22 10:33:37 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 53
+ERROR - 2019-08-22 10:33:37 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 54
+ERROR - 2019-08-22 10:33:37 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 57
+ERROR - 2019-08-22 10:33:37 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 60
+ERROR - 2019-08-22 10:33:37 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 64
+ERROR - 2019-08-22 10:33:37 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 64
+ERROR - 2019-08-22 10:33:37 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 65
+ERROR - 2019-08-22 10:33:37 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 65
+ERROR - 2019-08-22 10:33:37 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 68
+ERROR - 2019-08-22 10:33:37 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 71
+ERROR - 2019-08-22 10:33:37 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 75
+ERROR - 2019-08-22 10:33:37 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 75
+ERROR - 2019-08-22 10:33:37 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 76
+ERROR - 2019-08-22 10:33:37 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 76
+ERROR - 2019-08-22 10:33:37 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 79
+ERROR - 2019-08-22 10:33:37 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 82
+ERROR - 2019-08-22 10:33:37 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 86
+ERROR - 2019-08-22 10:33:37 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 86
+ERROR - 2019-08-22 10:33:37 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 87
+ERROR - 2019-08-22 10:33:37 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 90
+ERROR - 2019-08-22 10:33:37 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 93
+ERROR - 2019-08-22 10:33:37 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 99
+ERROR - 2019-08-22 10:33:37 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 105
+ERROR - 2019-08-22 10:33:37 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 109
+ERROR - 2019-08-22 10:33:37 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 115
+ERROR - 2019-08-22 10:33:37 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 119
+ERROR - 2019-08-22 10:33:37 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 119
+ERROR - 2019-08-22 10:33:37 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 125
+ERROR - 2019-08-22 10:33:37 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 129
+ERROR - 2019-08-22 10:34:17 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 12
+ERROR - 2019-08-22 10:34:17 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 19
+ERROR - 2019-08-22 10:34:17 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 19
+ERROR - 2019-08-22 10:34:17 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 20
+ERROR - 2019-08-22 10:34:17 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 20
+ERROR - 2019-08-22 10:34:17 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 25
+ERROR - 2019-08-22 10:34:17 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 29
+ERROR - 2019-08-22 10:34:17 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 34
+ERROR - 2019-08-22 10:34:17 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 34
+ERROR - 2019-08-22 10:34:17 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 35
+ERROR - 2019-08-22 10:34:17 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 35
+ERROR - 2019-08-22 10:34:17 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 40
+ERROR - 2019-08-22 10:34:17 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 44
+ERROR - 2019-08-22 10:34:17 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 48
+ERROR - 2019-08-22 10:34:17 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 48
+ERROR - 2019-08-22 10:34:17 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 48
+ERROR - 2019-08-22 10:34:17 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 48
+ERROR - 2019-08-22 10:34:17 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 48
+ERROR - 2019-08-22 10:34:17 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 48
+ERROR - 2019-08-22 10:34:17 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 48
+ERROR - 2019-08-22 10:34:17 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 48
+ERROR - 2019-08-22 10:34:17 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 48
+ERROR - 2019-08-22 10:34:17 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 53
+ERROR - 2019-08-22 10:34:17 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 53
+ERROR - 2019-08-22 10:34:17 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 54
+ERROR - 2019-08-22 10:34:17 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 57
+ERROR - 2019-08-22 10:34:17 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 60
+ERROR - 2019-08-22 10:34:17 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 64
+ERROR - 2019-08-22 10:34:17 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 64
+ERROR - 2019-08-22 10:34:17 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 65
+ERROR - 2019-08-22 10:34:17 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 65
+ERROR - 2019-08-22 10:34:17 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 68
+ERROR - 2019-08-22 10:34:17 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 71
+ERROR - 2019-08-22 10:34:17 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 75
+ERROR - 2019-08-22 10:34:17 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 75
+ERROR - 2019-08-22 10:34:17 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 76
+ERROR - 2019-08-22 10:34:17 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 76
+ERROR - 2019-08-22 10:34:17 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 79
+ERROR - 2019-08-22 10:34:17 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 82
+ERROR - 2019-08-22 10:34:17 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 86
+ERROR - 2019-08-22 10:34:17 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 86
+ERROR - 2019-08-22 10:34:17 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 87
+ERROR - 2019-08-22 10:34:17 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 90
+ERROR - 2019-08-22 10:34:17 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 93
+ERROR - 2019-08-22 10:34:17 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 99
+ERROR - 2019-08-22 10:34:17 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 105
+ERROR - 2019-08-22 10:34:17 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 109
+ERROR - 2019-08-22 10:34:17 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 115
+ERROR - 2019-08-22 10:34:17 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 119
+ERROR - 2019-08-22 10:34:17 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 119
+ERROR - 2019-08-22 10:34:17 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 125
+ERROR - 2019-08-22 10:34:17 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 129
+ERROR - 2019-08-22 10:34:17 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 134
+ERROR - 2019-08-22 10:47:00 --> 404 Page Not Found: Default/images
+ERROR - 2019-08-22 10:47:00 --> 404 Page Not Found: Default/images
+ERROR - 2019-08-22 10:50:24 --> 404 Page Not Found: Default/images
+ERROR - 2019-08-22 10:50:24 --> 404 Page Not Found: Default/images
+ERROR - 2019-08-22 10:51:26 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 12
+ERROR - 2019-08-22 10:51:26 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 19
+ERROR - 2019-08-22 10:51:26 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 19
+ERROR - 2019-08-22 10:51:26 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 20
+ERROR - 2019-08-22 10:51:26 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 20
+ERROR - 2019-08-22 10:51:26 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 25
+ERROR - 2019-08-22 10:51:26 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 29
+ERROR - 2019-08-22 10:51:26 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 34
+ERROR - 2019-08-22 10:51:26 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 34
+ERROR - 2019-08-22 10:51:26 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 35
+ERROR - 2019-08-22 10:51:26 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 35
+ERROR - 2019-08-22 10:51:26 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 40
+ERROR - 2019-08-22 10:51:26 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 44
+ERROR - 2019-08-22 10:51:26 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 48
+ERROR - 2019-08-22 10:51:26 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 48
+ERROR - 2019-08-22 10:51:26 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 48
+ERROR - 2019-08-22 10:51:26 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 48
+ERROR - 2019-08-22 10:51:26 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 48
+ERROR - 2019-08-22 10:51:26 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 48
+ERROR - 2019-08-22 10:51:26 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 48
+ERROR - 2019-08-22 10:51:26 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 48
+ERROR - 2019-08-22 10:51:26 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 53
+ERROR - 2019-08-22 10:51:26 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 53
+ERROR - 2019-08-22 10:51:26 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 54
+ERROR - 2019-08-22 10:51:26 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 54
+ERROR - 2019-08-22 10:51:26 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 57
+ERROR - 2019-08-22 10:51:26 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 60
+ERROR - 2019-08-22 10:51:26 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 64
+ERROR - 2019-08-22 10:51:26 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 64
+ERROR - 2019-08-22 10:51:26 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 65
+ERROR - 2019-08-22 10:51:26 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 65
+ERROR - 2019-08-22 10:51:26 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 68
+ERROR - 2019-08-22 10:51:26 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 71
+ERROR - 2019-08-22 10:51:26 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 75
+ERROR - 2019-08-22 10:51:26 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 75
+ERROR - 2019-08-22 10:51:26 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 76
+ERROR - 2019-08-22 10:51:26 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 76
+ERROR - 2019-08-22 10:51:26 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 79
+ERROR - 2019-08-22 10:51:26 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 82
+ERROR - 2019-08-22 10:51:26 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 86
+ERROR - 2019-08-22 10:51:26 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 86
+ERROR - 2019-08-22 10:51:26 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 87
+ERROR - 2019-08-22 10:51:26 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 87
+ERROR - 2019-08-22 10:51:26 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 90
+ERROR - 2019-08-22 10:51:26 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 93
+ERROR - 2019-08-22 10:51:26 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 99
+ERROR - 2019-08-22 10:51:26 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 105
+ERROR - 2019-08-22 10:51:26 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 109
+ERROR - 2019-08-22 10:51:26 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 115
+ERROR - 2019-08-22 10:51:26 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 119
+ERROR - 2019-08-22 10:51:26 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 119
+ERROR - 2019-08-22 10:51:26 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 125
+ERROR - 2019-08-22 10:51:26 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 129
+ERROR - 2019-08-22 10:51:26 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 134
+ERROR - 2019-08-22 10:53:06 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 12
+ERROR - 2019-08-22 10:53:06 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 19
+ERROR - 2019-08-22 10:53:06 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 19
+ERROR - 2019-08-22 10:53:06 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 20
+ERROR - 2019-08-22 10:53:06 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 20
+ERROR - 2019-08-22 10:53:06 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 25
+ERROR - 2019-08-22 10:53:06 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 29
+ERROR - 2019-08-22 10:53:06 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 34
+ERROR - 2019-08-22 10:53:06 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 34
+ERROR - 2019-08-22 10:53:06 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 35
+ERROR - 2019-08-22 10:53:06 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 35
+ERROR - 2019-08-22 10:53:06 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 40
+ERROR - 2019-08-22 10:53:06 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 44
+ERROR - 2019-08-22 10:53:06 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 48
+ERROR - 2019-08-22 10:53:06 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 48
+ERROR - 2019-08-22 10:53:06 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 48
+ERROR - 2019-08-22 10:53:06 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 48
+ERROR - 2019-08-22 10:53:06 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 48
+ERROR - 2019-08-22 10:53:06 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 48
+ERROR - 2019-08-22 10:53:06 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 48
+ERROR - 2019-08-22 10:53:06 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 48
+ERROR - 2019-08-22 10:53:06 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 53
+ERROR - 2019-08-22 10:53:06 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 53
+ERROR - 2019-08-22 10:53:06 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 54
+ERROR - 2019-08-22 10:53:06 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 54
+ERROR - 2019-08-22 10:53:06 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 57
+ERROR - 2019-08-22 10:53:06 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 60
+ERROR - 2019-08-22 10:53:06 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 64
+ERROR - 2019-08-22 10:53:06 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 64
+ERROR - 2019-08-22 10:53:06 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 65
+ERROR - 2019-08-22 10:53:06 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 65
+ERROR - 2019-08-22 10:53:06 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 68
+ERROR - 2019-08-22 10:53:06 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 71
+ERROR - 2019-08-22 10:53:06 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 75
+ERROR - 2019-08-22 10:53:06 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 75
+ERROR - 2019-08-22 10:53:06 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 76
+ERROR - 2019-08-22 10:53:06 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 76
+ERROR - 2019-08-22 10:53:06 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 79
+ERROR - 2019-08-22 10:53:06 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 82
+ERROR - 2019-08-22 10:53:06 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 86
+ERROR - 2019-08-22 10:53:06 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 86
+ERROR - 2019-08-22 10:53:06 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 87
+ERROR - 2019-08-22 10:53:06 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 87
+ERROR - 2019-08-22 10:53:06 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 90
+ERROR - 2019-08-22 10:53:06 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 93
+ERROR - 2019-08-22 10:53:06 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 99
+ERROR - 2019-08-22 10:53:06 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 105
+ERROR - 2019-08-22 10:53:06 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 109
+ERROR - 2019-08-22 10:53:06 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 115
+ERROR - 2019-08-22 10:53:06 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 119
+ERROR - 2019-08-22 10:53:06 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 119
+ERROR - 2019-08-22 10:53:06 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 125
+ERROR - 2019-08-22 10:53:06 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 129
+ERROR - 2019-08-22 10:53:06 --> Severity: Notice --> Undefined variable: activeTab C:\xampp\htdocs\realestate\admin\application\views\common\sidebar.php 134
+ERROR - 2019-08-22 10:56:42 --> 404 Page Not Found: Default/images
+ERROR - 2019-08-22 10:56:42 --> 404 Page Not Found: Default/images
