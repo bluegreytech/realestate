@@ -117,10 +117,10 @@ $(function() {
 });
 
 function deletedata(id){  
-    $('#myModal').modal('show')
+    $('#myModal').modal('show');
    
         $('#yes_btn').click(function(){           
-                url="<?php echo base_url();?>"
+                url="<?php echo base_url();?>";
                 $.ajax({
                 url: url+"/Admin/deletedata/",
                 type: "post",

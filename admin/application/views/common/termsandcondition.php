@@ -39,33 +39,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<textarea  class="ckeditor" placeholder="Project Long Description" name="PageDescription"><?php echo $PageDescription;?></textarea>
 								</div>
 								
-								
-
-								<div class="form-group">
-									<label>Status</label>
-										<div class="input-group">
-										<label class="display-inline-block custom-control custom-radio ml-1" >
-										<input type="radio" name="IsActive" value="Active"
-										<?php if($IsActive=="Active") { echo "checked"; } ?>
-										class="custom-control-input"  >
-											<span class="custom-control-indicator"></span>
-											<span class="custom-control-description ml-0">Active</span>
-										</label>
-
-										<label class="display-inline-block custom-control custom-radio">
-											<input type="radio" name="IsActive" value="Inactive"  <?php if($IsActive=="Inactive") { echo "checked"; } ?>  class="custom-control-input">
-											<span class="custom-control-indicator" ></span>
-											<span class="custom-control-description ml-0">Inactive</span>
-										</label>
-									</div>
-									<!--  <label class="radio-inline">							
-										<input type="radio"  name="IsActive" value="Active" <?php if($IsActive=='Active') {echo "checked";  }?>> Active
-									</label>
-
-									<label class="radio-inline">	
-										<input type="radio" name="IsActive" value="Inactive" <?php if($IsActive=='Inactive') {echo "checked";  }?>> Inactive
-									</label> -->
-								</div>
 								<hr>
                               <div class="form-group">								
 									<input type="submit" class="btn btn-black" value="Update" name="btnupdate" minlength="2" maxlength="50">

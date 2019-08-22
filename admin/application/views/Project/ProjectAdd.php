@@ -56,7 +56,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 								<div class="form-group">
 									<label>Project Amenities</label>
-									<textarea  class="ckeditor" placeholder="Project Long Description" name="Projectldesc" ><?php echo $Projectldesc;?></textarea>
+									<textarea  class="ckeditor" placeholder="Project Long Description" name="Projectldesc"><?php echo $Projectldesc;?></textarea>
 								</div>
 								<div class="form-group">
 									<label>Project Latitude</label>
@@ -291,6 +291,8 @@ if(width == param[0] && height == param[1]){
 				error.appendTo("#projecterror");
 				}else if(element.attr("name") == "ProjectImage"){
                error.appendTo("#profileimgerror");
+				}else if(element.attr("name") == "Projectbrochure"){
+               error.appendTo("#profileerrorbroch");
 				}
 				else{
 				error.insertAfter(element)

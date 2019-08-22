@@ -157,10 +157,12 @@ class Project_model extends CI_Model
 	}
 
 	function getproject(){
-		$r=$this->db->select('*')
-					->from('tblprojects')->where('Is_deleted','0')
-					->get();
-		$res = $r->result();
+		$this->db->select('*');
+		$this->db->from('tblprojects');
+		$this->db->where('Is_deleted','0');
+		$this->db->order_by('ProjectId','desc');
+		$query=$this->db->get();
+		$res = $query->result();
 		return $res;
 
 	}
@@ -171,6 +173,7 @@ class Project_model extends CI_Model
 		$this->db->from("tblprojects");
 		$this->db->where("Is_deleted",'0');
 		$this->db->where("ProjectId",$id);
+	    $this->db->order_by('ProjectId','desc');
 		$query=$this->db->get();
 		return $query->row_array();
 	}
@@ -312,6 +315,7 @@ class Project_model extends CI_Model
             $data = array(
 			'ProjectTitle' => trim($this->input->post('ProjectTitle')),			
 			'Projectsdesc' => trim($this->input->post('Projectsdesc')),
+			'Projectldesc' => trim($this->input->post('Projectldesc')),
 			'Project_lat'=>trim($this->input->post('project_lat')),
 			'Project_long'=>trim($this->input->post('project_long')),
 			'ProjectImage'=>$project_image,
@@ -332,8 +336,9 @@ class Project_model extends CI_Model
 		$this->db->select('*');
 		$this->db->from('tblgallery');
 		$this->db->where('Is_deleted','0');
-		$r=$this->db->get();
-		$res = $r->result();
+		$this->db->order_by('gallery_id','desc');
+		$query=$this->db->get();
+		$res = $query->result();
 		return $res;
 	}
 	function getgallerydata($id){
@@ -341,6 +346,7 @@ class Project_model extends CI_Model
 		$this->db->from('tblgallery');
 		$this->db->where('Is_deleted','0');
 		$this->db->where("gallery_id",$id);
+		$this->db->order_by('gallery_id','desc');
 		$query=$this->db->get();
 		return $query->row_array();
 	}
@@ -475,6 +481,7 @@ class Project_model extends CI_Model
 		$this->db->select('*');
 		$this->db->from('tblplanlayout');
 		$this->db->where('Is_deleted','0');
+		$this->db->order_by('planlayout_id','desc');
 		$r=$this->db->get();
 		$res = $r->result();
 		return $res;
@@ -484,6 +491,7 @@ class Project_model extends CI_Model
 		$this->db->from('tblplanlayout');
 		$this->db->where('Is_deleted','0');
 		$this->db->where("planlayout_id",$id);
+		$this->db->order_by('planlayout_id','desc');
 		$query=$this->db->get();
 		return $query->row_array();
 	}
@@ -614,6 +622,7 @@ class Project_model extends CI_Model
 		$this->db->select('*');
 		$this->db->from('tblspecification');
 		$this->db->where('Is_deleted','0');
+		$this->db->order_by('specification_id','desc');
 		$r=$this->db->get();
 		$res = $r->result();
 		return $res;
@@ -623,6 +632,7 @@ class Project_model extends CI_Model
 		$this->db->from('tblspecification');
 		$this->db->where('Is_deleted','0');
 		$this->db->where("specification_id",$id);
+		$this->db->order_by('specification_id','desc');
 		$query=$this->db->get();
 		return $query->row_array();
 	}
@@ -756,6 +766,7 @@ class Project_model extends CI_Model
 		$this->db->select('*');
 		$this->db->from('tblproject_slider');
 		$this->db->where('Is_deleted','0');
+		$this->db->order_by('projectslider_id','desc');
 		$r=$this->db->get();
 		$res = $r->result();
 		return $res;
@@ -765,17 +776,16 @@ class Project_model extends CI_Model
 		$this->db->from('tblproject_slider');
 		$this->db->where('Is_deleted','0');
 		$this->db->where("projectslider_id",$id);
+		$this->db->order_by('projectslider_id','desc');
 		$query=$this->db->get();
 		return $query->row_array();
 	}
 
     function projectslider_insert(){
-		//echo "<pre>";print_r($_FILES['ProjectsliderImages']['name']);die;
 		
-         	$projectslider_image='';
-         	$picture=array();
-         	//$image_settings=image_setting();
-         
+     	$projectslider_image='';
+     	$picture=array();
+         	
 		if(isset($_FILES['ProjectsliderImages']) &&  $_FILES['ProjectsliderImages']['name']!='')
         {
 			$this->load->library('upload');

@@ -950,7 +950,8 @@ button:focus {
     background-color: inherit;
     position: absolute;
     top: 14px;
-    right: 21px; }
+    right: 21px; 
+    display: none;}
     .card-header .heading-elements.heading-top-elements,
     .card-header .heading-elements-toggle.heading-top-elements {
       top: 0px; }

@@ -85,6 +85,8 @@ class User extends CI_Controller {
 			$data['FullName']=$result['FullName'];	
 			$data['EmailAddress']=$result['EmailAddress'];	
 			$data['Address']=$result['Address'];
+			$data['Project_name']=$result['Project_name'];
+			$data['House_no']=$result['House_no'];				
 			$data['ProfileImage']=$result['ProfileImage'];	
 			$data['UserContact']=$result['UserContact'];
 			$data['IsActive']=$result['IsActive'];	
@@ -111,7 +113,7 @@ class User extends CI_Controller {
 		if(!check_admin_authentication()){ 
 			redirect(base_url());
 		}
-			$data= array('Is_deleted' =>'1');
+			$data= array('Is_deleted' =>'1','IsActive'=>'Inactive');
 			$id=$this->input->post('id');
 			$this->db->where("UsersId",$id);
 			$res=$this->db->update('tbluser',$data);
@@ -161,7 +163,9 @@ class User extends CI_Controller {
 			$data['UsersId']=$result['UsersId'];
 			$data['FullName']=$result['FullName'];	
 			$data['EmailAddress']=$result['EmailAddress'];	
-			$data['Address']=$result['Address'];			
+			$data['Address']=$result['Address'];
+			$data['Project_name']=$result['Project_name'];
+			$data['House_no']=$result['House_no'];			
 			$data['UserContact']=$result['UserContact'];
 			$data['name']=$result['name'];	
 			$data['mobileno']=$result['mobileno'];	

@@ -17,7 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<h4 class="card-title" id="basic-layout-form">
 					<?php if($UserId==1)
 					{
-						echo	"Edit User";
+						echo "Edit User";
 					}
 					else{
 					echo	"Add User";
@@ -42,15 +42,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								</div>
 								<div class="form-group">
 									<label>Email Address</label>
-									<input type="text" class="form-control" placeholder="Email Address" name="EmailAddress" value="<?php echo $EmailAddress;?>" minlength="5" maxlength="200" readonly="">
+									<input type="text" class="form-control" placeholder="Email Address" name="EmailAddress" value="<?php echo $EmailAddress;?>" readonly="">
 								</div>
 								<div class="form-group">
-									<label>Address</label>
-									<textarea type="text" class="form-control" placeholder="Address" name="Addresses" value="" minlength="5" maxlength="200"><?php echo $Address;?></textarea>
+									<label>Project name</label>
+									<input type="text" class="form-control" placeholder="Project name" name="Project_name" value="<?php echo $Project_name;?>" >
+								
 								</div>
+								<div class="form-group">
+									<label>House No</label>
+									<input type="text" class="form-control" placeholder="house no" name="House_no" value="<?php echo $House_no; ?>" >
+									
+								</div>
+								
 								<div class="form-group">
 									<label>Mobile no.</label>
-									<input type="text" class="form-control" placeholder="Mobile no." name="UserContact" value="<?php echo $UserContact;?>" minlength="5" maxlength="200" readonly>
+									<input type="text" class="form-control" placeholder="Mobile no." name="UserContact" value="<?php echo $UserContact; ?>"  readonly>
 								</div>
 								<!-- <div class="form-group  uploadfrm">
 									<label>Profile Image</label>
@@ -63,7 +70,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								
 								<div class="preview">
 									<?php if($UserId){ ?>
-										<img id="blah" src="<?php echo base_url()?>upload/user/<?php echo $ProfileImage;?>" class="img-thumbnail border-0" style="display: block;  width: 100px; height: 100px;">
+										<img id="blah" src="<?php //echo base_url()?>upload/user/<?php //echo $ProfileImage;?>" class="img-thumbnail border-0" style="display: block;  width: 100px; height: 100px;">
 
 									<?php } else{?>
 									<img id="blah" src="" class="img-thumbnail border-0" style="display: none;  width: 100px; height: 100px;">

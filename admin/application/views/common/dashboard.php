@@ -8,9 +8,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     <div class="app-content content container-fluid">
     <div class="content-wrapper">
+         <?php if(($this->session->flashdata('success'))){ ?>
+        <div class="alert alert-success" id="successMessage">
+        <strong> <?php echo $this->session->flashdata('success'); ?></strong> 
+        </div>
+      <?php } ?>
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body">
+                    <a href="javascript:void(0)">
                     <div class="card-block">
                         <div class="media">
                             <div class="media-body text-xs-left">
@@ -22,12 +28,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </div>
                         </div>
                     </div>
+                    </a>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body">
+                    <a href="<?php echo base_url();?>user/userlist">
                     <div class="card-block">
                         <div class="media">
                             <div class="media-body text-xs-left">
@@ -39,12 +47,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </div>
                         </div>
                     </div>
+                     </a>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body">
+                    <a href="<?php echo base_url()?>user/userrefer_list">
                     <div class="card-block">
                         <div class="media">
                             <div class="media-body text-xs-left">
@@ -56,6 +66,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </div>
                         </div>
                     </div>
+                </a>
                 </div>
             </div>
         </div>
@@ -68,11 +79,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="col-md-12">
      
        <?php //echo $this->session->flashdata('success');?>
-       <?php if(($this->session->flashdata('success'))){ ?>
-        <div class="alert alert-success" id="successMessage">
-        <strong> <?php echo $this->session->flashdata('success'); ?></strong> 
-        </div>
-      <?php } ?>
+      
       
        
         <div class="card">

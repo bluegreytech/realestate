@@ -14,7 +14,8 @@ class Project extends CI_Controller {
 	{	
 		if(!check_admin_authentication()){ 
 			redirect(base_url());
-		}else{		
+		}else{	
+			$data['activeTab']="Projectlist";		
 			$data['result']=$this->project_model->getproject();
 			$this->load->view('Project/ProjectList',$data);
 		}
@@ -73,6 +74,7 @@ class Project extends CI_Controller {
 			}
 				
 			}
+			$data['activeTab']="Projectadd";	
 			$this->load->view('Project/ProjectAdd',$data);
 				
 	}
@@ -94,7 +96,8 @@ class Project extends CI_Controller {
 			$data['Projectlogo']=$result['Projectlogo'];
 			$data['Project_brochure']=$result['Project_brochure'];	
 			$data['ProjectStatus']=$result['ProjectStatus'];
-			$data['IsActive']=$result['IsActive'];	
+			$data['IsActive']=$result['IsActive'];
+			$data['activeTab']="Editproject";	
 			//echo "<pre>";print_r($data);die;		
 			$this->load->view('Project/ProjectAdd',$data);	
 		
@@ -173,6 +176,7 @@ class Project extends CI_Controller {
 				}
 				
 			}
+			$data['activeTab']="add_gallery";	
 			$data['projectlist']=$this->project_model->getproject();
 			$this->load->view('Project/Add_gallery',$data);
 
@@ -192,6 +196,7 @@ class Project extends CI_Controller {
 
 			$data['GalleryImage']=$result['gallery_image'];
 			$data['IsActive']=$result['IsActive'];	
+			$data['activeTab']="edit_gallery";	
 			//echo "<pre>";print_r($data);die;		
 			$this->load->view('Project/Add_gallery',$data);	
 
@@ -223,7 +228,8 @@ class Project extends CI_Controller {
 	function list_gallery(){
 		if(!check_admin_authentication()){ 
 			redirect(base_url());
-		}else{		
+		}else{	
+			$data['activeTab']="list_gallery";			
 			$data['result']=$this->project_model->getgallery();
 			$data['projectlist']=$this->project_model->getproject();
 			$this->load->view('Project/List_gallery',$data);
@@ -276,6 +282,7 @@ class Project extends CI_Controller {
 				}
 				
 			}
+			$data['activeTab']="add_planlayout";	
 			$data['projectlist']=$this->project_model->getproject();
 			$this->load->view('Project/Add_planlayout',$data);
 
@@ -294,6 +301,7 @@ class Project extends CI_Controller {
 			$data['PlanlayoutId']=$result['planlayout_id'];
 			$data['PlanlayoutImage']=$result['planlayout_image'];
 			$data['IsActive']=$result['IsActive'];	
+			$data['activeTab']="edit_planlayout";	
 			//echo "<pre>";print_r($data);die;		
 			$this->load->view('Project/Add_planlayout',$data);	
 
@@ -326,7 +334,8 @@ class Project extends CI_Controller {
 	function list_planlayout(){
 		if(!check_admin_authentication()){ 
 			redirect(base_url());
-		}else{		
+		}else{	
+			$data['activeTab']="list_planlayout";		
 			$data['result']=$this->project_model->getplanlayout();
 			$data['projectlist']=$this->project_model->getproject();
 			$this->load->view('Project/List_planlayout',$data);
@@ -382,6 +391,7 @@ class Project extends CI_Controller {
 				}
 				
 			}
+			$data['activeTab']="add_specification";	
 			$data['projectlist']=$this->project_model->getproject();
 			$this->load->view('Project/Add_specification',$data);
 
@@ -392,6 +402,7 @@ class Project extends CI_Controller {
 			redirect(base_url());
 		}
 			$data=array();
+			$data['activeTab']="edit_specification";
 			$result=$this->project_model->getspecificationdata($specification_id);
 			$data['projectlist']=$this->project_model->getproject();
 			//echo "<pre>";print_r($result);die;	
@@ -433,7 +444,8 @@ class Project extends CI_Controller {
 	function list_specification(){
 		if(!check_admin_authentication()){ 
 			redirect(base_url());
-		}else{		
+		}else{
+			$data['activeTab']="list_specification";		
 			$data['result']=$this->project_model->getspecification();
 			$data['projectlist']=$this->project_model->getproject();
 			$this->load->view('Project/List_specification',$data);
@@ -451,6 +463,7 @@ class Project extends CI_Controller {
 		}   
 			
 			$data=array();	
+			$data['activeTab']="add_projectslider";
 			$this->load->library("form_validation");
 			$this->form_validation->set_rules('project_id','project title','required');
 			$this->form_validation->set_rules('IsActive', 'IsActive', 'required');
@@ -499,6 +512,7 @@ class Project extends CI_Controller {
 			redirect(base_url());
 		}
 			$data=array();
+			$data['activeTab']="edit_projectslider";
 			$result=$this->project_model->getprojectsliderdata($projectslider_id);
 			$data['projectlist']=$this->project_model->getproject();
 			//echo "<pre>";print_r($result);die;	
@@ -539,7 +553,8 @@ class Project extends CI_Controller {
 	function list_projectslider(){
 		if(!check_admin_authentication()){ 
 			redirect(base_url());
-		}else{		
+		}else{	
+			$data['activeTab']="list_projectslider";
 			$data['result']=$this->project_model->getprojectslider();
 			$data['projectlist']=$this->project_model->getproject();
 			$this->load->view('Project/List_projectslider',$data);

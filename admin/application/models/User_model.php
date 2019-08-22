@@ -90,19 +90,20 @@ class User_model extends CI_Model
 		$this->db->select('*');
 		$this->db->from('tbluser');
 		$this->db->where('Is_deleted','0');
+		$this->db->order_by('UsersId','desc');
 		$query=$this->db->get();
 		$res = $query->result();
 		return $res;
 	}
-		function getbdayuser(){
-			//today b
-			// $query=$this->db->query("SELECT *, 
-			// 	IF(DAY(DateofBirth)=DAY(NOW()) AND MONTH(DateofBirth)=MONTH(NOW()), 'Today',
-			// 	IF(DAY(DateofBirth) =DAY(ADDDATE(NOW(),-1)) AND MONTH(DateofBirth)=MONTH(ADDDATE(NOW(),-1)), 'Yesterday', 
-			// 	IF(DAY(DateofBirth) =DAY(ADDDATE(NOW(),+1)) AND MONTH(DateofBirth)=MONTH(ADDDATE(NOW(),+1)), 'Tomorrow', 'Future') 
+	function getbdayuser(){
+		//today b
+		// $query=$this->db->query("SELECT *, 
+		// 	IF(DAY(DateofBirth)=DAY(NOW()) AND MONTH(DateofBirth)=MONTH(NOW()), 'Today',
+		// 	IF(DAY(DateofBirth) =DAY(ADDDATE(NOW(),-1)) AND MONTH(DateofBirth)=MONTH(ADDDATE(NOW(),-1)), 'Yesterday', 
+		// 	IF(DAY(DateofBirth) =DAY(ADDDATE(NOW(),+1)) AND MONTH(DateofBirth)=MONTH(ADDDATE(NOW(),+1)), 'Tomorrow', 'Future') 
 
-			// 	) )as dob FROM tbluser");
-			//echo $this->db->last_query();die;
+		// 	) )as dob FROM tbluser");
+		//echo $this->db->last_query();die;
 
 		$today=date('m-d');
 		$this->db->select('*');
@@ -111,9 +112,6 @@ class User_model extends CI_Model
 		$this->db->like('DateofBirth',$today);
 		$query=$this->db->get();
 		$res = $query->result();
-
-		
-
 		return $res;
 	}
 	
@@ -201,11 +199,13 @@ class User_model extends CI_Model
                     
 		$id=$this->input->post('UserId');
 		$data=array(			
-			'FullName'=>$this->input->post('FullName'),
-			'EmailAddress'=>$this->input->post('EmailAddress'),
-			'Address'=>$this->input->post('Address'),
-			'ProfileImage'=>$this->input->post('ProfileImage'),
-			'UserContact'=>$this->input->post('UserContact'),
+			'FullName'=>trim($this->input->post('FullName')),
+			'Project_name'=>trim($this->input->post('Project_name')),
+			'House_no'=>trim($this->input->post('House_no')),
+			//'EmailAddress'=>$this->input->post('EmailAddress'),
+			//'Address'=>$this->input->post('Address'),
+			//'ProfileImage'=>$this->input->post('ProfileImage'),
+			'UserContact'=>trim($this->input->post('UserContact')),
 			'IsActive'=>$this->input->post('IsActive'),
 			  );
 		//echo "<pre>";print_r($data);die;	
@@ -218,6 +218,7 @@ class User_model extends CI_Model
 		$this->db->from('tblrefer ru');
 		$this->db->join('tbluser us','ru.user_id=us.UsersId','left');
 		$this->db->where('ru.Is_deleted','0');
+		$this->db->order_by('refer_id','desc');
 		$query=$this->db->get();
 		//echo $this->db->last_query();die;
 		$res = $query->result();
@@ -229,6 +230,8 @@ class User_model extends CI_Model
 		$this->db->join('tblrefer rf','ru.refer_id=rf.refer_id','left');
 		//$this->db->where('ru.Is_deleted','0');
 		$this->db->where('ru.user_id',$user_id);
+		$this->db->order_by('userredeem_id','desc');
+
 		$query=$this->db->get();
 		//echo $this->db->last_query();die;
 		$res = $query->result();
