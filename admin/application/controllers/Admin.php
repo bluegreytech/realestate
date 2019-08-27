@@ -18,6 +18,7 @@ class Admin extends CI_Controller {
 			redirect(base_url());
 		}else{	
 		//echo "else dfdf";die;	
+			$data['activeTab']="Adminlist";	
 			$data['adminData']=$this->admin_model->getadmin();
 			$this->load->view('Admin/AdminList',$data);
 		}
@@ -32,10 +33,11 @@ class Admin extends CI_Controller {
 		
 			$this->load->library("form_validation");
 			$this->form_validation->set_rules('FullName', 'Full Name', 'required');			
-			$this->form_validation->set_rules('EmailAddress', 'EmailAddress', 'required|valid_email|callback_adminmail_check');
+			
 			$this->form_validation->set_rules('AdminContact', 'AdminContact', 'required');
 			if($this->input->post("AdminId")=="")
 			{	
+				$this->form_validation->set_rules('EmailAddress', 'EmailAddress', 'required|valid_email|callback_adminmail_check');
 				$this->form_validation->set_rules('password', 'Password', 'required|matches[cpassword]|min_length[8]');
 				$this->form_validation->set_rules('cpassword', 'Password Confirm', 'required|min_length[8]');
 			}
@@ -81,6 +83,7 @@ class Admin extends CI_Controller {
 			}
 				
 			}
+			$data['activeTab']="AddAdmin";
 			$this->load->view('Admin/AdminAdd',$data);
 				
 	}
@@ -98,7 +101,8 @@ class Admin extends CI_Controller {
 			$data['Address']=$result['Address'];
 			$data['ProfileImage']=$result['ProfileImage'];	
 			$data['AdminContact']=$result['AdminContact'];
-			$data['IsActive']=$result['IsActive'];			
+			$data['IsActive']=$result['IsActive'];
+			$data['activeTab']="Editadmin";			
 			$this->load->view('Admin/AdminAdd',$data);	
 		}
 	}
@@ -132,6 +136,16 @@ class Admin extends CI_Controller {
 			return FALSE;
 		}
     }
+
+    function email_check() {
+		$query = $this->db->query("select EmailAddress from " . $this->db->dbprefix('tbladmin') . " where EmailAddress= '".$this->input->post('email')."'");
+		//echo $this->db->last_query();die;
+		if ($query->num_rows() > 0) {
+			echo 1;die;
+		} else {
+			echo 0;die;
+		}
+	}
      
     
 }

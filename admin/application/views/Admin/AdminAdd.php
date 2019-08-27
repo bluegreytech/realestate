@@ -34,24 +34,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<div class="form-group">
 								<input type="hidden"   value="<?php echo $AdminId; ?>" name="AdminId">
 									<label>Full Name</label>
-									<input type="text" class="form-control" placeholder="Full Name" name="FullName" id="FullName" value="<?php echo $FullName;?>" minlength="5" maxlength="200">
+									<input type="text" class="form-control" placeholder="Full Name" name="FullName" id="FullName" value="<?php echo $FullName;?>" >
 								</div>
 									<div class="form-group">
 									<label>Mobile No.</label>
-									<input type="text" class="form-control" placeholder="Mobile no." name="AdminContact" value="<?php echo $AdminContact;?>" minlength="5" maxlength="200">
+									<input type="text" class="form-control" placeholder="Mobile no." name="AdminContact" value="<?php echo $AdminContact;?>">
 								</div>
 								<div class="form-group">
 									<label>Email Address</label>
-									<input type="text" class="form-control" placeholder="Email Address" name="EmailAddress" value="<?php echo $EmailAddress;?>" minlength="5" maxlength="200">
+									<input type="text" class="form-control" placeholder="Email Address" name="EmailAddress" id="EmailAddress" value="<?php echo $EmailAddress;?>" <?php if($EmailAddress){ echo "disabled";}?> >
 								</div>
 									<?php if($AdminId==''){ ?>
 								<div class="form-group">
 									<label>Password</label>
-									<input type="password" class="form-control" placeholder="******" name="password" id="password" value="<?php echo $Password;?>" minlength="5" maxlength="200">
+									<input type="password" class="form-control" placeholder="******" name="password" id="password" value="<?php echo $Password;?>" >
 								</div>
 								<div class="form-group">
 									<label>Confrim password</label>
-									<input type="password" class="form-control" placeholder="******" name="cpassword" id="cpassword" value="" minlength="5" maxlength="200">
+									<input type="password" class="form-control" placeholder="******" name="cpassword" id="cpassword" value="" >
 								</div>
 							<?php } ?>
 
@@ -171,12 +171,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     return this.optional(element) || (element.files[0].size <= param)
 } ,'File size must be equal to or less then 2MB'); 
   
-  
+  $.validator.addMethod("email_check", function(value, element) {
+
+        var response;
+        var user_id=$("#EmailAddress").val();
+    $.ajax({
+      type: "POST",
+      url: "<?php echo site_url('admin/email_check'); ?>",
+      data:{email:value},  
+      async:false,
+      success:function(data) {
+      	console.log(data);
+          response = data;
+      }
+    });
+    if(response == 0) {
+    	return true;
      
-         //alert("Sdfsdf");
-        // var form1 = $('#add_admin');
-        // var error1 = $('.alert-error');
-        // var success1 = $('.alert-success');
+    } else if(response == 1) {
+       return false;
+    }
+  }, "Email address is already exist.");
 
        $('#add_admin').validate({
 
@@ -196,12 +211,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				},  
 				AdminContact:{
 					required:true,
+					digits:true,
 					maxlength:15,
 					minlength:10,
 				},        
 				EmailAddress:{
 					required:true,
-					email:true,             
+					email:true, 
+					email_check:function(){
+						emailcheck='<?php echo $EmailAddress; ?>';
+							if(emailcheck){
+								return false;
+							}else{
+								return true;
+							}
+						}, 
+					           
 				},				
 				password: {
 					noSpace: true,

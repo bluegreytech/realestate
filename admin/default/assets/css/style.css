@@ -1,14 +1,3 @@
-/*================================================================================
-	Item Name: Robust - Responsive Admin Theme
-	Version: 1.0
-	Author: PIXINVENT
-	Author URL: http://www.themeforest.net/user/pixinvent
-================================================================================
-
-NOTE:
-------
-PLACE HERE YOUR OWN SCSS CODES AND IF NEEDED, OVERRIDE THE STYLES FROM THE OTHER STYLESHEETS.
-WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BETTER LIKE THIS.  */
 @font-face {
   font-family: 'Glyphicons Halflings';
   src: url('fonts/glyphicons-halflings-regular.eot');
@@ -843,6 +832,9 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
 .label-default {
     background-color: #777;
 }
+.label-info {
+    background-color: #5bc0de;
+}
 
 .label {
     display: inline;
@@ -886,14 +878,14 @@ height:400px;
 
 .custom-control-input:checked ~ .custom-control-indicator {
     color: #fff;
-    background-color: black !important;
+    background-color: #ef7f1a !important;
 }
 .custom-control-input:active ~ .custom-control-indicator {
     color: #fff;
-     box-shadow: 0 0 0 0.075rem #fff, 0 0 0 0.2rem #000;
+     box-shadow: 0 0 0 0.075rem #fff, 0 0 0 0.2rem #ef7f1a;
 }
 .custom-control-input:focus ~ .custom-control-indicator {
-    box-shadow: 0 0 0 0.075rem #fff, 0 0 0 0.2rem #000;
+    box-shadow: 0 0 0 0.075rem #fff, 0 0 0 0.2rem #ef7f1a;
 }
 form label {
     color: #151313 ;

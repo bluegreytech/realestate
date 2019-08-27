@@ -31,6 +31,23 @@ class Api_model extends CI_Model
 		}
 	}
 
+	function ReferEmailUnique()
+	{
+		$str = $this->input->post('email');
+		if($this->input->post('refer_id')!='')
+		{
+			$query = $this->db->query("select email from ".$this->db->dbprefix('tblrefer')." where email = '$str' and refer_id!='".$this->input->post('refer_id')."'");
+		}else{
+			$query = $this->db->query("select email from ".$this->db->dbprefix('tblrefer')." where email = '$str'");
+		}
+
+		if($query->num_rows()>0){
+			return FALSE;
+		} else {
+			return TRUE;
+		}
+	}
+
 
 	/*
 	 * Function: EmailUnique_api
@@ -109,6 +126,22 @@ class Api_model extends CI_Model
 			return TRUE;
 		}
 	}
+	function ReferMobileUnique()
+	{
+		$str = $this->input->post('mobileno');
+		if($this->input->post('refer_id')!='')
+		{
+			$query = $this->db->query("select mobileno from ".$this->db->dbprefix('tblrefer')." where mobileno = '$str' and refer_id!='".$this->input->post('refer_id')."'");
+		}else{
+			$query = $this->db->query("select mobileno from ".$this->db->dbprefix('tblrefer')." where mobileno = '$str'");
+		}
+
+		if($query->num_rows()>0){
+			return FALSE;
+		} else {
+			return TRUE;
+		}
+	}
 	/*
 	 * Function: register()
 	 * Author: Binny
@@ -121,6 +154,7 @@ class Api_model extends CI_Model
 		$length = 10;
 		//$unhcr_no=substr(str_shuffle('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'),1,$length);
 		$data 		 		 = array();
+		$data1 		 		 = array();
 		$confirm_code		 = md5(uniqid(rand()));
 		$user_image			 = '';
 	
@@ -128,8 +162,7 @@ class Api_model extends CI_Model
 			'FullName'   	  => $this->input->post('full_name'),
 			'EmailAddress' 	  => $this->input->post('email'),
 			'UserContact' 	  => $this->input->post('mobileno'),
-			'DateofBirth' 	  => $this->input->post('dob'),
-			//'Address' 	 	  => $this->input->post('Address'),
+			'DateofBirth' 	  => $this->input->post('dob'),			
 			'Project_name' 	  => $this->input->post('project_name'),
 			'House_no' 	 	  => $this->input->post('house_no'),		
 			'UserPassword'	  =>trim(md5($this->input->post('password'))),
@@ -138,6 +171,32 @@ class Api_model extends CI_Model
 			);
 	  
 		$user_id= insert_record_api('tbluser',$data); 
+		//echo $user_id;
+		if($user_id){
+		//	echo "ghgh";die;
+				$data1['token_id']    = $this->input->post('token_id');
+				$data1['device_type'] = strtoupper($this->input->post('device_type')); 
+				$data1['login_status']='1';
+				if(!empty($data1['token_id'])){
+						//echo "ghgh";die;
+				$device_master = $this->db->select('*')->from('tbldevice_master')->where(array('user_id' =>  $user_id))->get()->row_array();	
+				//echo "<pre>cdf";print_r($device_master);die;
+					if(!empty($device_master)){
+						//echo "mhjhjk";die;
+						$this->db->where(array('user_id' => $user_id,
+						 'device_id' => $device_master['device_id']));	
+						$this->db->update('tbldevice_master',$data1);
+					}else{
+					//	echo "else";die;
+						$data1['user_id']=$user_id;
+						$data1['created_on'] =  date('Y-m-d h:i:s');
+						$this->db->insert('tbldevice_master',$data1);
+						//echo $this->db->last_query(); die;
+					}
+					$devicemaster = $this->db->select('*')->from('tbldevice_master')->where(array('user_id' =>$user_id))->get()->row_array();	
+				//echo "<pre>";print_r($devicemaster);die;
+				}
+		}
 		$user_detail = get_one_record('tbluser','UsersId',$user_id);
 	
 		$data = array(
@@ -234,6 +293,38 @@ class Api_model extends CI_Model
 				$ud=array('IsActive'=>$this->input->post('status'));
 				$this->db->where('UsersId',$res->UsersId);
 				$this->db->update('tbluser',$ud);
+	            $data['message'] = "Your status change successfully";
+	            $data['status']  = 'success';
+	            return $data;
+	       
+	    	}else{
+	    		$data['status'] = 'fail';
+	        	$data['error']  = 'Something went wrong, please try again';
+	        	return $data;
+	    	}
+    	}else{
+	    		$data['status'] = 'fail';
+	        	$data['error']  = 'Something went wrong, please try again';
+	        	return $data;
+	    	}
+
+	}
+
+
+
+	function set_userrefer_status(){
+     $refer_id=$this->input->post('refer_id');
+		//$password1 	  = md5($password);	
+		$query  	  = $this->db->get_where("tblrefer",array("refer_id"=>$refer_id));
+		$res 		  = $query->row();
+		//print_r($res);die;
+		if($refer_id){ 
+
+			if($query->num_rows() > 0)
+			{
+				$ud=array('IsActive'=>$this->input->post('IsActive'));
+				$this->db->where('refer_id',$res->refer_id);
+				$this->db->update('tblrefer',$ud);
 	            $data['message'] = "Your status change successfully";
 	            $data['status']  = 'success';
 	            return $data;
@@ -509,6 +600,28 @@ class Api_model extends CI_Model
 
 			if($user['IsActive']=='Active')
 			{
+       		// echo $user["UsersId"];die;
+				
+                $data['token_id']    = $this->input->post('token_id');
+				$data['device_type'] = strtoupper($this->input->post('device_type')); 
+				$data['login_status']='1';
+				if(!empty($data['token_id'])){
+				$device_master = $this->db->select('*')->from('tbldevice_master')->where(array('user_id' =>  $user["UsersId"]))->get()->row_array();	
+				//echo "<pre>";print_r($device_master);die;
+					if(!empty($device_master)){
+						//echo "mhjhjk";die;
+						$this->db->where(array('user_id' => $user["UsersId"],
+						 'device_id' => $device_master['device_id']));	
+						$this->db->update('tbldevice_master',$data);
+					}else{
+						//echo "else";die;
+						$data['user_id']=$user["UsersId"];
+						$data['created_on'] =  date('Y-m-d h:i:s');
+						$this->db->insert('tbldevice_master',$data);
+					}
+					$devicemaster = $this->db->select('*')->from('tbldevice_master')->where(array('user_id' =>  $user["UsersId"]))->get()->row_array();	
+				//echo "<pre>";print_r($devicemaster);die;
+				}
 				$data['status'] ='success';	
 				$data['result'] = array(
 					'email' 		=> trim($user['EmailAddress']),
@@ -517,9 +630,11 @@ class Api_model extends CI_Model
 					'dob'			=> trim($user['DateofBirth']),
 					'Address'		=> trim($user['Address']),
 					'project_name'	=> trim($user['Project_name']),
-					'House_no'	=> trim($user['House_no']),					
+					'House_no'		=> trim($user['House_no']),					
 					'user_id'		=> trim($user["UsersId"]),
+					'device_id'=>trim($device_master['device_id']),
 					);
+				
 				return $data;		
 			}
 			else if($user['IsActive']=='Inactive'){
@@ -540,9 +655,10 @@ class Api_model extends CI_Model
 	function get_all_project(){
 		
 		$data= array();
-		$this->db->select('ProjectId,ProjectTitle,Project_brochure,Projectlogo,ProjectStatus');
+		$this->db->select('ProjectId,ProjectTitle,Project_brochure,Projectlogo,ProjectStatus,Project_lat,Project_long');
 		$this->db->from('tblprojects');	
-		$this->db->order_by('ProjectId','asc');
+		$this->db->where('IsActive',"Active");	
+		$this->db->order_by('ProjectId','Desc');
 		$query=$this->db->get();
 		
 		return $query->result_array();
@@ -551,32 +667,54 @@ class Api_model extends CI_Model
 
 	function get_single_project($project_id)
 	{
+		//echo $project_id;die;
 		$planlayout=array();
 		$galleryimg=array();
 		$specdata=array();
-		$this->db->select('*');
-		$this->db->from('tblplanlayout');
-		$this->db->where('project_id',$project_id);	
-		$this->db->order_by('planlayout_id','asc');
-		$query=$this->db->get();
+		$projectsliderimg=array();
+		
 
 		$this->db->select('*');
 		$this->db->from('tblprojects');
 		$this->db->where('ProjectId',$project_id);	
-		$this->db->order_by('ProjectId','asc');
+		$this->db->where('Is_deleted','0');
+		$this->db->where('IsActive',"Active");	
+		$this->db->order_by('ProjectId','desc');
 		$query1=$this->db->get();
+		//echo $this->db->last_query();die;
+
+		$this->db->select('*');
+		$this->db->from('tblplanlayout');
+		$this->db->where('project_id',$project_id);	
+		$this->db->where('Is_deleted','0');	
+		$this->db->where('IsActive',"Active");	
+		$this->db->order_by('planlayout_id','desc');
+		$query=$this->db->get();
+		//echo $this->db->last_query();die;
 
 		$this->db->select('*');
 		$this->db->from('tblgallery');
 		$this->db->where('project_id',$project_id);	
-		$this->db->order_by('gallery_id','asc');
+		$this->db->where('Is_deleted','0');	
+		$this->db->where('IsActive',"Active");	
+		$this->db->order_by('gallery_id','desc');
 		$query2=$this->db->get();
 
 		$this->db->select('*');
 		$this->db->from('tblspecification');
-		$this->db->where('project_id',$project_id);	
-		$this->db->order_by('specification_id','asc');
+		$this->db->where('project_id',$project_id);
+		$this->db->where('Is_deleted','0');	
+		$this->db->where('IsActive',"Active");		
+		$this->db->order_by('specification_id','desc');
 		$query3=$this->db->get();
+
+		$this->db->select('*');
+		$this->db->from('tblproject_slider');
+		$this->db->where('project_id',$project_id);	
+		$this->db->where('Is_deleted','0');	
+		$this->db->where('IsActive',"Active");	
+		$this->db->order_by('projectslider_id','desc');
+		$query4=$this->db->get();
 
 		
 		//echo $this->db->last_query();die;
@@ -595,11 +733,14 @@ class Api_model extends CI_Model
 				'logo_image'=>$row['logo_image'],
 			));
 		}
+		foreach ($query4->result_array() as $row) {
+			array_push($projectsliderimg,array('projectsliderimage'=>$row['projectslider_img']));
+			
+		}
 
-		if($query->num_rows()>0){		
+		if($query1->num_rows()>0){		
 				$project_detail = $query1->row();
-				
-	 			
+				//echo "<pre>";print_r($query1->row());die;
 				$data = array(
 					'ProjectId' 	    => trim($project_detail->ProjectId),
 					'ProjectTitle' 		=> trim($project_detail->ProjectTitle),				
@@ -608,12 +749,14 @@ class Api_model extends CI_Model
 					'ProjectImage'		=> trim($project_detail->ProjectImage),
 					'Projectldesc'		=> trim($project_detail->Projectldesc),
 					'Project_brochure'	=> trim($project_detail->Project_brochure),
+					'Project_long'		=> trim($project_detail->Project_long),
+					'Project_lat'		=> trim($project_detail->Project_lat),
 					'Project_status'	=> trim($project_detail->ProjectStatus),
 					'Project_planlayout'=>$planlayout,
 					'Project_galleryimage'=>$galleryimg,
-					'Project_specification'=>$specdata
+					'Project_specification'=>$specdata,
+					'Project_slider'=>$projectsliderimg
 
-					
 					);	
 					//echo "<pre>";print_r($data);die;	
 				return $data;
@@ -624,20 +767,157 @@ class Api_model extends CI_Model
 			
 	}
 	function userrefer_api(){
-		//echo "hghgh";die;
- 		//echo $this->input->post('property');die;
+		
+		$query 	= $this->db->get_where("tbluser",array("UsersId"=>$this->input->post('user_id')));
+		$res   = $query->row();
+		
+		if($res->referral_point!='0'){
+		  $total=$res->referral_point + '100';
+		}else{
+			 $total='100';
+		}
 		$data = array(
 			'user_id'     => $this->input->post('user_id'),
 			'name'   	  => $this->input->post('name'),
 			'email' 	  => $this->input->post('email'),
 			'mobileno' 	  => $this->input->post('mobileno'),
 			'property' 	  => $this->input->post('property'),
+			'other_property'=> $this->input->post('other_property'),		
 			'status'	  =>'Refered',
 			'create_date'=>date('Y-m-d')			
 			);
-		$user_id= insert_record_api('tblrefer',$data);
-		return true;
+		$refer_id= insert_record_api('tblrefer',$data);
+      //	echo $refer_id; die;
+		 $data=array('redeem_point'=>'100',
+        	'redeem_type'=>'referral', 
+        	'comment'=>'You have added '.ucfirst($this->input->post('name')).' as Referral.',        	
+        	'user_id'=>$res->UsersId,
+        	'refer_id'=>$refer_id
+    		);
+        $this->db->insert('tbluser_redeempoints',$data);
+
+		$ud=array('referral_point'=>$total);
+		$this->db->where('UsersId',$res->UsersId);
+		$this->db->update('tbluser',$ud);
+
+		$resdata=array('refer_id' =>$refer_id);
+		return $resdata;
 	}
+
+
+	function get_broadcast_notification()
+	{
+
+		$data= array();
+		$this->db->select('broadcast_title,broadcast_desc,broadcast_image,created_date');
+		$this->db->from('tblbroadcast');
+		$this->db->where('Is_deleted','0');	
+		$this->db->where('IsActive',"Active");	
+		$this->db->order_by('broadcast_id','desc');
+		$query=$this->db->get();
+		
+		return $query->result_array();
+	
+	}
+
+	function get_referral_point($user_id)
+	{
+		$statuscount=array();
+	
+		$this->db->select('referral_point,closing_point,redeem_point');
+		$this->db->from('tbluser');
+		$this->db->where('Is_deleted','0');	
+		$this->db->where('IsActive',"Active");	
+		$this->db->where('UsersId',$user_id);	
+		$this->db->order_by('UsersId','desc');
+		$query=$this->db->get();
+		
+         $qInprogress=$this->db->get_where('tblrefer',array('status'=>'Inprogress','user_id'=>$user_id))->num_rows();
+         $qRefered=$this->db->get_where('tblrefer',array('status' => 'Refered','user_id'=>$user_id))->num_rows();
+         $qDeclined=$this->db->get_where('tblrefer',array('status' => 'Declined','user_id'=>$user_id))->num_rows();
+         $qClosed=$this->db->get_where('tblrefer',array('status' => 'Closed','user_id'=>$user_id))->num_rows();
+		
+		if($query->num_rows()>0){		
+				$user_detail = $query->row();
+				 $data = array(
+				 	'referral_point' 	=> trim($user_detail->referral_point),
+				 	'closing_point' 	=> trim($user_detail->closing_point),				
+				 	'redeem_point'		=> trim($user_detail->redeem_point),
+                    'count_refered'		=>"$qRefered",
+                    'count_inprogress'	=>"$qInprogress",
+                    'count_declined'	=>"$qDeclined",
+                    'count_closed'		=>"$qClosed",
+				 	);	
+				return $data;
+			}else{
+				return array();
+			}
+	}
+
+	function get_userreferral_point($user_id)
+	{
+	
+		$this->db->select('*');
+		$this->db->from('tblrefer');
+		$this->db->where('user_id',$user_id);
+		$this->db->where('status',$this->input->post('status'));	
+		$this->db->where('Is_deleted','0');	
+		$this->db->where('IsActive',"Active");		
+		$this->db->order_by('user_id','desc');
+		$query=$this->db->get();
+		//echo $this->db->last_query();
+		 // echo "<pre>";print_r($query->result_array());die;
+		if($query->num_rows()>0){
+				return $query->result_array();
+			}else{
+				return array();
+			}
+	}
+
+	function getuserhistorydata($user_id){
+		//echo "gffh";die;
+		$this->db->select('*');
+		$this->db->from('tbluser_redeempoints ru');
+		$this->db->join('tblrefer rf','ru.refer_id=rf.refer_id','left');
+		//$this->db->where('ru.Is_deleted','0');
+	   $this->db->order_by('ru.userredeem_id','desc');
+		$this->db->where('ru.user_id',$user_id);
+		$query=$this->db->get();
+		//echo $this->db->last_query();die;
+		if($query->num_rows()>0){		
+				
+				return $query->result_array();
+			}else{
+				return array();
+			}
+	}
+	function app_version_api(){
+		$id=$this->input->post('appversion_id');
+  		$data=array(
+  			'app_version'=>$this->input->post('app_version'),
+  		);
+         $this->db->where('appversion_id',$id);
+		 $this->db->update('tblapp_version',$data);
+		 return true;
+	}
+
+	function get_appversion(){
+		
+		$data= array();
+		$this->db->select('app_version');
+		$this->db->from('tblapp_version');	
+		$this->db->order_by('appversion_id','Desc');
+		$query=$this->db->get();
+		 
+      foreach ($query->result_array() as $row) {
+      		$data['app_version']= $row['app_version'];
+      
+      }
+		return $data;
+
+	}
+
+	
 
 }
 

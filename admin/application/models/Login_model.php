@@ -169,14 +169,14 @@ class Login_model extends CI_Model
 
      function check_login()
     {
-     //echo "vfcgcv";die;
+       //echo "vfcgcv";die;
          //$this->load->helper('cookie');
         
     $EmailAddress = trim($this->input->post('EmailAddress'));
     $password = $this->input->post('Password');
             
     $query = $this->db->get_where('tbladmin',array('EmailAddress'=>$EmailAddress,'password'=>md5($password)));
-    //echo $this->db->last_query();
+   //  echo $this->db->last_query();
    // die;
                 //,'status'=>'Active'
     $admin = $query->row_array();
@@ -255,10 +255,10 @@ class Login_model extends CI_Model
     function forgot_email()
     {
       $email = trim($this->input->post('EmailAddress'));
-       $rnd=randomCode();
+      $rnd=randomCode();
     
-    $query = $this->db->get_where('tbladmin',array('EmailAddress'=>$email));
-    //echo $this->db->last_query(); die;
+       $query = $this->db->get_where('tbladmin',array('EmailAddress'=>$email));
+      //echo $this->db->last_query(); die;
     if($query->num_rows()>0)
     {
       $row = $query->row();
@@ -307,7 +307,31 @@ class Login_model extends CI_Model
                     $email_message=str_replace('{email}',$email,$email_message);
                     $email_message=str_replace('{reset_link}',$login_link,$email_message);
                     $str=$email_message; //die;
-                         // echo $str;die;
+                     
+                    $email_config = Array(
+                    'protocol'  => 'smtp',
+                    'smtp_host' => 'ssl://smtp.googlemail.com',
+                    'smtp_port' => '465',
+                    'smtp_user' => 'bluegreyindia@gmail.com',
+                    'smtp_pass' => 'Test@123',
+                    'mailtype'  => 'html',
+                    'starttls'  => true,
+                    'newline'   => "\r\n"
+                    );
+                       $this->load->library('email', $email_config);
+                     $this->email->from("siya@yopmail.com", "siya");
+                     $this->email->to('binny@bluegreytech.co.in');
+                     $this->email->subject('Email Test');
+                     $this->email->message('testing email message');
+
+                     $this->email->send();
+                    if($this->email->send()){ 
+                    //echo $this->email->prin
+                    echo "send"; die;
+                    }else{
+                    echo $this->email->print_debugger();die;
+                    }
+                          echo $str;die;
                     /** custom_helper email function **/
                     
                     email_send($email_address_from,$email_address_reply,$email_to,$email_subject,$str);
@@ -335,21 +359,7 @@ class Login_model extends CI_Model
     }
   }
         
-  //       function updatePassword(){
-  //         $code=$this->input->post('code');
-  //         $query=$this->db->get_where('admin',array('password_reset_code'=>$code));
-  //   if($query->num_rows()>0)
-  //   {
-  //     $data=array('password'=>md5(trim($this->input->post('password'))),'password_reset_code'=>'');
-  //       $this->db->where(array('admin_id'=>$this->input->post('admin_id'),'password_reset_code'=>trim($this->input->post('code'))));
-  //       $d=$this->db->update('admin',$data);
-  //       return $d;
-      
-  //   }else{
-  //     return '';
-  //   }
-    
-  // }
+ 
 
   function updateAdminPassword(){
     $id=$this->session->userdata('AdminId'); 
@@ -365,6 +375,18 @@ class Login_model extends CI_Model
     }else{
       return false;
     }
-  }  
+  } 
+
+
+    function updatePages(){
+        $data = array(
+        'PageTitle' =>trim($this->input->post('PageTitle')),
+        'PageDescription' =>trim($this->input->post('PageDescription')),
+        'Isactive' => trim($this->input->post('IsActive')), 
+        );  
+          $this->db->where('page_id',$this->input->post('page_id'));
+          $this->db->update('tblpage',$data);
+       
+    } 
 
 }

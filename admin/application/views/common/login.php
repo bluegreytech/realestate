@@ -1,4 +1,4 @@
-
+<body class="main-bg">
  <?php $this->load->view('common/css'); ?>
   <div class="app-content content container-fluid">
       <div class="content-wrapper">
@@ -46,10 +46,9 @@
                 </div>
             </div>
             <div class="card-footer">
-                <div class="">
-                    <p class="float-sm-left text-xs-center m-0"><a href="<?php echo base_url();?>home/forgotpassword/" class="card-link">Forgot Password?</a></p>
-                    <p class="float-sm-right text-xs-center m-0">New to Register? <a href="#" class="card-link">Sign Up</a></p>
-                </div>
+                    <p class="text-center m-0" ><a href="<?php echo base_url();?>home/forgotpassword/" class="card-link">Forgot Password?</a></p>
+                  
+          
             </div>
         </div>
     </div>
@@ -58,7 +57,7 @@
         </div>
       </div>
     </div>
-
+</body>
     <?php $this->load->view('common/js'); ?>
 
     <script>

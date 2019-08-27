@@ -7,16 +7,22 @@ class Home extends CI_Controller {
 	{
       	parent::__construct();
 		$this->load->model('Login_model');
+		$this->load->model('user_model');
       
     }
 
 	public function dashboard()
 	{ 
-		if(!check_admin_authentication()){ 
-		
+		if(!check_admin_authentication()){
 			redirect(base_url());
 		}		
-		$this->load->view('dashboard');
+		$data['result']=$this->user_model->getbdayuser();
+		$data['users']=$this->user_model->getuser();
+		$data['userrefer']=$this->user_model->get_userefer();
+		$data['activeTab']="dashboard";
+
+		//echo count($data['result']); die;
+		$this->load->view('common/dashboard',$data);
 	}
 
 	public function profile($msg='')
@@ -28,6 +34,7 @@ class Home extends CI_Controller {
 		}
                 
 		$data = array();
+		$data['activeTab']="profile";
 		//echo "<pre>";print_r($_POST);die;
         $this->load->library('form_validation');
 		$this->form_validation->set_rules('EmailAddress', 'Email', 'required|valid_email|callback_adminmail_check');
@@ -226,6 +233,7 @@ class Home extends CI_Controller {
 		
             
 		$data = array();
+		$data['activeTab']="change_password";
         $this->load->library('form_validation');	
 		$this->form_validation->set_rules('password', 'Password', 'required|matches[cpassword]|min_length[8]');
 		$this->form_validation->set_rules('cpassword', 'Password Confirm', 'required|min_length[8]');	
@@ -258,13 +266,64 @@ class Home extends CI_Controller {
         $this->load->view('common/ChangePassword',$data);    
 	}
 	function oldpassword_check() {
-		$query = $this->db->query("select Password from " . $this->db->dbprefix('tbladmin') . " where Password = '".md5($this->input->post('password'))."' and AdminId!='" . $this->session->userdata('AdminId') . "'");
-		//echo $this->db->last_query();die;
+		$query = $this->db->query("select Password from " . $this->db->dbprefix('tbladmin') . " where Password ='".md5($this->input->post('password'))."' and AdminId='" . $this->session->userdata('AdminId') . "'");
+		//aecho $this->db->last_query();die;
 		if ($query->num_rows() > 0) {
 			echo 1;die;
 		} else {
 			echo 0;die;
 		}
 	}
+   
 
+   public function add_pages($msg='')
+    {  //echo "fdsf";die;
+            
+		if(!check_admin_authentication())
+		{
+		redirect('login');
+		}
+                
+		$data = array();
+		$data['activeTab']="add_pages";	
+        $this->load->library('form_validation');
+	
+		$this->form_validation->set_rules('PageTitle', 'Page Title', 'required');
+		$this->form_validation->set_rules('IsActive', 'IsActive', 'required');		
+		
+		if($this->form_validation->run() == FALSE){	
+		
+			if(validation_errors())
+			{
+				$data["error"] = validation_errors();
+				//echo "<pre>";print_r($data);die;
+			}else{
+				$data["error"] = "";
+			}
+			if($_POST){			
+				$data["PageTitle"] = $this->input->post('PageTitle');
+				$data["PageDescription"]   = $this->input->post('PageDescription');
+				
+              
+			
+			}else{
+			$oneAdmin=get_page_by_slug('termcondition');
+			//print_r($oneAdmin);die;
+			$data["page_id"] 	= $oneAdmin->page_id;
+			$data["slug"] 		= $oneAdmin->slug;				
+			$data["PageTitle"]      = $oneAdmin->PageTitle;			
+           	$data['PageDescription']=$oneAdmin->PageDescription;
+           	$data['IsActive']=$oneAdmin->IsActive;
+			
+			}
+		}else{
+			//echo "else fdf";die;
+            $this->session->set_flashdata('successmsg', 'Page has been updated successfully');				
+			$res=$this->Login_model->updatePages();
+			redirect('home/add_pages/');
+		}
+
+        $this->load->view('common/termsandcondition',$data);    
+            
+    }
 }

@@ -135,6 +135,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 $(document).ready(function()
 {
+	$.validator.addMethod('dimention', function(value, element, param) {
+    if(element.files.length == 0){
+        return true;
+    }
+   // console.log(value);
+
+    var width = $(element).data('imageWidth');
+ 	// console.log(width);
+    var height = $(element).data('imageHeight');
+    //  console.log(height);
+    if(width == param[0] && height == param[1]){
+        return true;
+    }else{
+        return false;
+    }
+},'Please upload an image with 760 x 428 pixels dimension');
 	$.validator.addMethod('filesize', function (value, element, param) {
 	return this.optional(element) || (element.files[0].size <= param)
 	} ,'File size must be equal to or less then 2MB');
@@ -156,6 +172,7 @@ $(document).ready(function()
 				},
 				extension: "JPG|jpeg|png|bmp",
 				filesize: 2097152,  
+				dimention:[760,428],
 			},
 			project_id:
 			{
@@ -192,6 +209,19 @@ function readURLimg(input) {
      reader.readAsDataURL(input.files[0]);
     }
 }
+  $('#galleryImage').change(function() {
+    $('#galleryImage').removeData('imageWidth');
+    $('#galleryImage').removeData('imageHeight');
+    var file = this.files[0];
+    var tmpImg = new Image();
+    tmpImg.src=window.URL.createObjectURL( file ); 
+    tmpImg.onload = function() {
+        width = tmpImg.naturalWidth,
+        height = tmpImg.naturalHeight;
+        $('#galleryImage').data('imageWidth', width);
+        $('#galleryImage').data('imageHeight', height);
+    }
+});
        		                
 
 </script>

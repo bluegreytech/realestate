@@ -84,9 +84,10 @@ class Admin_model extends CI_Model
 			'Address'=>$this->input->post('Address'), 
 			'AdminContact'=>$this->input->post('AdminContact'), 		
 			'IsActive' => $this->input->post('IsActive'),			
-			'CreatedOn'=>date('Y-m-d')		
+			'CreatedOn'=>date('Y-m-d'),	
+			'Admin_Type'=>2	
 			);
-			//echo "<pre>";print_r($data);die;	
+		//	echo "<pre>";print_r($data);die;	
                     
             $res=$this->db->insert('tbladmin',$data);	
 			return $res;
@@ -189,7 +190,7 @@ class Admin_model extends CI_Model
            
            
             $data = array(
-			'EmailAddress' => trim($this->input->post('EmailAddress')),			
+			//'EmailAddress' => trim($this->input->post('EmailAddress')),			
 			'FullName' => trim($this->input->post('FullName')),
 			'ProfileImage'=>$user_image,
 			'Address'=>$this->input->post('Address'), 

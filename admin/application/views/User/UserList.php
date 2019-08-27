@@ -65,8 +65,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         ?>
                                     </td>
                                     <td>
-                                        <?php echo anchor('User/Edituser/'.$row->UsersId,'<i class="ficon icon-pencil2"></i>'); ?>
-                                        <a href="javascript:void(0)"  onclick="deletedata('<?php echo $row->UsersId; ?>')" ><i class="ficon icon-bin"></i></a>    
+                                        <?php echo anchor('user/Edituser/'.$row->UsersId,'<i class="ficon icon-pencil2" data-toggle="tooltip" title="Edit User"></i> '); ?>
+                                        <a href="javascript:void(0)"  onclick="deletedata('<?php echo $row->UsersId; ?>')" ><i class="ficon icon-bin" data-toggle="tooltip" title="Delete User"></i></a>
+                                        
+                                        <?php echo anchor('/user/loyalty_point/'.$row->UsersId,'<i class="ficon icon-gift" data-toggle="tooltip" title="Loyalty points" style="color: #f0ad4e;"></i> '); ?>
+                                        
                                     </td>  
                                 </tr>      
                                 <?php

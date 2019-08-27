@@ -1,9 +1,6 @@
-
-
 <!DOCTYPE html>
 <html lang="en" data-textdirection="ltr" class="loading">
   
-<!-- Mirrored from pixinvent.com/free-bootstrap-template/robust-lite/html/ltr/login-simple.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 04 Apr 2019 06:04:43 GMT -->
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,12 +9,8 @@
     <meta name="keywords" content="">
     <meta name="author" content="">
     <title>Nyalkaran  Group</title>
-    <link rel="apple-touch-icon" sizes="60x60" href="<?php echo base_url(); ?>default/images/ico/apple-icon-60.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="<?php echo base_url(); ?>default/images/ico/apple-icon-76.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="<?php echo base_url(); ?>default/images/ico/apple-icon-120.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="<?php echo base_url(); ?>default/images/ico/apple-icon-152.png">
-    <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url(); ?>favicon/favicon.ico">
-    <link rel="shortcut icon" type="image/png" href="<?php echo base_url(); ?>favicon/favicon-32.png">
+    
+    <link rel="shortcut icon" type="image/png" href="<?php echo base_url(); ?>default/images/ico/favicon.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-touch-fullscreen" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -64,7 +57,7 @@
                                       <div class="navbar-header">
                                         <ul class="nav navbar-nav">
                                           <li class="nav-item mobile-menu hidden-md-up float-xs-left"><a class="nav-link nav-menu-main menu-toggle hidden-xs"><i class="icon-menu5 font-large-1"></i></a></li>
-                                          <li class="nav-item"><a class="navbar-brand nav-link"><img alt="branding logo" src="<?php echo base_url(); ?>default/images/logo/logo.png" data-expand="<?php echo base_url(); ?>default/images/logo/logo.png" data-collapse="<?php echo base_url(); ?>default/images/logo/logo.png" class="brand-logo" width="20%"></a></li>
+                                          <li class="nav-item"><a class="navbar-brand nav-link"><img alt="branding logo" src="<?php echo base_url(); ?>default/images/logo/head-logo.png" data-expand="<?php echo base_url(); ?>default/images/logo/head-logo.png" data-collapse="<?php echo base_url(); ?>default/images/logo/head-logo.png" class="brand-logo" ></a></li>
                                           <li class="nav-item hidden-md-up float-xs-right"><a data-toggle="collapse" data-target="#navbar-mobile" class="nav-link open-navbar-container"><i class="icon-ellipsis pe-2x icon-icon-rotate-right-right"></i></a></li>
                                         </ul>
                                       </div>

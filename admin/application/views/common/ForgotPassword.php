@@ -1,4 +1,4 @@
-
+<body class="main-bg">
  <?php $this->load->view('common/css'); ?>
   <div class="app-content content container-fluid">
       <div class="content-wrapper">
@@ -37,7 +37,7 @@
                         <fieldset class="form-group row">
                             <div class="col-md-4 col-xs-12 text-xs-center text-md-left">
                               
-                                  <a href="<?php echo base_url() ; ?>" name="back"  class="btn btn-grey btn-block"  role="button" >Back</a>
+                                  <a href="<?php echo base_url() ; ?>" name="back"  class="btn btnlogin btn-block"  role="button" style="color:#fff!important" >Back</a>
                             </div>
                              <div class="col-md-4 col-xs-12 text-xs-center text-md-left">
                              </div>
@@ -56,7 +56,7 @@
         </div>
       </div>
     </div>
-
+</body>
     <?php $this->load->view('common/js'); ?>
 
     <script>
